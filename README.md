@@ -3,7 +3,9 @@
 > **교육 기관**: 동구평생학습관  
 > **강사**: 박은희  
 > **핵심 도구**: Claude Sonnet 5.5, Artifacts Sandbox, Git & GitHub, Netlify, Vercel  
-> **🌐 실시간 웹사이트**: [https://claude-vibe-coding-kohl.vercel.app](https://claude-vibe-coding-kohl.vercel.app)
+> **🌐 실시간 웹사이트 (Vercel)**: [https://claude-vibe-coding-kohl.vercel.app](https://claude-vibe-coding-kohl.vercel.app)  
+> **🌐 보조 배포 (GitHub Pages)**: [https://heethink.github.io/claude-vibe-coding/](https://heethink.github.io/claude-vibe-coding/)  
+> **📦 깃허브 저장소**: [https://github.com/heethink/claude-vibe-coding](https://github.com/heethink/claude-vibe-coding)
 
 ---
 
