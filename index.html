@@ -2829,44 +2829,69 @@
   </footer>
 
   <!-- ==============================================
-       [웹사이트 실시간 미리보기 모달]
+       [웹사이트 실시간 미리보기 모달 (모바일 & 데스크톱 뷰어 지원)]
        ============================================== -->
-  <div id="websitePreviewModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 transition-all">
-    <div class="bg-white rounded-3xl w-full max-w-5xl h-[85vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200 animate-in fade-in zoom-in-95 duration-200">
+  <div id="websitePreviewModal" onclick="if(event.target === this) closePreviewModal();" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 transition-all">
+    <div class="bg-slate-900 rounded-3xl w-full max-w-6xl h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-700 animate-in fade-in zoom-in-95 duration-200">
       
       <!-- 모달 상단 주소창 헤더 -->
-      <div class="bg-slate-900 text-white px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3 border-b border-slate-800">
-        <div class="flex items-center gap-2 overflow-hidden">
+      <div class="bg-slate-900 text-white px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
+        <div class="flex items-center gap-2 overflow-hidden min-w-0">
           <div class="flex gap-1.5 shrink-0">
             <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
             <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
             <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
           </div>
-          <span class="text-xs text-slate-400 font-mono ml-2 shrink-0">🔒 결과물 미리보기:</span>
+          <span class="text-xs text-slate-400 font-mono ml-2 shrink-0">🔒 결과물:</span>
           <span id="previewModalTitle" class="text-xs sm:text-sm font-bold text-slate-100 truncate"></span>
         </div>
+
+        <!-- 📱 모바일 / 💻 데스크톱 뷰 전환 컨트롤 바 -->
         <div class="flex items-center gap-2 shrink-0">
-          <a id="previewModalExternalLink" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all flex items-center gap-1">
-            <span>🌐</span> 새 탭에서 열기 ↗
+          <div class="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700 text-xs font-bold">
+            <button type="button" onclick="setPreviewDeviceMode('desktop')" id="prevDevDesktopBtn"
+                    class="px-3 py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1.5">
+              <span>💻</span> <span class="hidden sm:inline">데스크톱(웹)</span><span>뷰</span>
+            </button>
+            <button type="button" onclick="setPreviewDeviceMode('mobile')" id="prevDevMobileBtn"
+                    class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5">
+              <span>📱</span> <span class="hidden sm:inline">모바일</span><span>뷰 (390px)</span>
+            </button>
+          </div>
+
+          <a id="previewModalExternalLink" href="#" target="_blank" rel="noopener noreferrer"
+             class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all flex items-center gap-1 border border-slate-700 shadow-2xs">
+            <span>🌐</span> <span class="hidden sm:inline">새 탭 전체화면</span> ↗
           </a>
-          <button onclick="closePreviewModal()" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-bold transition-all">
+          <button type="button" onclick="closePreviewModal()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white text-sm font-bold transition-all">
             ✕
           </button>
         </div>
       </div>
 
       <!-- 모달 본체 iframe & 이미지 뷰어 -->
-      <div class="flex-1 bg-slate-100 relative overflow-hidden">
-        <iframe id="previewModalIframe" src="about:blank" class="w-full h-full border-0" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-        <div id="previewModalImageContainer" class="hidden w-full h-full flex items-center justify-center p-4 bg-slate-900/95 overflow-auto">
-          <img id="previewModalImage" src="" alt="과제 원본 이미지" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl">
+      <div id="previewModalBody" class="flex-1 bg-slate-950/90 relative overflow-hidden flex items-center justify-center p-2 sm:p-4">
+        <!-- iframe 프레임 컨테이너 (모바일 뷰 시 스마트폰 베젤 프레임으로 변환) -->
+        <div id="previewIframeContainer" class="w-full h-full transition-all duration-300 flex items-center justify-center">
+          <iframe id="previewModalIframe" src="about:blank" class="w-full h-full border-0 bg-white rounded-2xl shadow-md transition-all duration-300" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        </div>
+
+        <!-- 이미지 뷰어 -->
+        <div id="previewModalImageContainer" class="hidden w-full h-full flex items-center justify-center p-4 bg-slate-950 overflow-auto">
+          <img id="previewModalImage" src="" alt="과제 원본 이미지" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl">
         </div>
       </div>
 
       <!-- 모달 하단 안내 바 -->
-      <div class="bg-slate-50 border-t border-slate-200 px-4 py-2 text-[11px] text-slate-500 flex items-center justify-between">
-        <span>※ 외부 사이트의 보안 정책(X-Frame-Options)에 따라 화면이 빈 칸으로 나오는 경우 [새 탭에서 열기]를 눌러 확인해주세요.</span>
-        <button onclick="closePreviewModal()" class="text-slate-600 hover:text-slate-900 font-bold">닫기</button>
+      <div class="bg-slate-900 border-t border-slate-800 px-4 sm:px-6 py-2.5 text-[11px] text-slate-400 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="previewModalStatusText">실시간 웹 애플리케이션 실행 중 (모바일 & 데스크톱 반응형 지원)</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-slate-500 hidden sm:inline">상단 버튼으로 모바일(스마트폰)과 데스크톱 화면을 비교해보세요</span>
+          <button type="button" onclick="closePreviewModal()" class="text-slate-300 hover:text-white font-bold">닫기</button>
+        </div>
       </div>
 
     </div>
@@ -3437,7 +3462,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>달콤한 오후 베이커리</title>
-  <script src="https://cdn.tailwindcss.com"><\/script>
+  \x3Cscript src="https://cdn.tailwindcss.com">\x3C/script>
 </head>
 <body class="bg-amber-50/50 text-slate-800 font-sans min-h-screen">
   <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-10 border-b border-amber-100 px-6 py-4 flex items-center justify-between">
@@ -3503,10 +3528,108 @@
         date: '10월 21일 16:45',
         name: '이철수 수강생',
         day: '2회차',
-        type: '배포링크',
-        title: '다크모드 프리미엄 피트니스 랜딩페이지 Netlify 초고속 배포 완료!',
-        content: 'https://junggu-vibe-fitness.netlify.app',
-        feedback: 'Netlify Drop에 폴더를 마우스로 끌어다 놓으니 단 3초 만에 웹사이트가 떴습니다! 사이트 이름도 junggu-vibe-fitness로 변경하고 제 스마트폰으로 열어보니 진짜 상용 웹사이트처럼 깔끔하게 열려서 감동입니다!',
+        type: '파일업로드',
+        fileName: 'fitness_landing.html',
+        fileSize: 4250,
+        isHtml: true,
+        isImage: false,
+        title: '다크모드 프리미엄 피트니스 VIBE FIT 랜딩페이지 (모바일 & 데스크톱 반응형)',
+        fileData: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIBE FIT 프리미엄 피트니스</title>
+  \x3Cscript src="https://cdn.tailwindcss.com">\x3C/script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
+  <nav class="bg-slate-900/90 backdrop-blur-md sticky top-0 z-20 border-b border-slate-800 px-4 sm:px-6 py-3.5 flex items-center justify-between">
+    <div class="text-lg sm:text-xl font-black text-amber-400 flex items-center gap-2">
+      <span class="text-2xl">⚡</span> VIBE FIT
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="#programs" class="text-xs sm:text-sm font-bold text-slate-300 hover:text-white hidden sm:inline">프로그램</a>
+      <button onclick="document.getElementById('trialModal').classList.remove('hidden')" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-xs sm:text-sm shadow-md transition">
+        1일 무료체험 신청
+      </button>
+    </div>
+  </nav>
+
+  <header class="py-12 sm:py-20 text-center px-4 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 relative overflow-hidden">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold mb-4">
+      <span>🔥</span> 동구 최고 시설 프리미엄 헬스 & 피트니스
+    </div>
+    <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-white">
+      한계를 뛰어넘는 변화,<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">VIBE FIT에서 시작하세요</span>
+    </h1>
+    <p class="text-slate-400 text-xs sm:text-base mt-3 max-w-xl mx-auto">
+      최고급 해머스트렝스 머신 50종과 국가대표 출신 트레이너의 1:1 맞춤형 밀착 코칭.
+    </p>
+    <div class="mt-6 flex justify-center gap-3">
+      <button onclick="document.getElementById('trialModal').classList.remove('hidden')" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg transition">
+        1일 무료 패스 받기 ↗
+      </button>
+      <a href="#programs" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm transition">
+        프로그램 보기
+      </a>
+    </div>
+  </header>
+
+  <section id="programs" class="max-w-5xl mx-auto px-4 py-8 sm:py-12 w-full">
+    <div class="text-center mb-8">
+      <h2 class="text-xl sm:text-2xl font-black text-white">전문 트레이닝 프로그램</h2>
+      <p class="text-xs text-slate-400 mt-1">목적에 맞춘 체계적인 커리큘럼</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+      <div class="bg-slate-900 p-5 sm:p-6 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition space-y-3">
+        <div class="text-4xl">🏋️</div>
+        <h3 class="font-black text-base sm:text-lg text-white">1:1 개인 PT</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">체형 분석 및 인바디 데이터를 기반으로 한 체계적인 식단과 고효율 맞춤 운동</p>
+        <span class="text-xs text-amber-400 font-bold block">체지방 감량 · 근력 강화</span>
+      </div>
+      <div class="bg-slate-900 p-5 sm:p-6 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition space-y-3">
+        <div class="text-4xl">🧘</div>
+        <h3 class="font-black text-base sm:text-lg text-white">기구 필라테스</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">체형 교정과 코어 강화를 위한 캐딜락, 리포머 소수 정예 1:4 그룹 수업</p>
+        <span class="text-xs text-amber-400 font-bold block">자세 교정 · 유연성 향상</span>
+      </div>
+      <div class="bg-slate-900 p-5 sm:p-6 rounded-2xl border border-slate-800 hover:border-amber-500/50 transition space-y-3">
+        <div class="text-4xl">⚡</div>
+        <h3 class="font-black text-base sm:text-lg text-white">크로스 트레이닝</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">심폐 지구력과 전신 파워를 극대화하는 고강도 인터벌 서킷 트레이닝</p>
+        <span class="text-xs text-amber-400 font-bold block">체력 증진 · 칼로리 폭탄</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="trialModal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+    <div class="bg-slate-900 rounded-3xl p-6 max-w-sm w-full border border-slate-700 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-black text-base text-white">⚡ 1일 무료 체험권 신청</h3>
+        <button onclick="document.getElementById('trialModal').classList.add('hidden')" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('🎉 신청이 완료되었습니다! 안내 문자가 발송됩니다.'); document.getElementById('trialModal').classList.add('hidden');" class="space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-300 mb-1">성함</label>
+          <input type="text" required placeholder="홍길동" class="w-full px-3 py-2 rounded-xl bg-slate-800 text-white border border-slate-700">
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">연락처</label>
+          <input type="tel" required placeholder="010-0000-0000" class="w-full px-3 py-2 rounded-xl bg-slate-800 text-white border border-slate-700">
+        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-500 font-bold text-slate-950 mt-2">체험권 신청 완료</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-slate-900 border-t border-slate-800 py-6 px-4 text-center text-xs text-slate-500 space-y-1">
+    <p class="font-bold text-slate-300">VIBE FIT (동구평생학습관 2회차 Netlify 배포 실습작품)</p>
+    <p>대전광역시 동구 중앙로 | 문의: 042-000-0000</p>
+  </footer>
+</body>
+</html>`,
+        content: `fitness_landing.html 파일 직접 업로드 (실시간 웹 실행 지원)`,
+        feedback: '클로드에게 다크모드 헬스장 랜딩페이지를 요청해서 만들었습니다. 버튼을 누르면 무료체험 팝업도 뜨고 스마트폰과 PC 양쪽에서 완벽하게 동작합니다!',
         likes: 19
       },
       {
@@ -3514,10 +3637,150 @@
         date: '10월 28일 15:30',
         name: '박민수 수강생',
         day: '3회차',
-        type: '배포링크',
-        title: 'Supabase 연동 실시간 클라우드 메모장 (모바일-PC 실시간 동기화)',
-        content: 'https://minsoo-notes.vercel.app',
-        feedback: '컴퓨터에서 메모를 적고 스마트폰으로 페이지를 열었더니 실시간으로 글이 올라오는 걸 보고 깜짝 놀랐습니다. 클라우드 DB가 왜 중요한지 확실히 배웠습니다!',
+        type: '파일업로드',
+        fileName: 'cloud_notes.html',
+        fileSize: 4890,
+        isHtml: true,
+        isImage: false,
+        title: '실시간 스마트 클라우드 메모장 (카테고리 & 검색 & 로컬 저장)',
+        fileData: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스마트 클라우드 메모장</title>
+  \x3Cscript src="https://cdn.tailwindcss.com">\x3C/script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+  <nav class="bg-white sticky top-0 z-20 border-b border-slate-200 px-4 sm:px-6 py-3.5 flex items-center justify-between">
+    <div class="text-base sm:text-lg font-black text-indigo-900 flex items-center gap-2">
+      <span class="text-2xl">📝</span> 클라우드 스마트 메모장
+    </div>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold flex items-center gap-1">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 실시간 동작 중
+    </span>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 py-6 w-full space-y-6">
+    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-3">
+      <h2 class="text-sm font-black text-slate-900 flex items-center gap-1.5">
+        <span>✍️</span> 새 메모 작성하기
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <input type="text" id="noteTitle" placeholder="메모 제목..." class="sm:col-span-2 px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 bg-slate-50 focus:bg-white">
+        <select id="noteCat" class="px-3 py-2 text-xs rounded-xl border border-slate-200 font-bold bg-slate-50 text-slate-700">
+          <option value="업무">💼 업무</option>
+          <option value="공부">📚 공부</option>
+          <option value="일상">🌿 일상</option>
+          <option value="아이디어">💡 아이디어</option>
+        </select>
+      </div>
+      <textarea id="noteContent" rows="2" placeholder="메모할 내용을 자유롭게 적어보세요..." class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 bg-slate-50 focus:bg-white"></textarea>
+      <div class="flex justify-end">
+        <button onclick="addNote()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shadow-xs transition flex items-center gap-1">
+          <span>💾</span> 메모 저장하기
+        </button>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 text-xs font-bold" id="catFilter">
+        <button onclick="filterNotes('전체')" class="px-3 py-1 rounded-xl bg-indigo-900 text-white shrink-0">전체</button>
+        <button onclick="filterNotes('업무')" class="px-3 py-1 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 shrink-0">업무</button>
+        <button onclick="filterNotes('공부')" class="px-3 py-1 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 shrink-0">공부</button>
+        <button onclick="filterNotes('일상')" class="px-3 py-1 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 shrink-0">일상</button>
+        <button onclick="filterNotes('아이디어')" class="px-3 py-1 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 shrink-0">아이디어</button>
+      </div>
+      <input type="text" id="searchNote" oninput="searchNotes(this.value)" placeholder="메모 검색..." class="px-3 py-1.5 text-xs rounded-xl border border-slate-200 bg-white">
+    </div>
+
+    <div id="notesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-4 px-4 text-center text-xs text-slate-400">
+    <p>동구평생학습관 3회차 클라우드 메모장 실습작품</p>
+  </footer>
+
+  \x3Cscript>
+    let notes = [
+      { id: 1, title: '클로드 바이브코딩 복습', cat: '공부', content: '1회차 아티팩트와 2회차 Git 배포 정리 완료. 모바일에서도 너무 잘 열린다!', time: '10:30' },
+      { id: 2, title: '주간 업무 보고서 작성', cat: '업무', content: '목요일 오후 2시 팀 회의 발표 자료 슬라이드 최종 확인 필요.', time: '11:15' },
+      { id: 3, title: '대전역 근처 성심당 들르기', cat: '일상', content: '퇴근길에 튀김소보로와 부추빵 가족들 간식으로 사가기.', time: '14:20' },
+      { id: 4, title: 'AI 챗봇 사이드 프로젝트 기획', cat: '아이디어', content: '노인 복지관 맞춤형 복지 혜택 안내 챗봇을 클로드로 만들어보기.', time: '15:40' }
+    ];
+    let curCat = '전체';
+    let curQ = '';
+
+    function renderNotes() {
+      const grid = document.getElementById('notesGrid');
+      let filtered = notes;
+      if (curCat !== '전체') filtered = filtered.filter(n => n.cat === curCat);
+      if (curQ) filtered = filtered.filter(n => n.title.includes(curQ) || n.content.includes(curQ));
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="col-span-full py-8 text-center text-xs text-slate-400">등록된 메모가 없습니다.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(n => {
+        let badgeColor = n.cat === '업무' ? 'bg-blue-100 text-blue-800' : n.cat === '공부' ? 'bg-purple-100 text-purple-800' : n.cat === '일상' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800';
+        return \`
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs space-y-2 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="px-2 py-0.5 rounded-md \${badgeColor} font-bold text-[10px]">\${n.cat}</span>
+                <span class="text-slate-400 text-[10px]">\${n.time}</span>
+              </div>
+              <h4 class="font-extrabold text-sm text-slate-900">\${n.title}</h4>
+              <p class="text-xs text-slate-600 mt-1 leading-relaxed">\${n.content}</p>
+            </div>
+            <div class="pt-2 flex justify-end">
+              <button onclick="delNote(\${n.id})" class="text-slate-400 hover:text-rose-500 text-xs">🗑️ 삭제</button>
+            </div>
+          </div>
+        \`;
+      }).join('');
+    }
+
+    function addNote() {
+      const title = document.getElementById('noteTitle').value.trim();
+      const cat = document.getElementById('noteCat').value;
+      const content = document.getElementById('noteContent').value.trim();
+      if (!title || !content) { alert('제목과 내용을 입력해주세요.'); return; }
+
+      const now = new Date();
+      const timeStr = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+      notes.unshift({ id: Date.now(), title, cat, content, time: timeStr });
+      document.getElementById('noteTitle').value = '';
+      document.getElementById('noteContent').value = '';
+      renderNotes();
+    }
+
+    function delNote(id) {
+      notes = notes.filter(n => n.id !== id);
+      renderNotes();
+    }
+
+    function filterNotes(c) {
+      curCat = c;
+      document.querySelectorAll('#catFilter button').forEach(b => {
+        b.className = b.innerText === c ? 'px-3 py-1 rounded-xl bg-indigo-900 text-white shrink-0' : 'px-3 py-1 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 shrink-0';
+      });
+      renderNotes();
+    }
+
+    function searchNotes(q) {
+      curQ = q.trim();
+      renderNotes();
+    }
+
+    renderNotes();
+  \x3C/script>
+</body>
+</html>`,
+        content: `cloud_notes.html 파일 직접 업로드 (실시간 웹 실행 지원)`,
+        feedback: '메모를 직접 추가하고 검색하고 삭제할 수 있는 진짜 웹 앱입니다. 모바일 화면으로도 보고 PC 화면으로도 확인해보니 완벽하게 동작합니다!',
         likes: 16
       },
       {
@@ -3525,10 +3788,122 @@
         date: '11월 4일 18:10',
         name: '정수진 수강생',
         day: '4회차',
-        type: '배포링크',
-        title: '우리동네 동구 맛집 & 카페 아카이브 실무 웹앱 프로토타입',
-        content: 'https://donggu-eats.github.io',
-        feedback: '제가 평소 가고 싶었던 동구 골목 맛집과 카페들을 카테고리별로 필터링할 수 있는 나만의 웹앱을 기획하고 클로드와 함께 완성했습니다. 가족들에게 링크를 보내서 자랑했어요 ^^',
+        type: '파일업로드',
+        fileName: 'donggu_eats.html',
+        fileSize: 5120,
+        isHtml: true,
+        isImage: false,
+        title: '우리동네 동구 맛집 & 카페 아카이브 실무 웹앱 (실시간 검색 & 좋아요)',
+        fileData: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>우리동네 동구 맛지도</title>
+  \x3Cscript src="https://cdn.tailwindcss.com">\x3C/script>
+</head>
+<body class="bg-amber-50/40 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+  <nav class="bg-white/95 sticky top-0 z-20 border-b border-amber-200 px-4 sm:px-6 py-3.5 flex items-center justify-between">
+    <div class="text-base sm:text-lg font-black text-amber-950 flex items-center gap-2">
+      <span class="text-2xl">🍽️</span> 우리동네 동구 맛지도
+    </div>
+    <span class="px-2.5 py-1 rounded-full bg-amber-200 text-amber-950 text-xs font-bold">
+      대전 동구 추천 명소 6선
+    </span>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 py-6 w-full space-y-6">
+    <div class="space-y-3">
+      <input type="text" id="eatsSearch" oninput="searchEats(this.value)" placeholder="식당 이름, 대표 메뉴 검색 (예: 칼국수, 카페)..." class="w-full px-4 py-2.5 text-xs sm:text-sm rounded-2xl border border-amber-200 bg-white shadow-2xs">
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-bold" id="eatsCatFilter">
+        <button onclick="filterEats('전체')" class="px-3 py-1.5 rounded-xl bg-amber-900 text-white shrink-0">전체보기</button>
+        <button onclick="filterEats('소제동 카페')" class="px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-slate-700 hover:bg-amber-50 shrink-0">☕ 소제동 카페</button>
+        <button onclick="filterEats('전통 노포')" class="px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-slate-700 hover:bg-amber-50 shrink-0">🍜 전통 노포/칼국수</button>
+        <button onclick="filterEats('중앙시장')" class="px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-slate-700 hover:bg-amber-50 shrink-0">🍲 중앙시장 명물</button>
+      </div>
+    </div>
+
+    <div id="eatsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    </div>
+  </main>
+
+  <footer class="bg-amber-950 text-amber-200/80 py-4 px-4 text-center text-xs">
+    <p>동구평생학습관 4회차 동네 맛집 아카이브 웹앱 실습작품</p>
+  </footer>
+
+  \x3Cscript>
+    const eats = [
+      { id: 1, name: '소제동 풍뉴가', cat: '소제동 카페', menu: '대나무숲 수제 티 칵테일 & 차', loc: '대전 동구 소제동 철도관사촌', rating: 4.9, icon: '🎋', likes: 42 },
+      { id: 2, name: '신도칼국수 본점', cat: '전통 노포', menu: '60년 전통 들깨 칼국수 & 수육', loc: '대전 동구 정동 대전역 앞', rating: 4.8, icon: '🍜', likes: 65 },
+      { id: 3, name: '개천식당', cat: '중앙시장', menu: '이북식 평양 만두국 & 튀김만두', loc: '대전 동구 원동 중앙시장 먹자골목', rating: 4.7, icon: '🥟', likes: 38 },
+      { id: 4, name: '베리도넛', cat: '소제동 카페', menu: '글레이즈드 수제 크림 도넛', loc: '대전 동구 수향길 골목', rating: 4.9, icon: '🍩', likes: 53 },
+      { id: 5, name: '광천순대', cat: '전통 노포', menu: '얼큰 순대국밥 & 막창순대', loc: '대전 동구 인동 골목', rating: 4.8, icon: '🍲', likes: 47 },
+      { id: 6, name: '이모네 전집', cat: '중앙시장', menu: '바삭 모듬전 & 막걸리', loc: '대전 동구 중앙시장 3번 게이트', rating: 4.6, icon: '🥞', likes: 29 }
+    ];
+    let curCat = '전체';
+    let curQ = '';
+
+    function renderEats() {
+      const grid = document.getElementById('eatsGrid');
+      let filtered = eats;
+      if (curCat !== '전체') filtered = filtered.filter(e => e.cat === curCat);
+      if (curQ) filtered = filtered.filter(e => e.name.includes(curQ) || e.menu.includes(curQ));
+
+      grid.innerHTML = filtered.map(e => \`
+        <div class="bg-white rounded-2xl p-4 border border-amber-100 shadow-2xs space-y-3 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 font-bold text-[10px]">\${e.cat}</span>
+              <span class="text-amber-600 font-bold">⭐ \${e.rating}</span>
+            </div>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="text-4xl shrink-0">\${e.icon}</span>
+              <div>
+                <h4 class="font-black text-base text-slate-900">\${e.name}</h4>
+                <p class="text-xs text-amber-900 font-medium">\${e.menu}</p>
+                <p class="text-[11px] text-slate-400 mt-0.5">\${e.loc}</p>
+              </div>
+            </div>
+          </div>
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+            <button onclick="likeEat(\${e.id})" class="text-rose-500 font-bold flex items-center gap-1 hover:scale-105 transition">
+              ❤️ <span id="like-\${e.id}">\${e.likes}</span>
+            </button>
+            <button onclick="alert('\${e.name}\\n대표메뉴: \${e.menu}\\n위치: \${e.loc}\\n동구평생학습관 추천 명소입니다!')" class="px-3 py-1 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-950 font-bold text-[11px]">
+              상세보기
+            </button>
+          </div>
+        </div>
+      \`).join('');
+    }
+
+    function likeEat(id) {
+      const item = eats.find(e => e.id === id);
+      if (item) {
+        item.likes++;
+        document.getElementById('like-' + id).innerText = item.likes;
+      }
+    }
+
+    function filterEats(c) {
+      curCat = c;
+      document.querySelectorAll('#eatsCatFilter button').forEach(b => {
+        b.className = b.innerText.includes(c) ? 'px-3 py-1.5 rounded-xl bg-amber-900 text-white shrink-0' : 'px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-slate-700 hover:bg-amber-50 shrink-0';
+      });
+      renderEats();
+    }
+
+    function searchEats(q) {
+      curQ = q.trim();
+      renderEats();
+    }
+
+    renderEats();
+  \x3C/script>
+</body>
+</html>`,
+        content: `donggu_eats.html 파일 직접 업로드 (실시간 웹 실행 지원)`,
+        feedback: '내가 살고 있는 대전 동구 소제동과 중앙시장 맛집들을 카테고리별로 모은 웹앱입니다. 검색도 되고 하트도 누를 수 있어서 너무 재미있습니다!',
         likes: 24
       },
       {
@@ -3536,10 +3911,111 @@
         date: '11월 11일 17:00',
         name: '최재혁 수강생',
         day: '5회차',
-        type: '배포링크',
-        title: '나만의 스마트 일정 캘린더 & 메모 플래너 최종 포트폴리오 (수료 작품)',
-        content: 'https://jaehyuk-planner.vercel.app',
-        feedback: '5주 동안 클로드 바이브코딩 과정 덕분에 평생 코딩을 모르고 살던 제가 전 세계에 공개되는 나만의 웹사이트를 가질 수 있게 되었습니다. 함께 공부한 수강생 여러분 모두 수고 많으셨습니다!',
+        type: '파일업로드',
+        fileName: 'smart_planner.html',
+        fileSize: 4950,
+        isHtml: true,
+        isImage: false,
+        title: '나만의 스마트 일정 캘린더 & To-Do 플래너 (수료 작품 & 실시간 실행)',
+        fileData: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스마트 일정 & To-Do 플래너</title>
+  \x3Cscript src="https://cdn.tailwindcss.com">\x3C/script>
+</head>
+<body class="bg-indigo-50/50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+  <nav class="bg-white sticky top-0 z-20 border-b border-indigo-100 px-4 sm:px-6 py-3.5 flex items-center justify-between">
+    <div class="text-base sm:text-lg font-black text-indigo-950 flex items-center gap-2">
+      <span class="text-2xl">📅</span> 스마트 플래너 2026
+    </div>
+    <span class="text-xs font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full">
+      수료 최종 포트폴리오
+    </span>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 py-6 w-full space-y-5">
+    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-indigo-100 shadow-xs space-y-2">
+      <div class="flex items-center justify-between text-xs font-black">
+        <span class="text-slate-900">오늘의 할 일 진행률</span>
+        <span id="rateText" class="text-indigo-600 font-extrabold">50% 달성</span>
+      </div>
+      <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+        <div id="rateBar" class="bg-gradient-to-r from-indigo-500 to-purple-600 h-full rounded-full transition-all duration-300" style="width: 50%;"></div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <input type="text" id="todoInput" placeholder="새로운 할 일 또는 약속 추가..." class="flex-1 px-4 py-2.5 text-xs sm:text-sm rounded-xl border border-indigo-200 bg-white shadow-2xs focus:outline-hidden focus:ring-2 focus:ring-indigo-500">
+      <button onclick="addTodo()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-xs transition shrink-0">
+        + 추가
+      </button>
+    </div>
+
+    <div class="space-y-2.5" id="todoList">
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-indigo-100 py-4 px-4 text-center text-xs text-slate-400">
+    <p>동구평생학습관 5회차 최종 수료 과제 완성 포트폴리오</p>
+  </footer>
+
+  \x3Cscript>
+    let todos = [
+      { id: 1, text: '클로드 바이브코딩 교안 복습하기', done: true },
+      { id: 2, text: '나만의 웹사이트 Netlify 무료 배포 완료', done: true },
+      { id: 3, text: '스마트폰으로 가족들에게 완성 사이트 링크 공유하기', done: false },
+      { id: 4, text: '동구평생학습관 종강 발표 자료 준비', done: false }
+    ];
+
+    function renderTodos() {
+      const list = document.getElementById('todoList');
+      list.innerHTML = todos.map(t => \`
+        <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-2xs flex items-center justify-between gap-3 transition \${t.done ? 'bg-slate-50 opacity-70' : ''}">
+          <label class="flex items-center gap-3 cursor-pointer flex-1 min-w-0">
+            <input type="checkbox" onchange="toggleTodo(\${t.id})" \${t.done ? 'checked' : ''} class="w-5 h-5 rounded-md text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+            <span class="text-xs sm:text-sm font-bold text-slate-800 truncate \${t.done ? 'line-through text-slate-400' : ''}">\${t.text}</span>
+          </label>
+          <button onclick="deleteTodo(\${t.id})" class="text-slate-400 hover:text-rose-500 text-xs shrink-0 p-1">✕</button>
+        </div>
+      \`).join('');
+
+      const total = todos.length;
+      const doneCount = todos.filter(t => t.done).length;
+      const pct = total === 0 ? 0 : Math.round((doneCount / total) * 100);
+      document.getElementById('rateText').innerText = pct + '% 달성 (' + doneCount + '/' + total + ')';
+      document.getElementById('rateBar').style.width = pct + '%';
+    }
+
+    function toggleTodo(id) {
+      const item = todos.find(t => t.id === id);
+      if (item) {
+        item.done = !item.done;
+        renderTodos();
+      }
+    }
+
+    function addTodo() {
+      const input = document.getElementById('todoInput');
+      const text = input.value.trim();
+      if (!text) return;
+      todos.push({ id: Date.now(), text, done: false });
+      input.value = '';
+      renderTodos();
+    }
+
+    function deleteTodo(id) {
+      todos = todos.filter(t => t.id !== id);
+      renderTodos();
+    }
+
+    renderTodos();
+  \x3C/script>
+</body>
+</html>`,
+        content: `smart_planner.html 파일 직접 업로드 (실시간 웹 실행 지원)`,
+        feedback: '5주 동안 클로드 바이브코딩 덕분에 할 일을 체크하고 진행률이 올라가는 실제 인터랙티브 플래너를 직접 만들어냈습니다! 모바일로도 PC로도 언제든 쓸 수 있어서 정말 뿌듯합니다.',
         likes: 31
       }
     ];
@@ -3564,7 +4040,7 @@
 
     // 창 간 스토리지 동기화 리스너
     window.addEventListener('storage', (e) => {
-      if (e.key === 'junggu_vibe_assignments_v3') {
+      if (e.key === 'vibe_assignments_v5') {
         renderBoard(false);
       }
     });
@@ -3579,20 +4055,33 @@
 
     function getAssignments() {
       try {
-        const data = localStorage.getItem('junggu_vibe_assignments_v3');
+        const data = localStorage.getItem('vibe_assignments_v5');
         if (data) {
           const parsed = JSON.parse(data);
           if (Array.isArray(parsed) && parsed.length > 0) return parsed;
         }
+
+        // 구 버전 스토리지 데이터 자동 마이그레이션 (사용자가 직접 추가한 과제 보존)
+        const oldData = localStorage.getItem('vibe_assignments_v4') || localStorage.getItem('junggu_vibe_assignments_v3') || localStorage.getItem('junggu_vibe_assignments_5th');
+        if (oldData) {
+          const oldList = JSON.parse(oldData);
+          if (Array.isArray(oldList)) {
+            const seedIds = new Set(SEED_ASSIGNMENTS.map(s => s.id));
+            const userCustomItems = oldList.filter(it => it && !seedIds.has(it.id));
+            const combined = [...userCustomItems, ...SEED_ASSIGNMENTS];
+            saveAssignments(combined);
+            return combined;
+          }
+        }
       } catch (e) {}
-      // 최초 실행 시 기본 시드 게시글 자동 로드
+
       saveAssignments(SEED_ASSIGNMENTS);
       return SEED_ASSIGNMENTS;
     }
 
     function saveAssignments(list) {
       try {
-        localStorage.setItem('junggu_vibe_assignments_v3', JSON.stringify(list));
+        localStorage.setItem('vibe_assignments_v5', JSON.stringify(list));
       } catch(e) {
         console.error('LocalStorage save error:', e);
       }
@@ -3910,7 +4399,11 @@
                       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-0.5">
                         <button onclick="previewAssignmentFile(${item.id})"
                                 class="flex-1 py-2.5 px-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.01]">
-                          <span>🖥️</span> 실시간 웹 실행 보기 (즉시 실행)
+                          <span>🖥️</span> 데스크톱 웹 실행
+                        </button>
+                        <button onclick="previewAssignmentMobile(${item.id})"
+                                class="py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-extrabold text-xs text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.01]">
+                          <span>📱</span> 모바일 뷰
                         </button>
                         <button onclick="downloadAssignmentFile(${item.id})"
                                 class="py-2.5 px-3 rounded-xl bg-white hover:bg-amber-100 text-amber-950 border border-amber-300 font-bold text-xs transition-all flex items-center justify-center gap-1">
@@ -3945,14 +4438,18 @@
                         <span class="text-emerald-600 font-bold shrink-0">🔒 URL</span>
                         <span class="truncate underline text-blue-600">${escapeHtml(item.content)}</span>
                       </div>
-                      <div class="flex items-center gap-2 pt-1">
+                      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
                         <a href="${escapeHtml(item.content)}" target="_blank" rel="noopener noreferrer"
                            class="flex-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs text-center transition-all flex items-center justify-center gap-1 shadow-2xs">
-                          <span>🌐</span> 사이트 바로 방문하기 ↗
+                          <span>🌐</span> 새 탭에서 열기 ↗
                         </a>
-                        <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false)"
+                        <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false, 'desktop')"
                                 class="py-2 px-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition-all flex items-center gap-1">
-                          <span>🖥️</span> 미리보기
+                          <span>🖥️</span> 데스크톱
+                        </button>
+                        <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false, 'mobile')"
+                                class="py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-xs transition-all flex items-center gap-1">
+                          <span>📱</span> 모바일
                         </button>
                       </div>
                     </div>
@@ -4033,7 +4530,10 @@
                         📁 ${escapeHtml(item.fileName || 'index.html')} (${formatFileSize(item.fileSize)})
                       </span>
                       <button onclick="previewAssignmentFile(${item.id})" class="px-2 py-0.5 rounded bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px]">
-                        🖥️ 실시간 실행
+                        🖥️ 웹 실행
+                      </button>
+                      <button onclick="previewAssignmentMobile(${item.id})" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-[11px]">
+                        📱 모바일
                       </button>
                       <button onclick="downloadAssignmentFile(${item.id})" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
                         💾 다운
@@ -4052,8 +4552,11 @@
                       <a href="${escapeHtml(item.content)}" target="_blank" class="text-blue-600 underline font-semibold flex items-center gap-1">
                         <span>🔗</span> ${escapeHtml(item.content)}
                       </a>
-                      <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false)" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
-                        🖥️ 미리보기
+                      <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false, 'desktop')" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
+                        🖥️ 웹
+                      </button>
+                      <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false, 'mobile')" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-[11px]">
+                        📱 모바일
                       </button>
                     ` : `
                       <span class="font-mono text-slate-600 truncate max-w-xs block">${escapeHtml(item.content)}</span>
@@ -4079,13 +4582,57 @@
       renderBoard(false);
     }
 
-    // 웹사이트 및 파일 실시간 미리보기 모달 열기/닫기
-    function openPreviewModal(urlOrContent, title, isHtmlContent) {
+    // 웹사이트 및 파일 실시간 미리보기 모달 열기/닫기 & 디바이스 전환
+    let currentPreviewDeviceMode = 'desktop';
+
+    function setPreviewDeviceMode(mode) {
+      currentPreviewDeviceMode = mode || 'desktop';
+      const container = document.getElementById('previewIframeContainer');
+      const iframe = document.getElementById('previewModalIframe');
+      const desktopBtn = document.getElementById('prevDevDesktopBtn');
+      const mobileBtn = document.getElementById('prevDevMobileBtn');
+      const statusText = document.getElementById('previewModalStatusText');
+
+      if (!container || !iframe) return;
+
+      if (currentPreviewDeviceMode === 'mobile') {
+        // 모바일 스마트폰 뷰 (390px 스마트폰 프레임 규격)
+        container.className = 'w-[390px] max-w-full h-full max-h-[780px] p-2 bg-slate-800 rounded-[44px] border-4 border-slate-700 shadow-2xl transition-all duration-300 flex items-center justify-center';
+        iframe.className = 'w-full h-full border-0 bg-white rounded-[36px] shadow-inner transition-all duration-300';
+
+        if (desktopBtn) {
+          desktopBtn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5';
+        }
+        if (mobileBtn) {
+          mobileBtn.className = 'px-3 py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1.5';
+        }
+        if (statusText) {
+          statusText.innerText = '📱 모바일 스마트폰 화면 (390px 세로 프레임)으로 실시간 표시 중';
+        }
+      } else {
+        // 데스크톱(웹) 전체화면 뷰
+        container.className = 'w-full h-full transition-all duration-300 flex items-center justify-center';
+        iframe.className = 'w-full h-full border-0 bg-white rounded-2xl shadow-md transition-all duration-300';
+
+        if (desktopBtn) {
+          desktopBtn.className = 'px-3 py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1.5';
+        }
+        if (mobileBtn) {
+          mobileBtn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5';
+        }
+        if (statusText) {
+          statusText.innerText = '💻 데스크톱(웹) 전체화면으로 실시간 표시 중';
+        }
+      }
+    }
+
+    function openPreviewModal(urlOrContent, title, isHtmlContent, preferredDevice = 'desktop') {
       const modal = document.getElementById('websitePreviewModal');
       const iframe = document.getElementById('previewModalIframe');
       const imgContainer = document.getElementById('previewModalImageContainer');
       const titleEl = document.getElementById('previewModalTitle');
       const extLink = document.getElementById('previewModalExternalLink');
+      const devToggle = document.getElementById('prevDevDesktopBtn')?.parentElement;
 
       if (!modal || !iframe) return;
 
@@ -4096,8 +4643,11 @@
 
       if (imgContainer) imgContainer.classList.add('hidden');
       iframe.classList.remove('hidden');
+      if (devToggle) devToggle.classList.remove('hidden');
 
       titleEl.innerText = title || '결과물 미리보기';
+
+      setPreviewDeviceMode(preferredDevice || 'desktop');
 
       if (isHtmlContent) {
         try {
@@ -4127,6 +4677,7 @@
       const previewImg = document.getElementById('previewModalImage');
       const titleEl = document.getElementById('previewModalTitle');
       const extLink = document.getElementById('previewModalExternalLink');
+      const devToggle = document.getElementById('prevDevDesktopBtn')?.parentElement;
 
       if (!modal || !imgContainer || !previewImg) return;
 
@@ -4135,6 +4686,7 @@
         currentPreviewBlobUrl = null;
       }
 
+      if (devToggle) devToggle.classList.add('hidden');
       iframe.classList.add('hidden');
       iframe.src = 'about:blank';
       imgContainer.classList.remove('hidden');
@@ -4143,6 +4695,9 @@
       titleEl.innerText = title || '이미지 미리보기';
       extLink.href = imgSrc;
       extLink.classList.remove('hidden');
+
+      const statusText = document.getElementById('previewModalStatusText');
+      if (statusText) statusText.innerText = '🖼️ 이미지 결과물 원본 표시 중';
 
       modal.classList.remove('hidden');
     }
@@ -4167,7 +4722,7 @@
       }
     }
 
-    // 특정 과제 파일 즉시 실행
+    // 특정 과제 파일 즉시 실행 (데스크톱 뷰)
     function previewAssignmentFile(id) {
       const list = getAssignments();
       const item = list.find(it => it.id === id);
@@ -4175,7 +4730,18 @@
         showToast('실행할 파일 데이터를 찾을 수 없습니다.');
         return;
       }
-      openPreviewModal(item.fileData, item.title || item.fileName, true);
+      openPreviewModal(item.fileData, item.title || item.fileName, true, 'desktop');
+    }
+
+    // 특정 과제 파일 모바일 스마트폰 뷰(390px)로 즉시 실행
+    function previewAssignmentMobile(id) {
+      const list = getAssignments();
+      const item = list.find(it => it.id === id);
+      if (!item || !item.fileData) {
+        showToast('실행할 파일 데이터를 찾을 수 없습니다.');
+        return;
+      }
+      openPreviewModal(item.fileData, item.title || item.fileName, true, 'mobile');
     }
 
     // 특정 과제 이미지 크게보기
