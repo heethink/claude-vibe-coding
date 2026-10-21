@@ -208,21 +208,6 @@
         </div>
       </div>
 
-      <!-- 실습 달성률 게이지 -->
-      <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs space-y-2">
-        <div class="flex items-center justify-between text-xs font-bold text-slate-700">
-          <span>나의 실습 달성률</span>
-          <span id="side-progress-pct" class="text-blue-700 font-black">0%</span>
-        </div>
-        <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200/60">
-          <div id="side-progress-bar" class="bg-gradient-to-r from-blue-600 to-amber-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
-        </div>
-        <div class="flex justify-between items-center text-[11px] text-slate-500 pt-1">
-          <span id="side-progress-count">0 / 10 실습 완료</span>
-          <button onclick="resetProgress()" class="text-slate-400 hover:text-rose-500 text-[10px] underline">초기화</button>
-        </div>
-      </div>
-
       <!-- 실시간 키워드 검색 -->
       <div class="relative">
         <input type="text" id="sideSearch" oninput="searchCourse()" placeholder="용어, 프롬프트, 주제 검색..."
@@ -781,18 +766,12 @@
 
           <!-- 실습 1: 베이커리 랜딩페이지 & 내 컴퓨터에서 열기 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 1</span>
-                  <h4 class="text-base font-extrabold text-slate-900">내 컴퓨터에서 열리는 동네 베이커리 랜딩페이지 (단일 HTML 완성)</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">따뜻한 베이지 톤의 베이커리 '달콤한 오후' 홍보 웹페이지를 단 하나의 파일(index.html)로 만듭니다.</p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 1</span>
+                <h4 class="text-base font-extrabold text-slate-900">내 컴퓨터에서 열리는 동네 베이커리 랜딩페이지 (단일 HTML 완성)</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r1_task1" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">따뜻한 베이지 톤의 베이커리 '달콤한 오후' 홍보 웹페이지를 단 하나의 파일(index.html)로 만듭니다.</p>
             </div>
 
             <!-- 내 컴퓨터에서 열기 3단계 가이드 -->
@@ -835,18 +814,12 @@
 
           <!-- 실습 2: 주석 수정 미니 게임 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 2</span>
-                  <h4 class="text-base font-extrabold text-slate-900">주석으로 규칙을 바꾸는 나만의 벽돌깨기 미니 게임</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">클로드가 코드 상단에 달아준 한글 주석을 찾아 숫자만 바꿔서 게임 난이도(공 속도, 목숨 수)를 조절해 봅니다.</p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 2</span>
+                <h4 class="text-base font-extrabold text-slate-900">주석으로 규칙을 바꾸는 나만의 벽돌깨기 미니 게임</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r1_task2" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">클로드가 코드 상단에 달아준 한글 주석을 찾아 숫자만 바꿔서 게임 난이도(공 속도, 목숨 수)를 조절해 봅니다.</p>
             </div>
 
             <div class="relative bg-slate-900 text-slate-200 rounded-xl p-4 pt-11 border border-slate-800">
@@ -870,18 +843,12 @@
 
           <!-- 실습 3: 3D 태양계 시뮬레이션 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 3</span>
-                  <h4 class="text-base font-extrabold text-slate-900">마우스로 360도 돌려보는 3D 태양계 시뮬레이션</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">CDN 라이브러리(Three.js)를 사용하여 마우스 드래그로 회전하고 휠로 줌인/줌아웃하는 우주 그래픽을 만듭니다.</p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 3</span>
+                <h4 class="text-base font-extrabold text-slate-900">마우스로 360도 돌려보는 3D 태양계 시뮬레이션</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r1_task3" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">CDN 라이브러리(Three.js)를 사용하여 마우스 드래그로 회전하고 휠로 줌인/줌아웃하는 우주 그래픽을 만듭니다.</p>
             </div>
 
             <div class="relative bg-slate-900 text-slate-200 rounded-xl p-4 pt-11 border border-slate-800">
@@ -902,18 +869,12 @@
 
           <!-- 실습 4: 허공 핑거 페인팅 화폭 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 4</span>
-                  <h4 class="text-base font-extrabold text-slate-900">웹캠 손가락 인식 허공 핑거 페인팅 화폭</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">구글 MediaPipe 손인식 기술로 웹캠 앞에서 검지손가락을 움직여 허공에 그림을 그리고 이미지로 다운로드합니다.</p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 4</span>
+                <h4 class="text-base font-extrabold text-slate-900">웹캠 손가락 인식 허공 핑거 페인팅 화폭</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r1_task4" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">구글 MediaPipe 손인식 기술로 웹캠 앞에서 검지손가락을 움직여 허공에 그림을 그리고 이미지로 다운로드합니다.</p>
             </div>
 
             <div class="relative bg-slate-900 text-slate-200 rounded-xl p-4 pt-11 border border-slate-800">
@@ -1343,25 +1304,19 @@
               </h3>
               <p class="text-xs text-slate-500 mt-0.5">AI와 함께 Git 명령어를 연습하고 GitHub 및 Netlify에 코드를 올려 전 세계 무료 배포를 완성합니다.</p>
             </div>
-            <span class="text-xs text-slate-500 font-medium">완료 시 체크박스를 눌러보세요!</span>
+            <span class="text-xs text-slate-500 font-medium">단계별 핵심 실습</span>
           </div>
 
           <!-- 실습 1: AI에게 Git을 맡겨 저장소와 커밋 만들기 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-blue-100 text-blue-800 text-xs font-bold">실습 1</span>
-                  <h4 class="text-base font-extrabold text-slate-900">AI에게 Git을 맡겨 저장소 초기화와 커밋 만들기</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">
-                  내 컴퓨터 폴더에서 Git 저장소를 만들고, 상태 확인(<code>status</code>), 변경점 비교(<code>diff</code>), 스테이징(<code>add</code>) 및 첫 커밋(<code>commit</code>)을 완성합니다.
-                </p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-blue-100 text-blue-800 text-xs font-bold">실습 1</span>
+                <h4 class="text-base font-extrabold text-slate-900">AI에게 Git을 맡겨 저장소 초기화와 커밋 만들기</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r2_task1" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">
+                내 컴퓨터 폴더에서 Git 저장소를 만들고, 상태 확인(<code>status</code>), 변경점 비교(<code>diff</code>), 스테이징(<code>add</code>) 및 첫 커밋(<code>commit</code>)을 완성합니다.
+              </p>
             </div>
 
             <!-- 터미널 명령어 가이드 박스 -->
@@ -1396,20 +1351,14 @@
 
           <!-- 실습 2: 변경을 나누고 브랜치와 이전 시점 살펴보기 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-purple-100 text-purple-800 text-xs font-bold">실습 2</span>
-                  <h4 class="text-base font-extrabold text-slate-900">변경을 나누고 브랜치(Branch)와 이전 시점 살펴보기</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">
-                  기능 브랜치를 만들어 독립적으로 작업하고, 커밋 그래프(<code>git log</code>)로 타임머신을 확인한 뒤 안전하게 병합하거나 실수했을 때 되돌립니다.
-                </p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-purple-100 text-purple-800 text-xs font-bold">실습 2</span>
+                <h4 class="text-base font-extrabold text-slate-900">변경을 나누고 브랜치(Branch)와 이전 시점 살펴보기</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r2_task2" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">
+                기능 브랜치를 만들어 독립적으로 작업하고, 커밋 그래프(<code>git log</code>)로 타임머신을 확인한 뒤 안전하게 병합하거나 실수했을 때 되돌립니다.
+              </p>
             </div>
 
             <!-- 브랜치 & 타임머신 가이드 박스 -->
@@ -1446,20 +1395,14 @@
 
           <!-- 실습 3: 반복 가능한 깃 스킬(Git Skills) 만들기 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 text-xs font-bold">실습 3</span>
-                  <h4 class="text-base font-extrabold text-slate-900">반복 가능한 깃 스킬(Git Skills) 만들기 & AI에게 반복 작업 맡기기</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">
-                  매번 긴 명령어나 검수 사항을 타이핑하지 않고, <code>[깃 커밋 마스터 스킬]</code>을 등록하여 AI가 변경점을 분석하고 완벽한 커밋 메시지를 자동 생성하게 합니다.
-                </p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 text-xs font-bold">실습 3</span>
+                <h4 class="text-base font-extrabold text-slate-900">반복 가능한 깃 스킬(Git Skills) 만들기 & AI에게 반복 작업 맡기기</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r2_task3" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">
+                매번 긴 명령어나 검수 사항을 타이핑하지 않고, <code>[깃 커밋 마스터 스킬]</code>을 등록하여 AI가 변경점을 분석하고 완벽한 커밋 메시지를 자동 생성하게 합니다.
+              </p>
             </div>
 
             <div class="relative bg-slate-900 text-slate-200 rounded-xl p-4 pt-11 border border-slate-800">
@@ -1482,20 +1425,14 @@
 
           <!-- 실습 4: 깃 저장소 만들고 프로젝트 올리기 (최종 점검 & 플러그인) -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 4</span>
-                  <h4 class="text-base font-extrabold text-slate-900">깃 저장소 만들고 프로젝트 올리기 (`git push`) & 파일 최종 점검</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">
-                  깃허브에 원격 저장소를 생성하고 <code>.gitignore</code>로 불필요한 파일을 걸러낸 뒤, <code>git push</code>로 인터넷 클라우드에 안전하게 보관합니다.
-                </p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 4</span>
+                <h4 class="text-base font-extrabold text-slate-900">깃 저장소 만들고 프로젝트 올리기 (`git push`) & 파일 최종 점검</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r2_task4" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">
+                깃허브에 원격 저장소를 생성하고 <code>.gitignore</code>로 불필요한 파일을 걸러낸 뒤, <code>git push</code>로 인터넷 클라우드에 안전하게 보관합니다.
+              </p>
             </div>
 
             <!-- 원격 저장소 푸시 4단계 가이드 -->
@@ -1512,20 +1449,14 @@
 
           <!-- 실습 5: 다른 컴퓨터에서 내려받아(Clone/Pull) 이어 작업하기 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-800 text-xs font-bold">실습 5</span>
-                  <h4 class="text-base font-extrabold text-slate-900">다른 컴퓨터에서 내려받아(Clone / Pull) 이어서 작업하기</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">
-                  학습관 컴퓨터에서 작업한 내용을 집 컴퓨터에서 <code>git clone</code>으로 그대로 복제해 오고, 수정된 최신 내용을 <code>git pull</code>로 당겨옵니다.
-                </p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-800 text-xs font-bold">실습 5</span>
+                <h4 class="text-base font-extrabold text-slate-900">다른 컴퓨터에서 내려받아(Clone / Pull) 이어서 작업하기</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r2_task5" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">
+                학습관 컴퓨터에서 작업한 내용을 집 컴퓨터에서 <code>git clone</code>으로 그대로 복제해 오고, 수정된 최신 내용을 <code>git pull</code>로 당겨옵니다.
+              </p>
             </div>
 
             <div class="bg-slate-900 text-slate-200 rounded-xl p-4 text-xs font-mono space-y-2 border border-slate-800">
@@ -1541,20 +1472,14 @@
 
           <!-- 실습 6: GitHub Pages로 웹사이트 전 세계 공개하고 주소 확인하기 -->
           <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">실습 6</span>
-                  <h4 class="text-base font-extrabold text-slate-900">GitHub Pages로 웹사이트 전 세계 공개하고 내 주소 확인하기</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">
-                  내가 만든 <code>index.html</code>을 전 세계 누구나 스마트폰과 PC로 접속할 수 있는 무료 웹사이트 주소로 배포하고 확인합니다.
-                </p>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">실습 6</span>
+                <h4 class="text-base font-extrabold text-slate-900">GitHub Pages로 웹사이트 전 세계 공개하고 내 주소 확인하기</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-slate-50 rounded-xl border border-slate-200 hover:bg-slate-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-blue-600 rounded-sm" data-task="r2_task6" onchange="updateProgress()">
-                <span class="text-xs font-bold text-slate-700">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">
+                내가 만든 <code>index.html</code>을 전 세계 누구나 스마트폰과 PC로 접속할 수 있는 무료 웹사이트 주소로 배포하고 확인합니다.
+              </p>
             </div>
 
             <!-- GitHub Pages 배포 4단계 -->
@@ -1578,21 +1503,15 @@
 
           <!-- 실습 7: [초간단 3초 완성] Netlify 드래그 앤 드롭 & 나만의 커스텀 주소 초고속 배포 실습 -->
           <div class="bg-white rounded-2xl border-2 border-teal-300 p-6 space-y-4 shadow-xs">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2 mb-1 flex-wrap">
-                  <span class="px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 text-xs font-bold">실습 7</span>
-                  <span class="px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 text-[11px] font-black border border-teal-200">초간단 3초 완성 ⚡</span>
-                  <h4 class="text-base font-extrabold text-slate-900">Netlify 드래그 앤 드롭(Drop) & 나만의 커스텀 주소 초고속 배포 실습!</h4>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-600">
-                  Git 명령어나 복잡한 설정 없이, 마우스로 폴더를 끌어다 놓기만(Drop) 하면 3초 만에 전 세계 접속 가능한 나만의 웹사이트 주소가 생깁니다.
-                </p>
+            <div>
+              <div class="flex items-center gap-2 mb-1 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 text-xs font-bold">실습 7</span>
+                <span class="px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 text-[11px] font-black border border-teal-200">초간단 3초 완성 ⚡</span>
+                <h4 class="text-base font-extrabold text-slate-900">Netlify 드래그 앤 드롭(Drop) & 나만의 커스텀 주소 초고속 배포 실습!</h4>
               </div>
-              <label class="flex items-center gap-2 shrink-0 cursor-pointer p-2 bg-teal-50 rounded-xl border border-teal-200 hover:bg-teal-100 transition-all">
-                <input type="checkbox" class="task-check w-4 h-4 text-teal-600 rounded-sm" data-task="r2_task7" onchange="updateProgress()">
-                <span class="text-xs font-bold text-teal-900">완료</span>
-              </label>
+              <p class="text-xs sm:text-sm text-slate-600">
+                Git 명령어나 복잡한 설정 없이, 마우스로 폴더를 끌어다 놓기만(Drop) 하면 3초 만에 전 세계 접속 가능한 나만의 웹사이트 주소가 생깁니다.
+              </p>
             </div>
 
             <!-- Netlify 초간단 배포 4단계 안내 -->
@@ -1872,16 +1791,16 @@
         </div>
 
         <!-- ==============================================
-             [접이식 새 과제 등록 폼 (연락처 뒤 4자리 삭제됨)]
+             [접이식 새 과제 등록 폼 (파일 직접 업로드 & 실시간 웹 실행 지원)]
              ============================================== -->
         <div id="assignmentFormContainer" class="hidden transition-all duration-300">
-          <div class="bg-white rounded-3xl border-2 border-amber-400 p-6 sm:p-8 space-y-6 shadow-lg relative">
+          <div class="bg-white rounded-3xl border-2 border-amber-400 p-5 sm:p-8 space-y-6 shadow-lg relative">
             <div class="flex items-center justify-between border-b border-slate-100 pb-4">
               <div class="flex items-center gap-3">
                 <span class="w-10 h-10 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-bold text-xl shadow-xs">✍️</span>
                 <div>
                   <h3 class="text-lg sm:text-xl font-black text-slate-900">새 과제 / 결과물 등록하기</h3>
-                  <p class="text-xs text-slate-500 mt-0.5">성함과 결과물 링크 또는 코드를 입력하시면 실시간 공유 게시판에 즉시 등록됩니다. (연락처 불필요)</p>
+                  <p class="text-xs text-slate-500 mt-0.5">파일(index.html, 이미지)을 직접 끌어다 놓거나 링크를 입력하시면 실시간 공유 게시판에 즉시 등록됩니다.</p>
                 </div>
               </div>
               <button type="button" onclick="toggleAssignmentForm(false)" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-all text-sm font-bold">
@@ -1889,10 +1808,51 @@
               </button>
             </div>
 
-            <form id="assignmentForm" onsubmit="handleAssignmentSubmit(event)" class="space-y-4">
+            <form id="assignmentForm" onsubmit="handleAssignmentSubmit(event)" class="space-y-5">
               
+              <!-- 📁 파일 직접 업로드 영역 (HTML 실시간 웹 실행 지원) -->
+              <div class="bg-gradient-to-br from-amber-50/80 via-orange-50/40 to-slate-50 rounded-2xl p-4 sm:p-5 border border-amber-200 space-y-2.5">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                  <label class="block text-xs font-black text-slate-900 flex items-center gap-1.5">
+                    <span class="w-5 h-5 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs">📂</span>
+                    <span>내 파일 직접 업로드 (HTML · 이미지)</span>
+                    <span class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-950 text-[10px] font-black">원클릭 실시간 웹 실행</span>
+                  </label>
+                  <span class="text-[11px] text-slate-500 font-medium">index.html, png, jpg, txt 등 (최대 2.5MB)</span>
+                </div>
+
+                <div id="dropZone" onclick="document.getElementById('asFileInput').click()"
+                     ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleFileDrop(event)"
+                     class="border-2 border-dashed border-amber-300 hover:border-amber-500 bg-white hover:bg-amber-50/40 rounded-2xl p-5 text-center cursor-pointer transition-all space-y-2 group shadow-2xs">
+                  <input type="file" id="asFileInput" accept=".html,.htm,.txt,.json,.png,.jpg,.jpeg,.webp,.gif,.css,.js" class="hidden" onchange="handleFileSelect(event)">
+                  <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 group-hover:scale-110 transition-transform flex items-center justify-center text-2xl mx-auto shadow-2xs">
+                    📁
+                  </div>
+                  <div class="space-y-0.5">
+                    <div class="text-xs sm:text-sm font-extrabold text-slate-900">
+                      여기를 클릭하거나 파일을 마우스로 끌어다 놓으세요 (Drag & Drop)
+                    </div>
+                    <p class="text-[11px] text-slate-500">
+                      클로드에서 다운로드한 <strong>index.html</strong>을 올리시면 게시판에서 <strong>실시간 웹 화면으로 즉시 실행</strong>됩니다!
+                    </p>
+                  </div>
+                  
+                  <div id="fileSelectedBadge" class="hidden pt-1">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-900 text-xs font-bold border border-emerald-300 shadow-2xs">
+                      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span>선택된 파일:</span>
+                      <strong id="selectedFileName" class="text-emerald-700 font-mono">index.html</strong>
+                      <span id="selectedFileSize" class="text-emerald-600 font-normal text-[11px]">(0 KB)</span>
+                      <button type="button" onclick="cancelFileSelection(event)" class="ml-1.5 px-2 py-0.5 rounded-md bg-emerald-200 hover:bg-rose-500 hover:text-white text-emerald-900 text-[10px] font-black transition-all">
+                        ✕ 취소
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="grid sm:grid-cols-3 gap-4">
-                <!-- 수강생 성명 (연락처 뒤 4자리란 삭제됨) -->
+                <!-- 수강생 성명 -->
                 <div>
                   <label class="block text-xs font-bold text-slate-700 mb-1.5">수강생 성명 <span class="text-rose-500">*</span></label>
                   <input type="text" id="asName" required placeholder="예: 김영희 수강생"
@@ -1915,7 +1875,8 @@
                 <div>
                   <label class="block text-xs font-bold text-slate-700 mb-1.5">결과물 형태 <span class="text-rose-500">*</span></label>
                   <select id="asType" required class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white transition-all font-bold text-slate-800">
-                    <option value="배포링크">🌐 인터넷 배포 주소 (GitHub / Vercel URL)</option>
+                    <option value="파일업로드">📁 직접 올린 파일 (HTML 실시간 실행 / 이미지)</option>
+                    <option value="배포링크">🌐 인터넷 배포 주소 (Netlify / GitHub URL)</option>
                     <option value="클로드코드">💻 클로드 아티팩트 코드 붙여넣기</option>
                     <option value="소감문">✍️ 실습 후기 및 질문 소감</option>
                   </select>
@@ -1925,21 +1886,23 @@
               <!-- 과제 제목 -->
               <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1.5">과제 제목 <span class="text-rose-500">*</span></label>
-                <input type="text" id="asTitle" required placeholder="예: 2회차 베이커리 랜딩페이지 Netlify 초고속 배포 완료했습니다!"
+                <input type="text" id="asTitle" required placeholder="예: 1회차 베이커리 랜딩페이지 index.html 실습 완성했습니다!"
                        class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white transition-all font-medium">
               </div>
 
-              <!-- 제출 내용 또는 URL -->
+              <!-- 제출 내용 또는 URL / 파일 설명 -->
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1.5">결과물 링크 (URL) 또는 코드 내용 <span class="text-rose-500">*</span></label>
-                <textarea id="asContent" required rows="3" placeholder="예: https://junggu-bakery.netlify.app 또는 https://아이디.github.io/my-web/ 또는 클로드 index.html 코드"
+                <label class="block text-xs font-bold text-slate-700 mb-1.5" id="asContentLabel">
+                  결과물 링크 (URL) 또는 코드 / 추가 메모 (파일 업로드 시 선택 사항)
+                </label>
+                <textarea id="asContent" rows="3" placeholder="위에서 파일을 업로드하셨으면 여기에 추가 메모를 남기셔도 되고, 파일 대신 인터넷 링크(URL)나 코드를 직접 적으셔도 됩니다."
                           class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white transition-all font-mono"></textarea>
               </div>
 
               <!-- 학습 소감 및 질문 -->
               <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1.5">수업 소감 및 강사님께 질문할 내용 (선택)</label>
-                <textarea id="asFeedback" rows="2" placeholder="예: 코딩을 몰라도 클로드와 대화하면서 10분 만에 웹사이트를 띄우고 모바일에서 열어보니 너무 신기했습니다! 모바일 버튼 크기 수정하는 팁도 더 알고 싶어요."
+                <textarea id="asFeedback" rows="2" placeholder="예: 코딩을 몰라도 클로드와 대화하면서 10분 만에 웹사이트를 띄우고 실시간으로 동작하는 걸 보니 너무 신기합니다!"
                           class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white transition-all"></textarea>
               </div>
 
@@ -2858,9 +2821,12 @@
         </div>
       </div>
 
-      <!-- 모달 본체 iframe -->
-      <div class="flex-1 bg-slate-100 relative">
+      <!-- 모달 본체 iframe & 이미지 뷰어 -->
+      <div class="flex-1 bg-slate-100 relative overflow-hidden">
         <iframe id="previewModalIframe" src="about:blank" class="w-full h-full border-0" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        <div id="previewModalImageContainer" class="hidden w-full h-full flex items-center justify-center p-4 bg-slate-900/95 overflow-auto">
+          <img id="previewModalImage" src="" alt="과제 원본 이미지" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl">
+        </div>
       </div>
 
       <!-- 모달 하단 안내 바 -->
@@ -2959,60 +2925,149 @@
       }
     }
 
-    // 4. 실습 진척도 관리 (LocalStorage)
-    function updateProgress() {
-      const checkboxes = document.querySelectorAll('.task-check');
-      const checked = document.querySelectorAll('.task-check:checked');
-      const total = checkboxes.length;
-      const count = checked.length;
-      const pct = Math.round((count / total) * 100);
+    // 4. 유틸리티 함수 (HTML 이스케이프 & URL 판별 & 파일 크기)
+    function isUrl(str) {
+      if (!str || typeof str !== 'string') return false;
+      return str.startsWith('http://') || str.startsWith('https://');
+    }
 
-      const bar = document.getElementById('side-progress-bar');
-      const pctEl = document.getElementById('side-progress-pct');
-      const countEl = document.getElementById('side-progress-count');
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
 
-      if (bar) bar.style.width = pct + '%';
-      if (pctEl) pctEl.innerText = pct + '%';
-      if (countEl) countEl.innerText = `${count} / ${total} 실습 완료`;
+    function formatFileSize(bytes) {
+      if (!bytes || bytes === 0) return '0 B';
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
 
-      const state = {};
-      checkboxes.forEach(cb => {
-        state[cb.dataset.task] = cb.checked;
-      });
-      localStorage.setItem('junggu_vibe_progress_5th', JSON.stringify(state));
+    // 5. 파일 직접 업로드 처리 (Drag & Drop 및 파일 선택)
+    let currentUploadedFileData = null;
+    let currentPreviewBlobUrl = null;
 
-      if (pct === 100 && typeof confetti === 'function') {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 }
-        });
-        showToast('축하합니다! 🏆', '모든 회차의 실습 과제를 완료하셨습니다!');
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dz = document.getElementById('dropZone');
+      if (dz) dz.classList.add('border-amber-500', 'bg-amber-50/70');
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dz = document.getElementById('dropZone');
+      if (dz) dz.classList.remove('border-amber-500', 'bg-amber-50/70');
+    }
+
+    function handleFileDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dz = document.getElementById('dropZone');
+      if (dz) dz.classList.remove('border-amber-500', 'bg-amber-50/70');
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        processUploadedFile(e.dataTransfer.files[0]);
       }
     }
 
-    function loadProgress() {
-      const saved = localStorage.getItem('junggu_vibe_progress_5th');
-      if (saved) {
-        try {
-          const state = JSON.parse(saved);
-          document.querySelectorAll('.task-check').forEach(cb => {
-            if (state[cb.dataset.task]) cb.checked = true;
-          });
-        } catch (e) {}
-      }
-      updateProgress();
-    }
-
-    function resetProgress() {
-      if (confirm('모든 실습 달성 체크를 초기화하시겠습니까?')) {
-        localStorage.removeItem('junggu_vibe_progress_5th');
-        document.querySelectorAll('.task-check').forEach(cb => cb.checked = false);
-        updateProgress();
+    function handleFileSelect(e) {
+      if (e.target && e.target.files && e.target.files.length > 0) {
+        processUploadedFile(e.target.files[0]);
       }
     }
 
-    // 5. 실시간 키워드 검색
+    function processUploadedFile(file) {
+      if (!file) return;
+
+      const MAX_SIZE = 3 * 1024 * 1024;
+      if (file.size > MAX_SIZE) {
+        alert('파일 용량이 3MB를 초과합니다. 3MB 이하의 파일을 선택해주세요.');
+        return;
+      }
+
+      const fileName = file.name;
+      const ext = fileName.slice((fileName.lastIndexOf(".") - 1 >>> 0) + 2).toLowerCase();
+      const isHtml = ['html', 'htm'].includes(ext) || file.type === 'text/html';
+      const isImage = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg'].includes(ext) || file.type.startsWith('image/');
+
+      const reader = new FileReader();
+
+      if (isImage) {
+        reader.onload = function(e) {
+          currentUploadedFileData = {
+            name: fileName,
+            type: file.type || 'image/png',
+            size: file.size,
+            data: e.target.result,
+            isHtml: false,
+            isImage: true
+          };
+          updateFileSelectedUI();
+        };
+        reader.readAsDataURL(file);
+      } else {
+        reader.onload = function(e) {
+          currentUploadedFileData = {
+            name: fileName,
+            type: isHtml ? 'text/html' : (file.type || 'text/plain'),
+            size: file.size,
+            data: e.target.result,
+            isHtml: isHtml,
+            isImage: false
+          };
+          updateFileSelectedUI();
+        };
+        reader.readAsText(file, 'utf-8');
+      }
+    }
+
+    function updateFileSelectedUI() {
+      if (!currentUploadedFileData) return;
+
+      const badge = document.getElementById('fileSelectedBadge');
+      const nameEl = document.getElementById('selectedFileName');
+      const sizeEl = document.getElementById('selectedFileSize');
+      const asTitle = document.getElementById('asTitle');
+      const asType = document.getElementById('asType');
+
+      if (badge) badge.classList.remove('hidden');
+      if (nameEl) nameEl.innerText = currentUploadedFileData.name;
+      if (sizeEl) sizeEl.innerText = `(${formatFileSize(currentUploadedFileData.size)})`;
+
+      if (asType) asType.value = '파일업로드';
+
+      if (asTitle && !asTitle.value.trim()) {
+        if (currentUploadedFileData.isHtml) {
+          asTitle.value = `${currentUploadedFileData.name} 실시간 웹 실행 실습작품`;
+        } else if (currentUploadedFileData.isImage) {
+          asTitle.value = `${currentUploadedFileData.name} 실습 캡처 이미지`;
+        } else {
+          asTitle.value = `${currentUploadedFileData.name} 실습 파일`;
+        }
+      }
+
+      showToast('파일이 정상적으로 선택되었습니다! 📁', `${currentUploadedFileData.name} (${formatFileSize(currentUploadedFileData.size)})`);
+    }
+
+    function cancelFileSelection(e) {
+      if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      currentUploadedFileData = null;
+      const fileInput = document.getElementById('asFileInput');
+      if (fileInput) fileInput.value = '';
+      const badge = document.getElementById('fileSelectedBadge');
+      if (badge) badge.classList.add('hidden');
+    }
+
+    // 6. 실시간 키워드 검색
     function searchCourse() {
       const q = document.getElementById('sideSearch').value.toLowerCase().trim();
       if (!q) {
@@ -3040,11 +3095,78 @@
         date: '10월 14일 17:20',
         name: '김영희 수강생',
         day: '1회차',
-        type: '클로드코드',
-        title: '달콤한 오후 동네 베이커리 감성 랜딩페이지 (단일 HTML 완성)',
-        content: `<!DOCTYPE html>\n<html lang="ko">\n<head><meta charset="UTF-8"><title>달콤한 오후 베이커리</title></head>\n<body class="bg-amber-50 text-amber-900">\n  <header class="p-6 text-center">\n    <h1 class="text-3xl font-bold">🥐 달콤한 오후</h1>\n    <p>매일 아침 구워내는 따뜻한 빵</p>\n  </header>\n</body>\n</html>`,
-        feedback: '코딩을 전혀 몰라도 클로드에게 "따뜻한 베이지 톤으로 빵집 페이지 만들어줘"라고 하니 화면 우측 아티팩트에 바로 예쁜 가게가 생겨서 너무 신기했습니다!',
-        likes: 14
+        type: '파일업로드',
+        fileName: 'bakery_landing.html',
+        fileSize: 3120,
+        isHtml: true,
+        isImage: false,
+        title: '달콤한 오후 동네 베이커리 감성 랜딩페이지 (단일 HTML 완성 & 즉시 실행)',
+        fileData: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>달콤한 오후 베이커리</title>
+  <script src="https://cdn.tailwindcss.com"><\/script>
+</head>
+<body class="bg-amber-50/50 text-slate-800 font-sans min-h-screen">
+  <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-10 border-b border-amber-100 px-6 py-4 flex items-center justify-between">
+    <div class="text-xl font-black text-amber-900 flex items-center gap-2">
+      <span class="text-2xl">🥐</span> 달콤한 오후 베이커리
+    </div>
+    <div class="space-x-3 text-xs sm:text-sm font-bold text-amber-950">
+      <a href="#menu" class="hover:text-amber-600 transition">대표 메뉴</a>
+      <a href="#story" class="hover:text-amber-600 transition">가게 소개</a>
+      <a href="#visit" class="px-3 py-1.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white shadow-sm transition">오시는 길</a>
+    </div>
+  </nav>
+
+  <header class="py-16 sm:py-20 text-center px-4 bg-gradient-to-b from-amber-100/70 to-transparent">
+    <span class="px-3 py-1 rounded-full bg-amber-200 text-amber-900 text-xs font-black">매일 새벽 6시 첫 빵 굽는 집</span>
+    <h1 class="text-3xl sm:text-5xl font-black text-amber-950 mt-4 leading-tight">천연 효모종과 유기농 밀로<br>정성을 다해 굽습니다</h1>
+    <p class="text-slate-600 text-sm sm:text-base mt-3 max-w-xl mx-auto">동구평생학습관 클로드 바이브코딩 1회차 실습으로 완성한 수제 베이커리 랜딩페이지입니다.</p>
+    <div class="mt-6 flex justify-center gap-3">
+      <a href="#menu" class="px-6 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-sm shadow-md transition">오늘의 빵 보기 🥖</a>
+    </div>
+  </header>
+
+  <section id="menu" class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-black text-slate-900">시그니처 베스트 메뉴</h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-1">당일 생산, 당일 판매를 원칙으로 합니다.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-5 border border-amber-100 shadow-sm hover:shadow-md transition text-center space-y-3">
+        <div class="text-5xl">🥐</div>
+        <h3 class="font-extrabold text-slate-900 text-lg">프랑스 고메 크루아상</h3>
+        <p class="text-xs text-slate-500">AOP 최고급 프랑스 버터의 진한 풍미와 겹겹이 바삭한 결</p>
+        <div class="text-amber-700 font-black text-sm">3,800원</div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 border border-amber-100 shadow-sm hover:shadow-md transition text-center space-y-3">
+        <div class="text-5xl">🥖</div>
+        <h3 class="font-extrabold text-slate-900 text-lg">무화과 깜빠뉴</h3>
+        <p class="text-xs text-slate-500">24시간 저온 숙성 천연발효종과 듬뿍 들어간 꿀무화과</p>
+        <div class="text-amber-700 font-black text-sm">5,500원</div>
+      </div>
+      <div class="bg-white rounded-2xl p-5 border border-amber-100 shadow-sm hover:shadow-md transition text-center space-y-3">
+        <div class="text-5xl">🥨</div>
+        <h3 class="font-extrabold text-slate-900 text-lg">소금버터 프레첼</h3>
+        <p class="text-xs text-slate-500">말돈 소금의 짭조름함과 풍부한 무염 버터의 고소한 조화</p>
+        <div class="text-amber-700 font-black text-sm">4,200원</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="visit" class="bg-amber-950 text-amber-200/80 py-10 px-4 text-center text-xs space-y-2">
+    <div class="font-bold text-white text-sm">달콤한 오후 베이커리 (동구평생학습관 수강생 실습작품)</div>
+    <p>영업시간: 화~일 08:00 ~ 20:00 (월요일 휴무) | 대전광역시 동구</p>
+    <p class="text-amber-300/60 text-[11px]">클로드(Claude) 단일 HTML 아티팩트로 다운로드하여 실시간 실행 중입니다.</p>
+  </footer>
+</body>
+</html>`,
+        content: `bakery_landing.html 파일 직접 업로드 (실시간 웹 실행 지원)`,
+        feedback: '코딩을 전혀 몰라도 클로드에게 "따뜻한 베이지 톤으로 빵집 페이지 만들어줘"라고 한 뒤 다운로드한 파일을 직접 올렸는데, 클릭 한 번에 브라우저에서 진짜 웹사이트로 바로 열려서 정말 신기합니다!',
+        likes: 18
       },
       {
         id: 1729400000002,
@@ -3112,7 +3234,7 @@
 
     // 창 간 스토리지 동기화 리스너
     window.addEventListener('storage', (e) => {
-      if (e.key === 'junggu_vibe_assignments_5th') {
+      if (e.key === 'junggu_vibe_assignments_v3') {
         renderBoard(false);
       }
     });
@@ -3127,7 +3249,7 @@
 
     function getAssignments() {
       try {
-        const data = localStorage.getItem('junggu_vibe_assignments_5th');
+        const data = localStorage.getItem('junggu_vibe_assignments_v3');
         if (data) {
           const parsed = JSON.parse(data);
           if (Array.isArray(parsed) && parsed.length > 0) return parsed;
@@ -3139,7 +3261,11 @@
     }
 
     function saveAssignments(list) {
-      localStorage.setItem('junggu_vibe_assignments_5th', JSON.stringify(list));
+      try {
+        localStorage.setItem('junggu_vibe_assignments_v3', JSON.stringify(list));
+      } catch(e) {
+        console.error('LocalStorage save error:', e);
+      }
     }
 
     // 폼 열기/닫기 토글
@@ -3165,16 +3291,38 @@
       }
     }
 
-    // 새 과제 제출 핸들러 (연락처 뒤 4자리란 삭제됨)
+    // 새 과제 제출 핸들러 (파일 직접 업로드 및 실시간 웹 실행 지원)
     function handleAssignmentSubmit(e) {
       e.preventDefault();
 
       const name = document.getElementById('asName').value.trim();
       const day = document.getElementById('asDay').value;
-      const type = document.getElementById('asType').value;
+      let type = document.getElementById('asType').value;
       const title = document.getElementById('asTitle').value.trim();
-      const content = document.getElementById('asContent').value.trim();
+      let content = document.getElementById('asContent').value.trim();
       const feedback = document.getElementById('asFeedback').value.trim();
+
+      let fileData = null;
+      let fileName = null;
+      let fileSize = 0;
+      let isHtml = false;
+      let isImage = false;
+
+      if (currentUploadedFileData) {
+        type = '파일업로드';
+        fileData = currentUploadedFileData.data;
+        fileName = currentUploadedFileData.name;
+        fileSize = currentUploadedFileData.size;
+        isHtml = !!currentUploadedFileData.isHtml;
+        isImage = !!currentUploadedFileData.isImage;
+
+        if (!content) {
+          content = `[업로드된 파일] ${fileName} (${formatFileSize(fileSize)})`;
+        }
+      } else if (!content) {
+        alert('결과물 링크(URL), 코드 또는 직접 파일을 업로드해주세요.');
+        return;
+      }
 
       const now = new Date();
       const formattedDate = `${now.getMonth() + 1}월 ${now.getDate()}일 ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
@@ -3188,6 +3336,11 @@
         title,
         content,
         feedback,
+        fileData,
+        fileName,
+        fileSize,
+        isHtml,
+        isImage,
         likes: 0,
         isMyRecent: true
       };
@@ -3209,13 +3362,14 @@
         });
       }
 
-      showToast('새 과제가 실시간 게시판에 등록되었습니다! 🎉', '수강생들과 함께 감상해보세요');
+      showToast('새 과제가 실시간 게시판에 등록되었습니다! 🎉', '수강생들과 함께 실시간으로 실행해보세요');
     }
 
     function clearAssignmentForm() {
       document.getElementById('asTitle').value = '';
       document.getElementById('asContent').value = '';
       document.getElementById('asFeedback').value = '';
+      cancelFileSelection();
     }
 
     // 게시판 새로고침
@@ -3330,6 +3484,7 @@
         filtered = filtered.filter(item => 
           item.name.toLowerCase().includes(currentBoardSearch) ||
           item.title.toLowerCase().includes(currentBoardSearch) ||
+          (item.fileName && item.fileName.toLowerCase().includes(currentBoardSearch)) ||
           (item.content && item.content.toLowerCase().includes(currentBoardSearch)) ||
           (item.feedback && item.feedback.toLowerCase().includes(currentBoardSearch))
         );
@@ -3349,6 +3504,15 @@
           galleryList.innerHTML = filtered.map(item => {
             const col = getDayColor(item.day);
             const isLink = isUrl(item.content);
+            const hasHtmlFile = item.fileData && (item.isHtml || (item.fileName && (item.fileName.endsWith('.html') || item.fileName.endsWith('.htm'))));
+            const hasImageFile = item.fileData && (item.isImage || (item.fileData && item.fileData.startsWith('data:image/')));
+
+            let typeBadge = '✍️ 소감문';
+            if (hasHtmlFile) typeBadge = '📁 직접 올린 HTML';
+            else if (hasImageFile) typeBadge = '🖼️ 이미지 파일';
+            else if (item.type === '배포링크' || isLink) typeBadge = '🌐 웹 배포';
+            else if (item.type === '클로드코드') typeBadge = '💻 아티팩트';
+            else if (item.type === '파일업로드') typeBadge = '📁 파일 첨부';
 
             return `
               <div class="bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4 relative group">
@@ -3359,7 +3523,7 @@
                     <div class="flex items-center gap-1.5 flex-wrap">
                       <span class="px-2.5 py-0.5 rounded-lg ${col.bg} ${col.text} border ${col.border} text-xs font-black">${item.day}</span>
                       <span class="px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-700 text-xs font-bold">
-                        ${item.type === '배포링크' ? '🌐 웹 배포' : item.type === '클로드코드' ? '💻 아티팩트' : '✍️ 소감문'}
+                        ${typeBadge}
                       </span>
                       ${item.isMyRecent ? '<span class="px-2 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-black animate-pulse">NEW</span>' : ''}
                     </div>
@@ -3377,29 +3541,72 @@
                   </div>
                 </div>
 
-                <!-- 카드 본체: 결과물 영역 -->
+                <!-- 카드 본체: 결과물 영역 (파일 / 배포링크 / 코드) -->
                 <div class="space-y-2.5">
-                  ${isLink ? `
+                  ${hasHtmlFile ? `
+                    <!-- 📁 직접 업로드된 HTML 파일 실시간 실행 박스 -->
+                    <div class="p-3.5 bg-gradient-to-br from-amber-50 to-orange-50/40 rounded-2xl border-2 border-amber-300 space-y-2.5 shadow-2xs">
+                      <div class="flex items-center justify-between text-xs font-bold text-amber-950">
+                        <span class="flex items-center gap-1.5 font-mono">
+                          <span>📁</span>
+                          <strong class="text-amber-900">${escapeHtml(item.fileName || 'index.html')}</strong>
+                        </span>
+                        <span class="text-[11px] text-amber-700 font-medium">${formatFileSize(item.fileSize)}</span>
+                      </div>
+                      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-0.5">
+                        <button onclick="previewAssignmentFile(${item.id})"
+                                class="flex-1 py-2.5 px-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.01]">
+                          <span>🖥️</span> 실시간 웹 실행 보기 (즉시 실행)
+                        </button>
+                        <button onclick="downloadAssignmentFile(${item.id})"
+                                class="py-2.5 px-3 rounded-xl bg-white hover:bg-amber-100 text-amber-950 border border-amber-300 font-bold text-xs transition-all flex items-center justify-center gap-1">
+                          <span>💾</span> 다운로드
+                        </button>
+                        <button onclick="openAssignmentInNewTab(${item.id})"
+                                class="py-2.5 px-2.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs transition-all flex items-center justify-center gap-1" title="새 탭에서 전체화면 실행">
+                          <span>↗</span>
+                        </button>
+                      </div>
+                    </div>
+                  ` : hasImageFile ? `
+                    <!-- 🖼️ 직접 업로드된 이미지 파일 박스 -->
+                    <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                      <div class="max-h-48 overflow-hidden rounded-xl border border-slate-200 bg-black/5 cursor-pointer relative group/img" onclick="previewAssignmentImage(${item.id})">
+                        <img src="${item.fileData}" alt="${escapeHtml(item.fileName || '과제 이미지')}" class="w-full h-auto object-cover max-h-48">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1">
+                          <span>🔍</span> 클릭하여 원본 크게보기
+                        </div>
+                      </div>
+                      <div class="flex items-center justify-between text-xs pt-1">
+                        <span class="text-slate-600 font-mono truncate max-w-[180px]">${escapeHtml(item.fileName || '이미지')}</span>
+                        <button onclick="downloadAssignmentFile(${item.id})" class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-bold text-[11px] flex items-center gap-1">
+                          <span>💾</span> 다운로드
+                        </button>
+                      </div>
+                    </div>
+                  ` : isLink ? `
+                    <!-- 🌐 외부 배포 URL 박스 -->
                     <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
                       <div class="flex items-center gap-2 text-xs text-slate-600 font-mono overflow-hidden">
                         <span class="text-emerald-600 font-bold shrink-0">🔒 URL</span>
                         <span class="truncate underline text-blue-600">${escapeHtml(item.content)}</span>
                       </div>
                       <div class="flex items-center gap-2 pt-1">
-                        <a href="${item.content}" target="_blank" rel="noopener noreferrer"
+                        <a href="${escapeHtml(item.content)}" target="_blank" rel="noopener noreferrer"
                            class="flex-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs text-center transition-all flex items-center justify-center gap-1 shadow-2xs">
                           <span>🌐</span> 사이트 바로 방문하기 ↗
                         </a>
-                        <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}')"
+                        <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false)"
                                 class="py-2 px-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition-all flex items-center gap-1">
                           <span>🖥️</span> 미리보기
                         </button>
                       </div>
                     </div>
                   ` : `
+                    <!-- 💻 텍스트 / 코드 박스 -->
                     <div class="bg-slate-900 text-slate-200 p-3.5 rounded-2xl text-xs font-mono max-h-36 overflow-y-auto relative">
                       <pre class="whitespace-pre-wrap">${escapeHtml(item.content)}</pre>
-                      <button onclick="copyRawText('${escapeHtml(item.content.replace(/\n/g, '\\n'))}')" class="absolute top-2 right-2 px-2 py-1 bg-white/20 hover:bg-white/30 text-white text-[10px] font-bold rounded-lg transition-all">
+                      <button onclick="copyRawText('${escapeHtml(item.content.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n'))}')" class="absolute top-2 right-2 px-2 py-1 bg-white/20 hover:bg-white/30 text-white text-[10px] font-bold rounded-lg transition-all">
                         복사
                       </button>
                     </div>
@@ -3415,15 +3622,19 @@
                   ` : ''}
                 </div>
 
-                <!-- 카드 하단 (심플형: 링크/코드 안내 + 단정한 삭제) -->
+                <!-- 카드 하단: 반응 / 관리 -->
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-xs">
                   <div>
-                    ${isLink ? `
-                      <a href="${item.content}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-bold inline-flex items-center gap-1">
+                    ${hasHtmlFile ? `
+                      <button onclick="openAssignmentInNewTab(${item.id})" class="text-amber-700 hover:text-amber-900 font-bold inline-flex items-center gap-1">
+                        <span>🖥️</span> 새 탭에서 실행 ↗
+                      </button>
+                    ` : isLink ? `
+                      <a href="${escapeHtml(item.content)}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-bold inline-flex items-center gap-1">
                         <span>🌐</span> 새 탭에서 열기 ↗
                       </a>
                     ` : `
-                      <span class="text-slate-400 font-mono text-[11px]">코드 등록 완료</span>
+                      <span class="text-slate-400 font-mono text-[11px]">등록 완료</span>
                     `}
                   </div>
                   <button onclick="deleteAssignment(${item.id})" class="text-slate-400 hover:text-rose-500 p-1 rounded-md transition-all text-xs flex items-center gap-1" title="과제 삭제">
@@ -3442,7 +3653,7 @@
         if (filtered.length === 0) {
           tableBody.innerHTML = `
             <tr>
-              <td colspan="7" class="text-center py-8 text-xs text-slate-400">
+              <td colspan="6" class="text-center py-8 text-xs text-slate-400">
                 조건에 일치하는 과제가 없습니다.
               </td>
             </tr>
@@ -3450,6 +3661,8 @@
         } else {
           tableBody.innerHTML = filtered.map((item, idx) => {
             const isLink = isUrl(item.content);
+            const hasHtmlFile = item.fileData && (item.isHtml || (item.fileName && (item.fileName.endsWith('.html') || item.fileName.endsWith('.htm'))));
+            const hasImageFile = item.fileData && (item.isImage || (item.fileData && item.fileData.startsWith('data:image/')));
             const col = getDayColor(item.day);
 
             return `
@@ -3460,12 +3673,37 @@
                 </td>
                 <td class="px-4 py-3.5">
                   <div class="font-extrabold text-slate-900">${escapeHtml(item.title)}</div>
-                  <div class="text-[11px] text-slate-500 mt-0.5 flex items-center gap-2">
-                    ${isLink ? `
-                      <a href="${item.content}" target="_blank" class="text-blue-600 underline font-semibold flex items-center gap-1">
+                  <div class="text-[11px] text-slate-500 mt-1 flex items-center gap-2 flex-wrap">
+                    ${hasHtmlFile ? `
+                      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 font-mono text-[11px] font-bold">
+                        📁 ${escapeHtml(item.fileName || 'index.html')} (${formatFileSize(item.fileSize)})
+                      </span>
+                      <button onclick="previewAssignmentFile(${item.id})" class="px-2 py-0.5 rounded bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px]">
+                        🖥️ 실시간 실행
+                      </button>
+                      <button onclick="downloadAssignmentFile(${item.id})" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
+                        💾 다운
+                      </button>
+                    ` : hasImageFile ? `
+                      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-purple-100 text-purple-900 font-mono text-[11px] font-bold">
+                        🖼️ ${escapeHtml(item.fileName || '이미지')}
+                      </span>
+                      <button onclick="previewAssignmentImage(${item.id})" class="px-2 py-0.5 rounded bg-purple-600 hover:bg-purple-700 text-white font-bold text-[11px]">
+                        🔍 크게보기
+                      </button>
+                      <button onclick="downloadAssignmentFile(${item.id})" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
+                        💾 다운
+                      </button>
+                    ` : isLink ? `
+                      <a href="${escapeHtml(item.content)}" target="_blank" class="text-blue-600 underline font-semibold flex items-center gap-1">
                         <span>🔗</span> ${escapeHtml(item.content)}
                       </a>
-                    ` : `<span class="font-mono text-slate-600 truncate max-w-xs block">${escapeHtml(item.content)}</span>`}
+                      <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false)" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
+                        🖥️ 미리보기
+                      </button>
+                    ` : `
+                      <span class="font-mono text-slate-600 truncate max-w-xs block">${escapeHtml(item.content)}</span>
+                    `}
                   </div>
                 </td>
                 <td class="px-4 py-3.5 text-center font-bold text-slate-800">${escapeHtml(item.name)}</td>
@@ -3487,26 +3725,159 @@
       renderBoard(false);
     }
 
-    // 웹사이트 미리보기 모달 열기/닫기
-    function openPreviewModal(url, title) {
+    // 웹사이트 및 파일 실시간 미리보기 모달 열기/닫기
+    function openPreviewModal(urlOrContent, title, isHtmlContent) {
       const modal = document.getElementById('websitePreviewModal');
       const iframe = document.getElementById('previewModalIframe');
+      const imgContainer = document.getElementById('previewModalImageContainer');
       const titleEl = document.getElementById('previewModalTitle');
       const extLink = document.getElementById('previewModalExternalLink');
 
       if (!modal || !iframe) return;
 
-      titleEl.innerText = title || url;
-      extLink.href = url;
-      iframe.src = url;
+      if (currentPreviewBlobUrl) {
+        try { URL.revokeObjectURL(currentPreviewBlobUrl); } catch(e) {}
+        currentPreviewBlobUrl = null;
+      }
+
+      if (imgContainer) imgContainer.classList.add('hidden');
+      iframe.classList.remove('hidden');
+
+      titleEl.innerText = title || '결과물 미리보기';
+
+      if (isHtmlContent) {
+        try {
+          const blob = new Blob([urlOrContent], { type: 'text/html;charset=utf-8' });
+          currentPreviewBlobUrl = URL.createObjectURL(blob);
+          iframe.src = currentPreviewBlobUrl;
+          extLink.href = currentPreviewBlobUrl;
+          extLink.classList.remove('hidden');
+        } catch(e) {
+          iframe.srcdoc = urlOrContent;
+          extLink.classList.add('hidden');
+        }
+      } else {
+        iframe.srcdoc = '';
+        iframe.src = urlOrContent;
+        extLink.href = urlOrContent;
+        extLink.classList.remove('hidden');
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function openImagePreviewModal(imgSrc, title) {
+      const modal = document.getElementById('websitePreviewModal');
+      const iframe = document.getElementById('previewModalIframe');
+      const imgContainer = document.getElementById('previewModalImageContainer');
+      const previewImg = document.getElementById('previewModalImage');
+      const titleEl = document.getElementById('previewModalTitle');
+      const extLink = document.getElementById('previewModalExternalLink');
+
+      if (!modal || !imgContainer || !previewImg) return;
+
+      if (currentPreviewBlobUrl) {
+        try { URL.revokeObjectURL(currentPreviewBlobUrl); } catch(e) {}
+        currentPreviewBlobUrl = null;
+      }
+
+      iframe.classList.add('hidden');
+      iframe.src = 'about:blank';
+      imgContainer.classList.remove('hidden');
+
+      previewImg.src = imgSrc;
+      titleEl.innerText = title || '이미지 미리보기';
+      extLink.href = imgSrc;
+      extLink.classList.remove('hidden');
+
       modal.classList.remove('hidden');
     }
 
     function closePreviewModal() {
       const modal = document.getElementById('websitePreviewModal');
       const iframe = document.getElementById('previewModalIframe');
+      const imgContainer = document.getElementById('previewModalImageContainer');
+      const previewImg = document.getElementById('previewModalImage');
+
       if (modal) modal.classList.add('hidden');
-      if (iframe) iframe.src = 'about:blank';
+      if (iframe) {
+        iframe.src = 'about:blank';
+        iframe.srcdoc = '';
+      }
+      if (imgContainer) imgContainer.classList.add('hidden');
+      if (previewImg) previewImg.src = '';
+
+      if (currentPreviewBlobUrl) {
+        try { URL.revokeObjectURL(currentPreviewBlobUrl); } catch(e) {}
+        currentPreviewBlobUrl = null;
+      }
+    }
+
+    // 특정 과제 파일 즉시 실행
+    function previewAssignmentFile(id) {
+      const list = getAssignments();
+      const item = list.find(it => it.id === id);
+      if (!item || !item.fileData) {
+        showToast('실행할 파일 데이터를 찾을 수 없습니다.');
+        return;
+      }
+      openPreviewModal(item.fileData, item.title || item.fileName, true);
+    }
+
+    // 특정 과제 이미지 크게보기
+    function previewAssignmentImage(id) {
+      const list = getAssignments();
+      const item = list.find(it => it.id === id);
+      if (!item || !item.fileData) return;
+      openImagePreviewModal(item.fileData, item.title || item.fileName);
+    }
+
+    // 특정 과제 파일 다운로드
+    function downloadAssignmentFile(id) {
+      const list = getAssignments();
+      const item = list.find(it => it.id === id);
+      if (!item || !item.fileData) {
+        showToast('다운로드할 파일이 없습니다.');
+        return;
+      }
+
+      const fileName = item.fileName || (item.isHtml ? 'index.html' : 'assignment_file.txt');
+      let mimeType = item.fileType || (item.isHtml ? 'text/html;charset=utf-8' : 'text/plain;charset=utf-8');
+
+      let downloadUrl;
+      let shouldRevoke = false;
+
+      if (item.isImage && item.fileData.startsWith('data:')) {
+        downloadUrl = item.fileData;
+      } else {
+        const blob = new Blob([item.fileData], { type: mimeType });
+        downloadUrl = URL.createObjectURL(blob);
+        shouldRevoke = true;
+      }
+
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      if (shouldRevoke) {
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+      }
+
+      showToast(`'${fileName}' 다운로드를 시작했습니다! 💾`);
+    }
+
+    // 특정 과제 새 탭에서 즉시 실행
+    function openAssignmentInNewTab(id) {
+      const list = getAssignments();
+      const item = list.find(it => it.id === id);
+      if (!item || !item.fileData) return;
+
+      const blob = new Blob([item.fileData], { type: 'text/html;charset=utf-8' });
+      const blobUrl = URL.createObjectURL(blob);
+      window.open(blobUrl, '_blank');
     }
 
     // 원클릭 단순 텍스트 복사
@@ -3575,7 +3946,7 @@ ${item.feedback ? `- 수강소감: ${item.feedback}\n` : ''}- 등록일시: ${it
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(list, null, 2));
       const downloadAnchor = document.createElement('a');
       downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `junggu_claude_assignments_${new Date().toISOString().slice(0, 10)}.json`);
+      downloadAnchor.setAttribute("download", `donggu_claude_assignments_${new Date().toISOString().slice(0, 10)}.json`);
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
@@ -3607,7 +3978,6 @@ ${item.feedback ? `- 수강소감: ${item.feedback}\n` : ''}- 등록일시: ${it
             }
           });
 
-          // 최신순 정렬
           current.sort((a, b) => (b.id || 0) - (a.id || 0));
           saveAssignments(current);
           renderBoard(false);
@@ -3625,7 +3995,6 @@ ${item.feedback ? `- 수강소감: ${item.feedback}\n` : ''}- 등록일시: ${it
     // 페이지 로드 시 초기화 (홈 과정안내 페이지 기본 표시)
     window.addEventListener('DOMContentLoaded', () => {
       selectDay('home');
-      loadProgress();
       renderAssignments();
     });
   </script>
