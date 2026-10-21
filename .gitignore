@@ -1,7 +1,11 @@
 *.py
 *.json
+!package.json
+!package-lock.json
+!api/*.json
 *.txt
 *.log
+node_modules/
 transcripts/
 transcripts_2nd/
 line_177_backup.html
@@ -15,3 +19,4 @@ final_restored_website.html
 playlist_page.html
 .vercel/
 .DS_Store
+.env*

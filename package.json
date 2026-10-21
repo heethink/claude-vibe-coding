@@ -1,0 +1,12 @@
+{
+  "name": "claude-vibe-coding",
+  "version": "1.0.0",
+  "description": "클로드 바이브 코딩 실습 및 과제 공유 플랫폼",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 5500"
+  },
+  "dependencies": {
+    "@vercel/blob": "^0.27.1"
+  }
+}

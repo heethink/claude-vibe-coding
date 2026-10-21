@@ -957,6 +957,22 @@
             AI와 함께 스테이징, 커밋, 브랜치, 이전 커밋 확인을 연습하고, 반복 작업 스킬(Skills)을 활용하여 
             <strong>Netlify 및 GitHub Pages로 전 세계 무료 배포</strong>를 완성합니다!
           </p>
+
+          <!-- 2회차 PPT 슬라이드 전용 안내 바 -->
+          <div class="mt-4 pt-4 border-t border-amber-600/40 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <span class="bg-amber-400 text-slate-950 font-black text-xs px-2.5 py-1 rounded-full shadow-xs">NEW</span>
+              <span class="text-xs sm:text-sm font-bold text-white">📊 2회차 수업 교안 PPT (폰트 크고 시인성 극대화 슬라이드)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="presentation_2nd.html" target="_blank" class="inline-flex items-center gap-1.5 bg-white text-slate-900 hover:bg-amber-50 text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition">
+                <span>🖥️ 웹 슬라이드쇼 보기</span>
+              </a>
+              <a href="lecture_2nd_presentation.pptx" download class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition">
+                <span>📥 PPTX 다운로드</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- 1. 교육 일정 -->
@@ -1794,12 +1810,17 @@
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded-full bg-white/20 text-white text-[11px] sm:text-xs font-mono font-bold border border-white/30">CLAUDE VIBE CODING</span>
               <span class="px-2.5 py-1 rounded-full bg-amber-300 text-amber-950 text-[11px] sm:text-xs font-extrabold flex items-center gap-1.5 shadow-2xs">
-                <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                실시간 과제 공유
+                <span id="cloudSyncStatusDot" class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                <span id="cloudSyncStatusText">실시간 클라우드 공유</span>
               </span>
             </div>
-            <div class="text-[11px] sm:text-xs bg-black/20 backdrop-blur-xs px-3 py-1 rounded-full border border-white/20 text-emerald-300 font-bold">
-              총 <strong id="boardTotalBadgeCount" class="text-amber-300 font-black">0</strong>개 등록
+            <div class="text-[11px] sm:text-xs bg-black/25 backdrop-blur-xs px-3 py-1 rounded-full border border-white/20 text-emerald-300 font-bold flex items-center gap-1.5">
+              <span>🌐 누구나 즉시 공유</span>
+              <span class="text-white/40">|</span>
+              <span>총 <strong id="boardTotalBadgeCount" class="text-amber-300 font-black">5</strong>개 등록</span>
+              <button type="button" onclick="syncAssignmentsFromCloud(false)" class="ml-1 p-0.5 text-slate-300 hover:text-white transition-transform active:rotate-180" title="지금 최신 과제 새로고침">
+                🔄
+              </button>
             </div>
           </div>
 
@@ -3647,6 +3668,7 @@
       closeQuickUploadModal();
       renderBoard(true);
       broadcastUpdate();
+      uploadAssignmentToCloud(newAssignment);
 
       if (typeof confetti === 'function') {
         confetti({
@@ -4332,6 +4354,144 @@
       }
     }
 
+    // ==============================================
+    // [실시간 클라우드 공유 연동 (Vercel Blob & Serverless API)]
+    // ==============================================
+    const CLOUD_API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? 'https://claude-vibe-coding-kohl.vercel.app'
+      : (window.location.origin.includes('vercel.app') ? '' : 'https://claude-vibe-coding-kohl.vercel.app');
+
+    const CLOUD_ASSIGNMENTS_API = `${CLOUD_API_BASE}/api/assignments`;
+    const CLOUD_ASSIGNMENTS_BLOB = 'https://zqwa3an22mx6zkqo.public.blob.vercel-storage.com/assignments.json';
+
+    let isCloudSyncing = false;
+
+    // 클라우드 저장소에서 전체 수강생 과제 동기화 (누구나 다른 사람 과제 실시간 확인)
+    async function syncAssignmentsFromCloud(silent = false) {
+      if (isCloudSyncing) return;
+      isCloudSyncing = true;
+
+      const dot = document.getElementById('cloudSyncStatusDot');
+      const text = document.getElementById('cloudSyncStatusText');
+      if (dot && text && !silent) {
+        text.innerText = '동기화 중...';
+      }
+
+      try {
+        let cloudList = null;
+
+        // 1. 고속 CDN Vercel Blob에서 최신 JSON 직접 가져오기
+        try {
+          const res = await fetch(`${CLOUD_ASSIGNMENTS_BLOB}?t=${Date.now()}`);
+          if (res.ok) {
+            cloudList = await res.json();
+          }
+        } catch(e) {
+          console.warn('Blob 직접 조회 실패, API로 전환:', e);
+        }
+
+        // 2. 만약 실패하면 Vercel 서버리스 API 엔드포인트 호출
+        if (!cloudList) {
+          const resApi = await fetch(`${CLOUD_ASSIGNMENTS_API}?t=${Date.now()}`);
+          if (resApi.ok) {
+            const data = await resApi.json();
+            if (data && data.success && Array.isArray(data.assignments)) {
+              cloudList = data.assignments;
+            }
+          }
+        }
+
+        if (Array.isArray(cloudList) && cloudList.length > 0) {
+          const currentLocal = getAssignments();
+          const cloudIds = new Set(cloudList.map(it => it.id));
+          // 아직 클라우드에 전송 중인 로컬 작성 과제 병합
+          const localOnly = currentLocal.filter(it => it && it.isMyRecent && !cloudIds.has(it.id));
+          const merged = [...localOnly, ...cloudList];
+
+          const isUpdated = merged.length !== currentLocal.length ||
+            merged[0]?.id !== currentLocal[0]?.id;
+
+          saveAssignments(merged);
+          renderBoard(false);
+
+          if (dot && text) {
+            dot.className = 'w-2 h-2 rounded-full bg-emerald-600 animate-pulse';
+            text.innerText = '실시간 클라우드 공유';
+          }
+
+          if (isUpdated && !silent) {
+            showToast(`☁️ 수강생 실시간 과제 갤러리가 동기화되었습니다! (총 ${merged.length}건)`);
+          }
+        }
+      } catch (err) {
+        console.error('클라우드 동기화 실패:', err);
+        if (dot && text) {
+          dot.className = 'w-2 h-2 rounded-full bg-amber-500';
+          text.innerText = '로컬 모드';
+        }
+      } finally {
+        isCloudSyncing = false;
+      }
+    }
+
+    // 신규 과제를 클라우드에 영구 업로드 & 전 수강생 공유
+    async function uploadAssignmentToCloud(item) {
+      const dot = document.getElementById('cloudSyncStatusDot');
+      const text = document.getElementById('cloudSyncStatusText');
+      if (dot && text) {
+        dot.className = 'w-2 h-2 rounded-full bg-blue-500 animate-ping';
+        text.innerText = '클라우드 공유 중...';
+      }
+
+      try {
+        const res = await fetch(CLOUD_ASSIGNMENTS_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item)
+        });
+
+        if (res.ok) {
+          const resData = await res.json();
+          if (resData && resData.success && resData.assignment) {
+            // 서버에서 생성된 fileUrl(Vercel Blob 영구 CDN 링크)이 있으면 로컬 데이터에 반영
+            const list = getAssignments();
+            const idx = list.findIndex(it => it.id === item.id);
+            if (idx >= 0) {
+              list[idx] = { ...list[idx], ...resData.assignment };
+              saveAssignments(list);
+              renderBoard(false);
+            }
+
+            if (dot && text) {
+              dot.className = 'w-2 h-2 rounded-full bg-emerald-600 animate-pulse';
+              text.innerText = '실시간 클라우드 공유';
+            }
+
+            showToast('과제가 클라우드 갤러리에 공유되었습니다! 🌐', '모든 수강생과 강사 화면에도 실시간으로 노출됩니다.');
+            broadcastUpdate();
+          }
+        } else {
+          throw new Error(`HTTP ${res.status}`);
+        }
+      } catch (err) {
+        console.error('클라우드 업로드 실패:', err);
+        if (dot && text) {
+          dot.className = 'w-2 h-2 rounded-full bg-amber-500';
+          text.innerText = '로컬 저장됨 (오프라인)';
+        }
+        showToast('로컬에 저장되었습니다. (네트워크 연결 시 자동 클라우드 공유됩니다)');
+      }
+    }
+
+    // 클라우드에서 과제 삭제 동기화
+    async function deleteAssignmentFromCloud(id) {
+      try {
+        await fetch(`${CLOUD_ASSIGNMENTS_API}?id=${id}`, { method: 'DELETE' });
+      } catch(e) {
+        console.error('클라우드 삭제 동기화 실패:', e);
+      }
+    }
+
     // 폼 열기/닫기 토글
     function toggleAssignmentForm(forceState) {
       const container = document.getElementById('assignmentFormContainer');
@@ -4417,6 +4577,7 @@
       toggleAssignmentForm(false);
       renderBoard(true);
       broadcastUpdate();
+      uploadAssignmentToCloud(newAssignment);
 
       if (typeof confetti === 'function') {
         confetti({
@@ -4492,6 +4653,7 @@
       saveAssignments(list);
       renderBoard(false);
       broadcastUpdate();
+      uploadAssignmentToCloud(item);
 
       showToast(`'${item.name}' 님의 과제에 따뜻한 응원을 보냈습니다! ❤️`);
     }
@@ -5252,22 +5414,46 @@ ${shareUrl}
     function previewAssignmentFile(id) {
       const list = getAssignments();
       const item = list.find(it => it.id === id);
-      if (!item || !item.fileData) {
-        showToast('실행할 파일 데이터를 찾을 수 없습니다.');
+      if (!item) {
+        showToast('실행할 과제를 찾을 수 없습니다.');
         return;
       }
-      openPreviewModal(item.fileData, item.title || item.fileName, true, 'desktop', item);
+      if (item.fileData) {
+        openPreviewModal(item.fileData, item.title || item.fileName, true, 'desktop', item);
+      } else if (item.fileUrl) {
+        showToast('클라우드에서 결과물 불러오는 중... ⏳');
+        fetch(item.fileUrl).then(r => r.text()).then(html => {
+          item.fileData = html;
+          openPreviewModal(html, item.title || item.fileName, true, 'desktop', item);
+        }).catch(() => {
+          openPreviewModal(item.fileUrl, item.title || item.fileName, false, 'desktop', item);
+        });
+      } else {
+        showToast('실행할 파일 데이터를 찾을 수 없습니다.');
+      }
     }
 
     // 특정 과제 파일 모바일 스마트폰 뷰(390px)로 즉시 실행
     function previewAssignmentMobile(id) {
       const list = getAssignments();
       const item = list.find(it => it.id === id);
-      if (!item || !item.fileData) {
-        showToast('실행할 파일 데이터를 찾을 수 없습니다.');
+      if (!item) {
+        showToast('실행할 과제를 찾을 수 없습니다.');
         return;
       }
-      openPreviewModal(item.fileData, item.title || item.fileName, true, 'mobile', item);
+      if (item.fileData) {
+        openPreviewModal(item.fileData, item.title || item.fileName, true, 'mobile', item);
+      } else if (item.fileUrl) {
+        showToast('클라우드에서 결과물 불러오는 중... ⏳');
+        fetch(item.fileUrl).then(r => r.text()).then(html => {
+          item.fileData = html;
+          openPreviewModal(html, item.title || item.fileName, true, 'mobile', item);
+        }).catch(() => {
+          openPreviewModal(item.fileUrl, item.title || item.fileName, false, 'mobile', item);
+        });
+      } else {
+        showToast('실행할 파일 데이터를 찾을 수 없습니다.');
+      }
     }
 
     // 특정 과제 이미지 크게보기
@@ -5319,11 +5505,15 @@ ${shareUrl}
     function openAssignmentInNewTab(id) {
       const list = getAssignments();
       const item = list.find(it => it.id === id);
-      if (!item || !item.fileData) return;
+      if (!item) return;
 
-      const blob = new Blob([item.fileData], { type: 'text/html;charset=utf-8' });
-      const blobUrl = URL.createObjectURL(blob);
-      window.open(blobUrl, '_blank');
+      if (item.fileData) {
+        const blob = new Blob([item.fileData], { type: 'text/html;charset=utf-8' });
+        const blobUrl = URL.createObjectURL(blob);
+        window.open(blobUrl, '_blank');
+      } else if (item.fileUrl) {
+        window.open(item.fileUrl, '_blank');
+      }
     }
 
     // 원클릭 단순 텍스트 복사
@@ -5372,6 +5562,7 @@ ${item.feedback ? `- 수강소감: ${item.feedback}\n` : ''}- 등록일시: ${it
         saveAssignments(list);
         renderBoard(false);
         broadcastUpdate();
+        deleteAssignmentFromCloud(id);
         showToast('과제 게시글이 삭제되었습니다.');
       }
     }
@@ -5454,6 +5645,15 @@ ${item.feedback ? `- 수강소감: ${item.feedback}\n` : ''}- 등록일시: ${it
 
       selectDay(tabParam);
       renderAssignments();
+
+      // 0. 클라우드에서 전체 수강생 과제 실시간 로드 & 백그라운드 동기화 시작
+      syncAssignmentsFromCloud(true);
+      setInterval(() => syncAssignmentsFromCloud(true), 25000);
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          syncAssignmentsFromCloud(true);
+        }
+      });
 
       // 1. #app=[compressed_payload] 실시간 배포 URL 파싱 및 즉시 실행
       if (window.location.hash.startsWith('#app=')) {
