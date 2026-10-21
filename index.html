@@ -2879,7 +2879,7 @@
           <span id="previewModalTitle" class="text-xs sm:text-sm font-bold text-slate-100 truncate"></span>
         </div>
 
-        <!-- 📱 모바일 / 💻 데스크톱 뷰 전환 컨트롤 바 -->
+        <!-- 📱 모바일 / 💻 데스크톱 뷰 전환 컨트롤 바 & 배포 공유 -->
         <div class="flex items-center gap-2 shrink-0">
           <div class="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700 text-xs font-bold">
             <button type="button" onclick="setPreviewDeviceMode('desktop')" id="prevDevDesktopBtn"
@@ -2891,6 +2891,11 @@
               <span>📱</span> <span class="hidden sm:inline">모바일</span><span>뷰 (390px)</span>
             </button>
           </div>
+
+          <button type="button" id="previewModalShareBtn" onclick="openShareDeployFromPreview()"
+                  class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black transition-all flex items-center gap-1.5 shadow-sm hover:scale-[1.02]">
+            <span>🔗</span> <span class="hidden sm:inline">배포 URL</span><span>공유</span>
+          </button>
 
           <a id="previewModalExternalLink" href="#" target="_blank" rel="noopener noreferrer"
              class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all flex items-center gap-1 border border-slate-700 shadow-2xs">
@@ -3051,6 +3056,126 @@
   </div>
 
   <!-- ==============================================
+       [과제 실시간 웹 배포 및 URL 공유 모달]
+       ============================================== -->
+  <div id="shareDeployModal" onclick="if(event.target === this) closeShareDeployModal();" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 transition-all">
+    <div class="bg-white rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden border border-slate-200 animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- 모달 헤더 -->
+      <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-slate-900 text-white px-5 sm:px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center text-lg shadow-2xs">🚀</span>
+          <div>
+            <h3 class="text-sm sm:text-base font-black flex items-center gap-2">
+              <span>과제 실시간 웹 배포 & URL 공유</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-400 text-slate-900 text-[10px] font-black">LIVE</span>
+            </h3>
+            <p class="text-[11px] text-indigo-100">별도 서버 없이 링크 하나로 전 세계 누구나 실시간 웹사이트를 열어볼 수 있습니다.</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeShareDeployModal()" class="p-1.5 rounded-lg bg-black/20 hover:bg-black/30 text-white text-sm font-bold transition-all">
+          ✕
+        </button>
+      </div>
+
+      <!-- 모달 본체 -->
+      <div class="p-5 sm:p-6 space-y-4">
+        
+        <!-- 과제 요약 정보 카드 -->
+        <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between gap-3">
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5 mb-0.5">
+              <span id="shareModalDayBadge" class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 text-[10px] font-black">과제</span>
+              <span id="shareModalAuthor" class="text-xs font-bold text-slate-700">수강생</span>
+            </div>
+            <h4 id="shareModalTitle" class="text-sm font-black text-slate-900 truncate">나만의 웹사이트</h4>
+          </div>
+          <span class="shrink-0 px-2.5 py-1 rounded-xl bg-emerald-100 text-emerald-800 text-xs font-black flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 배포 완료
+          </span>
+        </div>
+
+        <!-- 1. 원클릭 실시간 웹 배포 URL -->
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-black text-slate-700 flex items-center gap-1.5">
+              <span>🌐</span> <span>실시간 웹 배포 URL (누구나 즉시 접속)</span>
+            </label>
+            <span class="text-[11px] text-blue-600 font-bold">클릭 시 자동 복사</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="text" id="shareDeployUrlInput" readonly onclick="this.select(); copyDeployUrl();"
+                   class="flex-1 px-3.5 py-2.5 text-xs font-mono rounded-xl border border-blue-200 bg-blue-50/50 text-blue-900 font-bold focus:outline-hidden focus:ring-2 focus:ring-blue-500 select-all cursor-pointer">
+            <button type="button" onclick="copyDeployUrl()"
+                    class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs shadow-2xs transition-all flex items-center gap-1.5 shrink-0">
+              <span>📋</span> <span>URL 복사</span>
+            </button>
+          </div>
+          <p class="text-[11px] text-slate-500">
+            💡 위 URL을 카톡, 메시지, SNS에 공유하면 상대방 스마트폰이나 컴퓨터에서 내 웹사이트가 즉시 실행됩니다.
+          </p>
+        </div>
+
+        <!-- 2. 스마트폰 카메라 스캔용 QR 코드 카드 -->
+        <div class="p-4 bg-gradient-to-br from-indigo-50/70 via-white to-purple-50/40 rounded-2xl border border-indigo-100 flex flex-col sm:flex-row items-center gap-4">
+          <div class="relative shrink-0 bg-white p-2 rounded-2xl border border-indigo-200 shadow-xs">
+            <img id="shareDeployQrImage" src="" alt="스마트폰 접속용 QR 코드" class="w-28 h-28 sm:w-32 sm:h-32 object-contain rounded-xl">
+            <div id="shareDeployQrLoading" class="hidden absolute inset-0 bg-white/90 flex items-center justify-center rounded-xl text-xs text-indigo-600 font-bold">
+              QR 생성 중...
+            </div>
+          </div>
+          <div class="text-left space-y-1.5 flex-1">
+            <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 text-[11px] font-black">
+              <span>📱</span> 스마트폰 즉시 실행 QR
+            </div>
+            <h5 class="text-xs sm:text-sm font-black text-slate-900">
+              스마트폰 기본 카메라로 비춰보세요!
+            </h5>
+            <p class="text-[11px] text-slate-600 leading-relaxed">
+              별도의 앱 설치 없이 스마트폰 기본 카메라로 비추면 노란색 안내창이 뜨며, 터치 한 번으로 내 웹사이트가 모바일 화면에 즉시 열립니다.
+            </p>
+            <div class="pt-0.5">
+              <span class="text-[10px] text-indigo-700 font-bold bg-white px-2 py-0.5 rounded-md border border-indigo-200 shadow-2xs">
+                수업 현장 발표 & 친구 자랑용으로 강력 추천 👍
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 다양한 공유 및 바로가기 액션 버튼들 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+          <button type="button" onclick="copyKakaoDeployFormat()"
+                  class="py-2.5 px-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-xs transition-all flex items-center justify-center gap-1.5 shadow-2xs">
+            <span>💬</span> <span>카카오톡 단톡방 공유 양식 복사</span>
+          </button>
+          <a id="shareDeployOpenNewTabBtn" href="#" target="_blank" rel="noopener noreferrer"
+             class="py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs transition-all flex items-center justify-center gap-1.5 shadow-2xs text-center">
+            <span>🌐</span> <span>새 탭에서 전체화면 실행 ↗</span>
+          </a>
+        </div>
+
+        <!-- 모바일 Web Share API 지원 시 노출되는 버튼 -->
+        <div id="shareDeployNativeShareRow" class="hidden">
+          <button type="button" onclick="triggerNativeShare()"
+                  class="w-full py-2.5 px-3 rounded-xl bg-blue-100 hover:bg-blue-200 text-blue-900 font-black text-xs transition-all flex items-center justify-center gap-1.5">
+            <span>📲</span> <span>스마트폰 공유하기 (카톡 / 문자 / 에어드롭)</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- 모달 푸터 -->
+      <div class="bg-slate-50 border-t border-slate-100 px-5 sm:px-6 py-3 flex items-center justify-between text-xs text-slate-500">
+        <span>동구평생학습관 클로드 AI 바이브 코딩 실시간 배포 시스템</span>
+        <button type="button" onclick="closeShareDeployModal()" class="px-3 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition-all">
+          닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==============================================
        [자바스크립트 인터랙션 & 로컬 저장 로직]
        ============================================== -->
   <script>
@@ -3058,6 +3183,7 @@
 
     // 1. 차시 선택 전환
     function selectDay(day) {
+      if (day === 'board') day = 'assignment';
       currentDay = day;
 
       document.querySelectorAll('.day-article').forEach(el => el.classList.add('hidden'));
@@ -3530,11 +3656,11 @@
         });
       }
 
-      showToast('과제가 갤러리에 등록되었습니다! 🎉', '실시간 실행 화면을 엽니다...');
+      showToast('과제가 갤러리에 등록 & 배포되었습니다! 🚀', '상단 [배포 URL 공유]로 친구들에게 자랑해보세요.');
 
       setTimeout(() => {
         if (newAssignment.isHtml) {
-          openPreviewModal(newAssignment.fileData, newAssignment.title, true);
+          openPreviewModal(newAssignment.fileData, newAssignment.title, true, 'desktop', newAssignment);
         } else if (newAssignment.isImage) {
           openImagePreviewModal(newAssignment.fileData, newAssignment.title);
         }
@@ -4524,6 +4650,10 @@
                                 class="py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-extrabold text-xs text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.01]">
                           <span>📱</span> 모바일 뷰
                         </button>
+                        <button onclick="openShareDeployModal(${item.id})"
+                                class="py-2.5 px-3 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black text-xs text-center transition-all flex items-center justify-center gap-1.5 shadow-sm hover:scale-[1.01]">
+                          <span>🔗</span> 배포 URL 공유
+                        </button>
                         <button onclick="downloadAssignmentFile(${item.id})"
                                 class="py-2.5 px-3 rounded-xl bg-white hover:bg-amber-100 text-amber-950 border border-amber-300 font-bold text-xs transition-all flex items-center justify-center gap-1">
                           <span>💾</span> 다운로드
@@ -4562,12 +4692,16 @@
                            class="flex-1 py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs text-center transition-all flex items-center justify-center gap-1 shadow-2xs">
                           <span>🌐</span> 새 탭에서 열기 ↗
                         </a>
+                        <button onclick="openShareDeployModal(${item.id})"
+                                class="py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs transition-all flex items-center justify-center gap-1 shadow-2xs">
+                          <span>🔗</span> 배포 공유
+                        </button>
                         <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false, 'desktop')"
-                                class="py-2 px-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition-all flex items-center gap-1">
+                                class="py-2 px-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition-all flex items-center justify-center gap-1">
                           <span>🖥️</span> 데스크톱
                         </button>
                         <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false, 'mobile')"
-                                class="py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-xs transition-all flex items-center gap-1">
+                                class="py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-xs transition-all flex items-center justify-center gap-1">
                           <span>📱</span> 모바일
                         </button>
                       </div>
@@ -4594,17 +4728,25 @@
 
                 <!-- 카드 하단: 반응 / 관리 -->
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-xs">
-                  <div>
+                  <div class="flex items-center gap-3">
                     ${hasHtmlFile ? `
                       <button onclick="openAssignmentInNewTab(${item.id})" class="text-amber-700 hover:text-amber-900 font-bold inline-flex items-center gap-1">
-                        <span>🖥️</span> 새 탭에서 실행 ↗
+                        <span>🖥️</span> 새 탭 실행 ↗
+                      </button>
+                      <button onclick="openShareDeployModal(${item.id})" class="text-blue-600 hover:text-blue-800 font-black inline-flex items-center gap-1">
+                        <span>🚀</span> URL 배포·공유
                       </button>
                     ` : isLink ? `
                       <a href="${escapeHtml(item.content)}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-bold inline-flex items-center gap-1">
-                        <span>🌐</span> 새 탭에서 열기 ↗
+                        <span>🌐</span> 새 탭 열기 ↗
                       </a>
+                      <button onclick="openShareDeployModal(${item.id})" class="text-indigo-600 hover:text-indigo-800 font-black inline-flex items-center gap-1">
+                        <span>🚀</span> URL 배포·공유
+                      </button>
                     ` : `
-                      <span class="text-slate-400 font-mono text-[11px]">등록 완료</span>
+                      <button onclick="openShareDeployModal(${item.id})" class="text-indigo-600 hover:text-indigo-800 font-bold inline-flex items-center gap-1">
+                        <span>🚀</span> 배포·공유
+                      </button>
                     `}
                   </div>
                   <button onclick="deleteAssignment(${item.id})" class="text-slate-400 hover:text-rose-500 p-1 rounded-md transition-all text-xs flex items-center gap-1" title="과제 삭제">
@@ -4654,6 +4796,9 @@
                       <button onclick="previewAssignmentMobile(${item.id})" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-[11px]">
                         📱 모바일
                       </button>
+                      <button onclick="openShareDeployModal(${item.id})" class="px-2 py-0.5 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] inline-flex items-center gap-0.5">
+                        🔗 배포
+                      </button>
                       <button onclick="downloadAssignmentFile(${item.id})" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
                         💾 다운
                       </button>
@@ -4664,6 +4809,9 @@
                       <button onclick="previewAssignmentImage(${item.id})" class="px-2 py-0.5 rounded bg-purple-600 hover:bg-purple-700 text-white font-bold text-[11px]">
                         🔍 크게보기
                       </button>
+                      <button onclick="openShareDeployModal(${item.id})" class="px-2 py-0.5 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] inline-flex items-center gap-0.5">
+                        🔗 공유
+                      </button>
                       <button onclick="downloadAssignmentFile(${item.id})" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
                         💾 다운
                       </button>
@@ -4671,6 +4819,9 @@
                       <a href="${escapeHtml(item.content)}" target="_blank" class="text-blue-600 underline font-semibold flex items-center gap-1">
                         <span>🔗</span> ${escapeHtml(item.content)}
                       </a>
+                      <button onclick="openShareDeployModal(${item.id})" class="px-2 py-0.5 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] inline-flex items-center gap-0.5">
+                        🔗 배포
+                      </button>
                       <button onclick="openPreviewModal('${escapeHtml(item.content)}', '${escapeHtml(item.title)}', false, 'desktop')" class="px-2 py-0.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-[11px]">
                         🖥️ 웹
                       </button>
@@ -4745,15 +4896,270 @@
       }
     }
 
-    function openPreviewModal(urlOrContent, title, isHtmlContent, preferredDevice = 'desktop') {
+    // ==============================================
+    // [실시간 웹 배포 (URL & QR) 공유 시스템]
+    // ==============================================
+    let currentSharingAssignment = null;
+    let currentActivePreviewAssignment = null;
+
+    // 문자열 Gzip 압축 후 Base64URL 인코딩
+    async function compressToGzipBase64(str) {
+      if (typeof CompressionStream !== 'undefined') {
+        try {
+          const stream = new Blob([str]).stream().pipeThrough(new CompressionStream('gzip'));
+          const buffer = await new Response(stream).arrayBuffer();
+          const bytes = new Uint8Array(buffer);
+          let binary = '';
+          for (let i = 0; i < bytes.byteLength; i++) {
+            binary += String.fromCharCode(bytes[i]);
+          }
+          return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        } catch(e) {
+          console.warn('Gzip stream compression failed, falling back:', e);
+        }
+      }
+      return btoa(unescape(encodeURIComponent(str))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    // Base64URL 디코딩 후 Gzip 압축 해제
+    async function decompressFromGzipBase64(base64url) {
+      let b64 = base64url.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      const binary = atob(b64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      if (typeof DecompressionStream !== 'undefined') {
+        try {
+          const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+          return await new Response(stream).text();
+        } catch (e) {
+          console.warn('Gzip decompression fallback:', e);
+        }
+      }
+      return decodeURIComponent(escape(binary));
+    }
+
+    // 과제 객체로부터 전송 가능한 실시간 배포 URL 생성
+    async function generateShareableDeploymentUrl(item) {
+      const baseUrl = window.location.origin + window.location.pathname;
+
+      // 1. 직접 업로드된 HTML 파일이 있는 경우 -> Gzip 압축 후 해시(#app=...)에 탑재
+      const hasHtml = item.fileData && (item.isHtml || (item.fileName && (item.fileName.endsWith('.html') || item.fileName.endsWith('.htm'))));
+      if (hasHtml) {
+        const payload = {
+          n: item.name || '수강생',
+          t: item.title || '나만의 웹사이트',
+          d: item.day || '과제',
+          h: item.fileData,
+          dt: item.date || ''
+        };
+        const jsonStr = JSON.stringify(payload);
+        const hash = await compressToGzipBase64(jsonStr);
+        return `${baseUrl}#app=${hash}`;
+      }
+
+      // 2. 외부 배포 링크인 경우 -> 쿼리 파라미터(?url=...)
+      if (item.content && isUrl(item.content)) {
+        return `${baseUrl}?url=${encodeURIComponent(item.content)}`;
+      }
+
+      // 3. 기존 시드/등록 과제 ID인 경우 -> ?preview=[id]
+      if (item.id) {
+        return `${baseUrl}?preview=${item.id}`;
+      }
+
+      return baseUrl;
+    }
+
+    // 실시간 웹 배포 및 공유 모달 열기
+    async function openShareDeployModal(idOrItem) {
+      let item = null;
+      if (typeof idOrItem === 'object' && idOrItem !== null) {
+        item = idOrItem;
+      } else {
+        const list = getAssignments();
+        item = list.find(it => it.id === idOrItem);
+      }
+
+      if (!item) {
+        showToast('공유할 과제 데이터를 찾을 수 없습니다.');
+        return;
+      }
+
+      currentSharingAssignment = item;
+
+      const modal = document.getElementById('shareDeployModal');
+      const urlInput = document.getElementById('shareDeployUrlInput');
+      const titleEl = document.getElementById('shareModalTitle');
+      const authorEl = document.getElementById('shareModalAuthor');
+      const dayBadge = document.getElementById('shareModalDayBadge');
+      const qrImg = document.getElementById('shareDeployQrImage');
+      const qrLoading = document.getElementById('shareDeployQrLoading');
+      const openNewTabBtn = document.getElementById('shareDeployOpenNewTabBtn');
+      const nativeShareRow = document.getElementById('shareDeployNativeShareRow');
+
+      if (!modal) return;
+
+      if (titleEl) titleEl.innerText = item.title || item.fileName || '나만의 웹사이트';
+      if (authorEl) authorEl.innerText = `${item.name || '수강생'} 님`;
+      if (dayBadge) dayBadge.innerText = item.day || '과제';
+
+      if (qrLoading) qrLoading.classList.remove('hidden');
+      if (urlInput) urlInput.value = '실시간 배포 URL 생성 중...';
+
+      modal.classList.remove('hidden');
+
+      try {
+        const shareUrl = await generateShareableDeploymentUrl(item);
+        if (urlInput) urlInput.value = shareUrl;
+        if (openNewTabBtn) openNewTabBtn.href = shareUrl;
+
+        // 스마트폰 카메라용 QR 코드 생성 (api.qrserver.com 활용)
+        if (qrImg) {
+          const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=8&data=${encodeURIComponent(shareUrl)}`;
+          qrImg.onload = () => {
+            if (qrLoading) qrLoading.classList.add('hidden');
+          };
+          qrImg.onerror = () => {
+            if (qrLoading) qrLoading.classList.add('hidden');
+          };
+          qrImg.src = qrApiUrl;
+        }
+
+        // 스마트폰 Web Share API 지원 확인
+        if (navigator.share && nativeShareRow) {
+          nativeShareRow.classList.remove('hidden');
+        } else if (nativeShareRow) {
+          nativeShareRow.classList.add('hidden');
+        }
+      } catch (err) {
+        console.error('배포 URL 생성 오류:', err);
+        if (urlInput) urlInput.value = window.location.href;
+        if (qrLoading) qrLoading.classList.add('hidden');
+      }
+    }
+
+    // 모달 닫기
+    function closeShareDeployModal() {
+      const modal = document.getElementById('shareDeployModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // 배포 URL 원클릭 복사
+    function copyDeployUrl() {
+      const urlInput = document.getElementById('shareDeployUrlInput');
+      if (!urlInput || !urlInput.value || urlInput.value.includes('생성 중')) return;
+
+      const url = urlInput.value;
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('실시간 웹 배포 URL이 복사되었습니다! 🌐', '카카오톡이나 SNS에 바로 붙여넣기(Ctrl+V)하세요.');
+        }).catch(() => fallbackCopyDeploy(url));
+      } else {
+        fallbackCopyDeploy(url);
+      }
+    }
+
+    function fallbackCopyDeploy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('실시간 웹 배포 URL이 복사되었습니다! 🌐', '카카오톡이나 SNS에 바로 붙여넣기(Ctrl+V)하세요.');
+      } catch (e) {
+        prompt('아래 배포 링크를 복사(Ctrl+C)하세요:', text);
+      }
+      document.body.removeChild(ta);
+    }
+
+    // 카카오톡 단체방 공유 양식 복사
+    function copyKakaoDeployFormat() {
+      if (!currentSharingAssignment) {
+        showToast('공유할 과제 정보가 없습니다.');
+        return;
+      }
+      const item = currentSharingAssignment;
+      const urlInput = document.getElementById('shareDeployUrlInput');
+      const shareUrl = urlInput ? urlInput.value : window.location.href;
+
+      const kakaoMessage = `[동구평생학습관 클로드 AI 바이브코딩 실시간 배포]
+👤 작성자: ${item.name} 님
+📚 회차: ${item.day}
+🌟 과제명: ${item.title}
+${item.feedback ? `💬 설명: ${item.feedback}\n` : ''}
+🌐 실시간 웹사이트 바로가기:
+${shareUrl}
+
+(스마트폰이나 PC 브라우저에서 누구나 바로 실행됩니다!)`;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(kakaoMessage).then(() => {
+          showToast('카카오톡 단톡방 공유 양식이 복사되었습니다! 💬', '단체 채팅방에 그대로 붙여넣기(Ctrl+V)하세요.');
+        }).catch(() => fallbackCopyDeploy(kakaoMessage));
+      } else {
+        fallbackCopyDeploy(kakaoMessage);
+      }
+    }
+
+    // 모바일 기본 공유 시트 호출
+    async function triggerNativeShare() {
+      if (!currentSharingAssignment) return;
+      const item = currentSharingAssignment;
+      const urlInput = document.getElementById('shareDeployUrlInput');
+      const shareUrl = urlInput ? urlInput.value : window.location.href;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: `[과제 배포] ${item.title}`,
+            text: `${item.name} 님의 클로드 AI 바이브 코딩 실시간 웹사이트: ${item.title}`,
+            url: shareUrl
+          });
+        } catch (err) {
+          if (err.name !== 'AbortError') {
+            copyDeployUrl();
+          }
+        }
+      } else {
+        copyDeployUrl();
+      }
+    }
+
+    // 미리보기 모달 상단에서 바로 배포 공유 모달 열기
+    function openShareDeployFromPreview() {
+      if (currentActivePreviewAssignment) {
+        openShareDeployModal(currentActivePreviewAssignment);
+      } else {
+        showToast('현재 미리보기 중인 과제 정보를 찾을 수 없습니다.');
+      }
+    }
+
+    function openPreviewModal(urlOrContent, title, isHtmlContent, preferredDevice = 'desktop', assignmentItem = null) {
       const modal = document.getElementById('websitePreviewModal');
       const iframe = document.getElementById('previewModalIframe');
       const imgContainer = document.getElementById('previewModalImageContainer');
       const titleEl = document.getElementById('previewModalTitle');
       const extLink = document.getElementById('previewModalExternalLink');
       const devToggle = document.getElementById('prevDevDesktopBtn')?.parentElement;
+      const shareBtn = document.getElementById('previewModalShareBtn');
 
       if (!modal || !iframe) return;
+
+      currentActivePreviewAssignment = assignmentItem || {
+        id: Date.now(),
+        title: title || '실시간 웹사이트',
+        fileData: isHtmlContent ? urlOrContent : null,
+        content: !isHtmlContent ? urlOrContent : '',
+        isHtml: isHtmlContent,
+        name: '수강생',
+        day: '과제'
+      };
 
       if (currentPreviewBlobUrl) {
         try { URL.revokeObjectURL(currentPreviewBlobUrl); } catch(e) {}
@@ -4763,6 +5169,7 @@
       if (imgContainer) imgContainer.classList.add('hidden');
       iframe.classList.remove('hidden');
       if (devToggle) devToggle.classList.remove('hidden');
+      if (shareBtn) shareBtn.classList.remove('hidden');
 
       titleEl.innerText = title || '결과물 미리보기';
 
@@ -4849,7 +5256,7 @@
         showToast('실행할 파일 데이터를 찾을 수 없습니다.');
         return;
       }
-      openPreviewModal(item.fileData, item.title || item.fileName, true, 'desktop');
+      openPreviewModal(item.fileData, item.title || item.fileName, true, 'desktop', item);
     }
 
     // 특정 과제 파일 모바일 스마트폰 뷰(390px)로 즉시 실행
@@ -4860,7 +5267,7 @@
         showToast('실행할 파일 데이터를 찾을 수 없습니다.');
         return;
       }
-      openPreviewModal(item.fileData, item.title || item.fileName, true, 'mobile');
+      openPreviewModal(item.fileData, item.title || item.fileName, true, 'mobile', item);
     }
 
     // 특정 과제 이미지 크게보기
@@ -5031,13 +5438,105 @@ ${item.feedback ? `- 수강소감: ${item.feedback}\n` : ''}- 등록일시: ${it
       event.target.value = '';
     }
 
-    // 페이지 로드 시 초기화 (URL 파라미터 또는 기본 홈 표시)
-    window.addEventListener('DOMContentLoaded', () => {
+    // 페이지 로드 시 초기화 (URL 파라미터 / 실시간 배포 해시 / 기본 탭 표시)
+    window.addEventListener('DOMContentLoaded', async () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const tabParam = urlParams.get('tab') || window.location.hash.replace('#', '') || 'home';
+      const rawHash = window.location.hash.replace('#', '');
+
+      let tabParam = urlParams.get('tab');
+      if (!tabParam) {
+        if (rawHash && !rawHash.startsWith('app=') && !rawHash.startsWith('run=')) {
+          tabParam = rawHash;
+        } else {
+          tabParam = 'home';
+        }
+      }
+
       selectDay(tabParam);
       renderAssignments();
 
+      // 1. #app=[compressed_payload] 실시간 배포 URL 파싱 및 즉시 실행
+      if (window.location.hash.startsWith('#app=')) {
+        const hashVal = window.location.hash.slice(5);
+        if (hashVal) {
+          try {
+            const jsonStr = await decompressFromGzipBase64(hashVal);
+            const payload = JSON.parse(jsonStr);
+            if (payload && payload.h) {
+              const currentList = getAssignments();
+              const already = currentList.find(it => it.title === payload.t && it.name === payload.n && it.fileData === payload.h);
+              let sharedItem = already;
+              if (!already) {
+                sharedItem = {
+                  id: Date.now(),
+                  date: payload.dt || '공유받음',
+                  name: payload.n || '동기 수강생',
+                  day: payload.d || '공유과제',
+                  type: '배포링크',
+                  title: payload.t || '공유받은 실시간 웹사이트',
+                  content: `[실시간 웹 배포] ${payload.t}`,
+                  feedback: `${payload.n} 님이 배포 URL을 통해 실시간 공유한 웹사이트 작품입니다.`,
+                  fileData: payload.h,
+                  fileName: 'shared_app.html',
+                  fileSize: payload.h.length,
+                  isHtml: true,
+                  likes: 1,
+                  isMyRecent: true
+                };
+                currentList.unshift(sharedItem);
+                saveAssignments(currentList);
+                renderBoard(false);
+              }
+
+              const isMobileScreen = window.innerWidth < 640;
+              openPreviewModal(payload.h, `${payload.t} (${payload.n} 님)`, true, isMobileScreen ? 'mobile' : 'desktop', sharedItem);
+              showToast(`🎉 ${payload.n} 님의 실시간 웹사이트를 열었습니다!`, '모바일/데스크톱 뷰로 동작을 확인해보세요.');
+              return;
+            }
+          } catch (e) {
+            console.error('URL 배포 데이터 파싱 실패:', e);
+            showToast('공유 배포 URL을 불러오는 중 오류가 발생했습니다.');
+          }
+        }
+      }
+
+      // 2. ?preview=[id] 파라미터가 있는 경우 자동 실행
+      const previewId = Number(urlParams.get('preview'));
+      if (previewId) {
+        const item = getAssignments().find(it => it.id === previewId);
+        if (item) {
+          const isMobileScreen = window.innerWidth < 640;
+          if (item.fileData && item.isHtml) {
+            openPreviewModal(item.fileData, item.title, true, isMobileScreen ? 'mobile' : 'desktop', item);
+          } else if (item.isImage && item.fileData) {
+            openImagePreviewModal(item.fileData, item.title);
+          } else if (item.content && isUrl(item.content)) {
+            openPreviewModal(item.content, item.title, false, isMobileScreen ? 'mobile' : 'desktop', item);
+          }
+          return;
+        }
+      }
+
+      // 3. ?url=[encodedUrl] 파라미터가 있는 경우 외부 웹 실행
+      const directUrl = urlParams.get('url');
+      if (directUrl) {
+        const decoded = decodeURIComponent(directUrl);
+        const isMobileScreen = window.innerWidth < 640;
+        openPreviewModal(decoded, '공유 웹사이트', false, isMobileScreen ? 'mobile' : 'desktop');
+        return;
+      }
+
+      // 4. ?share=[id] 파라미터가 있는 경우 배포 공유 모달 바로 열기
+      const shareId = Number(urlParams.get('share'));
+      if (shareId) {
+        const item = getAssignments().find(it => it.id === shareId);
+        if (item) {
+          setTimeout(() => openShareDeployModal(item), 200);
+          return;
+        }
+      }
+
+      // 5. ?modal=upload 인 경우 파일 직접 올리기 모달 열기
       if (urlParams.get('modal') === 'upload') {
         setTimeout(() => openDirectFileUploadModal(), 150);
       }
