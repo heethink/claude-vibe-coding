@@ -149,6 +149,25 @@
         </div>
       </div>
 
+      <!-- 데스크톱 중앙 퀵 네비게이션 탭 바 -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-100/90 p-1 rounded-2xl border border-slate-200/80 text-xs font-bold text-slate-600">
+        <button onclick="selectDay('home')" id="top-nav-home" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1.5">
+          <span>🏠</span> 과정안내
+        </button>
+        <button onclick="selectDay(1)" id="top-nav-1" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1.5">
+          <span>1회차</span> <span class="text-[10px] text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded font-black">기초</span>
+        </button>
+        <button onclick="selectDay(2)" id="top-nav-2" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1.5">
+          <span>2회차</span> <span class="text-[10px] text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded font-black">배포</span>
+        </button>
+        <button onclick="selectDay('assignment')" id="top-nav-assignment" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-amber-900 hover:bg-white flex items-center gap-1.5 text-amber-800">
+          <span>📋</span> 과제 갤러리
+        </button>
+        <button onclick="selectDay('guide')" id="top-nav-guide" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-blue-900 hover:bg-white flex items-center gap-1.5">
+          <span>💡</span> 가이드
+        </button>
+      </nav>
+
       <!-- 상단 도구 모음: 과제 바로가기 -->
       <div class="flex items-center gap-2 shrink-0">
         <button onclick="selectDay('assignment')" class="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold shadow-xs flex items-center gap-1.5 sm:gap-2 transition-all">
@@ -447,7 +466,7 @@
             </div>
 
             <!-- 5회차 카드 (비공개) -->
-            <div onclick="selectDay(5)" class="cursor-pointer p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-dashed border-slate-300 bg-slate-50/30 hover:bg-white hover:border-slate-400 transition-all space-y-2.5 sm:space-y-3 flex flex-col justify-between opacity-70 md:col-span-2 lg:col-span-2">
+            <div onclick="selectDay(5)" class="cursor-pointer p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-dashed border-slate-300 bg-slate-50/30 hover:bg-white hover:border-slate-400 transition-all space-y-2.5 sm:space-y-3 flex flex-col justify-between opacity-70">
               <div class="space-y-1.5 sm:space-y-2">
                 <div class="flex items-center justify-between">
                   <span class="px-2.5 py-0.5 rounded-md bg-slate-200 text-slate-500 text-xs font-bold">5회차</span>
@@ -465,13 +484,24 @@
                 <span>🔒 오픈 대기</span>
               </div>
             </div>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                  본 차시의 상세 교육 주제와 실습 프로젝트는 정규 강의 일정에 맞춰 순차적으로 공개됩니다.
+
+            <!-- 📋 수강생 실시간 과제 갤러리 카드 (3x2 완벽 대칭 그리드) -->
+            <div onclick="selectDay('assignment')" class="group cursor-pointer p-4 sm:p-5 rounded-xl sm:rounded-2xl border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-orange-50/50 hover:from-amber-100/90 hover:to-orange-100/70 transition-all space-y-2.5 sm:space-y-3 flex flex-col justify-between shadow-2xs hover:shadow-md">
+              <div class="space-y-1.5 sm:space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded-md bg-amber-500 text-white text-xs font-extrabold">과제 갤러리</span>
+                  <span class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 text-[11px] font-black animate-pulse">실시간 LIVE</span>
+                </div>
+                <h4 class="text-sm sm:text-base font-black text-amber-950 group-hover:text-amber-800 transition-colors leading-snug flex items-center gap-1.5">
+                  <span>🎨</span> 수강생 작품 실시간 공유
+                </h4>
+                <p class="text-xs text-amber-900/80 leading-relaxed">
+                  직접 만든 웹사이트와 HTML 결과물을 등록하고, 모바일 및 데스크톱 뷰어로 실시간 시연해보세요.
                 </p>
               </div>
-              <div class="pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs font-medium text-slate-400">
-                <span>비공개</span>
-                <span>🔒 오픈 대기</span>
+              <div class="pt-2.5 sm:pt-3 border-t border-amber-200/80 flex items-center justify-between text-xs font-black text-amber-800">
+                <span>실시간 시연 & 피드백</span>
+                <span>갤러리 바로가기 ➔</span>
               </div>
             </div>
 
@@ -3018,6 +3048,15 @@
         activeNav.classList.add('tab-active');
       }
 
+      // 상단 데스크톱 탭 활성화 상태 동기화
+      document.querySelectorAll('.top-nav-btn').forEach(btn => {
+        btn.classList.remove('bg-white', 'text-slate-900', 'shadow-xs');
+      });
+      const activeTopNav = document.getElementById(`top-nav-${day}`);
+      if (activeTopNav) {
+        activeTopNav.classList.add('bg-white', 'text-slate-900', 'shadow-xs');
+      }
+
       document.querySelectorAll('.m-tab').forEach(btn => {
         btn.classList.remove('m-tab-active');
       });
@@ -4912,9 +4951,11 @@ ${item.feedback ? `- 수강소감: ${item.feedback}\n` : ''}- 등록일시: ${it
       event.target.value = '';
     }
 
-    // 페이지 로드 시 초기화 (홈 과정안내 페이지 기본 표시)
+    // 페이지 로드 시 초기화 (URL 파라미터 또는 기본 홈 표시)
     window.addEventListener('DOMContentLoaded', () => {
-      selectDay('home');
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabParam = urlParams.get('tab') || window.location.hash.replace('#', '') || 'home';
+      selectDay(tabParam);
       renderAssignments();
     });
   </script>
