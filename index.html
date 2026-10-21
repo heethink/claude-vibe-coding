@@ -215,16 +215,16 @@
             <div class="font-extrabold text-sm">1회차 : 아티팩트 & 웹 인터랙션</div>
             <div class="text-[11px] text-slate-500 mt-0.5">클로드 기초·빵집·게임·3D우주·손그림</div>
           </div>
-          <span class="text-xs font-black bg-blue-100 text-blue-800 px-2 py-0.5 rounded-md">4 실습</span>
+          <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">기초</span>
         </button>
 
         <!-- 2회차 -->
         <button onclick="selectDay(2)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-700 hover:bg-slate-50" id="nav-day-2">
           <div>
             <div class="font-extrabold text-sm">2회차 : 프로젝트·랜딩·Git 배포</div>
-            <div class="text-[11px] text-slate-500 mt-0.5">지침·반복스킬·피트니스웹·Git/Vercel</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">지침·반복스킬·피트니스웹·Git/배포</div>
           </div>
-          <span class="text-xs font-black bg-amber-100 text-amber-800 px-2 py-0.5 rounded-md">핵심실무</span>
+          <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">배포</span>
         </button>
 
         <!-- 3회차 (비공개 / 오픈 예정) -->
@@ -315,17 +315,17 @@
           </div>
 
           <div class="pt-2 flex flex-wrap items-center gap-2.5">
-            <button onclick="selectDay(2)" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition-all flex items-center gap-1.5">
-              <span>🚀</span> 2회차 수업 바로가기
+            <button onclick="selectDay(1)" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition-all flex items-center gap-1.5">
+              <span>📖</span> 1회차 실습 (기초·웹제작)
             </button>
-            <button onclick="selectDay(1)" class="px-4 py-2.5 bg-white/10 hover:bg-white/15 text-slate-200 text-xs sm:text-sm font-semibold rounded-xl border border-white/15 transition-all">
-              1회차 복습
+            <button onclick="selectDay(2)" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold rounded-xl border border-white/20 shadow-xs transition-all flex items-center gap-1.5">
+              <span>🚀</span> 2회차 실습 (Git·무료배포)
             </button>
-            <button onclick="selectDay('assignment')" class="px-4 py-2.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs sm:text-sm font-semibold rounded-xl border border-amber-400/30 transition-all flex items-center gap-1.5">
-              <span>📋</span> 과제 갤러리
+            <button onclick="selectDay('assignment')" class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-slate-200 text-xs sm:text-sm font-semibold rounded-xl border border-white/15 transition-all flex items-center gap-1.5">
+              <span>📋</span> 수강생 과제 갤러리
             </button>
             <button onclick="selectDay('guide')" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs sm:text-sm font-medium rounded-xl transition-all">
-              용어 사전 ➔
+              💡 클로드 가이드 & 용어사전
             </button>
           </div>
         </section>
@@ -346,10 +346,10 @@
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             
             <!-- 1회차 카드 -->
-            <div onclick="selectDay(1)" class="group cursor-pointer p-5 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-blue-500 hover:shadow-xs transition-all space-y-3 flex flex-col justify-between">
+            <div onclick="selectDay(1)" class="group cursor-pointer p-5 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 hover:shadow-md transition-all space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-slate-200 text-slate-800 text-xs font-bold">1회차</span>
+                  <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-800 text-xs font-bold">1회차</span>
                   <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200">학습 가능</span>
                 </div>
                 <h4 class="text-base font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors">AI 협업 기초 & 단일 웹페이지 제작</h4>
@@ -357,29 +357,26 @@
                   생성형 AI와 바이브코딩 원리, 클로드 아티팩트(Artifacts) 샌드박스, HTML 웹페이지 생성 및 내 컴퓨터 실행 실습
                 </p>
               </div>
-              <div class="pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs font-bold text-blue-600">
-                <span>기초 실습</span>
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+                <span>기초 실습 (4개 과제)</span>
                 <span>수업 열기 ➔</span>
               </div>
             </div>
 
-            <!-- 2회차 카드 (현재 진행 중 강조) -->
-            <div onclick="selectDay(2)" class="group cursor-pointer p-5 rounded-2xl border-2 border-blue-500 bg-blue-50/30 hover:bg-blue-50/60 hover:shadow-xs transition-all space-y-3 flex flex-col justify-between">
+            <!-- 2회차 카드 -->
+            <div onclick="selectDay(2)" class="group cursor-pointer p-5 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 hover:shadow-md transition-all space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-blue-600 text-white text-xs font-bold">2회차</span>
-                  <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[11px] font-extrabold flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
-                    현재 진행 중
-                  </span>
+                  <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-800 text-xs font-bold">2회차</span>
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200">학습 가능</span>
                 </div>
                 <h4 class="text-base font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors">Git 버전 관리 & 무료 웹 배포</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">
                   Git·GitHub 형상 관리, Netlify 3초 폴더 드롭 배포 및 GitHub Pages 정적 웹 호스팅 실습
                 </p>
               </div>
-              <div class="pt-3 border-t border-blue-200/60 flex items-center justify-between text-xs font-bold text-blue-700">
-                <span>핵심 실무</span>
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-600">
+                <span>배포 실무 (7단계 실습)</span>
                 <span>수업 열기 ➔</span>
               </div>
             </div>
@@ -388,8 +385,8 @@
             <div onclick="selectDay(3)" class="cursor-pointer p-5 rounded-2xl border border-dashed border-slate-300 bg-slate-50/40 hover:bg-white hover:border-slate-400 transition-all space-y-3 flex flex-col justify-between opacity-80">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-slate-200 text-slate-600 text-xs font-bold">3회차</span>
-                  <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[11px] font-medium">10/28 오픈 예정</span>
+                  <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-xs font-bold">3회차</span>
+                  <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[11px] font-medium">오픈 예정</span>
                 </div>
                 <h4 class="text-base font-extrabold text-slate-700">클라우드 DB 연동 & 웹앱 구현</h4>
                 <p class="text-xs text-slate-500 leading-relaxed">
@@ -1655,14 +1652,17 @@
             </p>
           </div>
           <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
-            <button onclick="selectDay(2)" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all">
-              ⬅️ 2회차 수업 복습하기
+            <button onclick="selectDay('home')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all">
+              🏠 과정 안내(홈)으로 이동
             </button>
-            <button onclick="selectDay('home')" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
-              🏠 과정 안내로 이동
+            <button onclick="selectDay(1)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
+              1회차 수업 보기
             </button>
-            <button onclick="selectDay('assignment')" class="px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs sm:text-sm border border-blue-200 transition-all">
-              📋 과제 게시판 둘러보기
+            <button onclick="selectDay(2)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
+              2회차 수업 보기
+            </button>
+            <button onclick="selectDay('assignment')" class="px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs sm:text-sm border border-amber-200 transition-all">
+              📋 과제 갤러리
             </button>
           </div>
         </div>
@@ -1702,14 +1702,17 @@
             </p>
           </div>
           <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
-            <button onclick="selectDay(2)" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all">
-              ⬅️ 2회차 수업 복습하기
+            <button onclick="selectDay('home')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all">
+              🏠 과정 안내(홈)으로 이동
             </button>
-            <button onclick="selectDay('home')" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
-              🏠 과정 안내로 이동
+            <button onclick="selectDay(1)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
+              1회차 수업 보기
             </button>
-            <button onclick="selectDay('assignment')" class="px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs sm:text-sm border border-blue-200 transition-all">
-              📋 과제 게시판 둘러보기
+            <button onclick="selectDay(2)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
+              2회차 수업 보기
+            </button>
+            <button onclick="selectDay('assignment')" class="px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs sm:text-sm border border-amber-200 transition-all">
+              📋 과제 갤러리
             </button>
           </div>
         </div>
@@ -1749,14 +1752,17 @@
             </p>
           </div>
           <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
-            <button onclick="selectDay(2)" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all">
-              ⬅️ 2회차 수업 복습하기
+            <button onclick="selectDay('home')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all">
+              🏠 과정 안내(홈)으로 이동
             </button>
-            <button onclick="selectDay('home')" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
-              🏠 과정 안내로 이동
+            <button onclick="selectDay(1)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
+              1회차 수업 보기
             </button>
-            <button onclick="selectDay('assignment')" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs sm:text-sm shadow-xs transition-all">
-              📋 과제 게시판 둘러보기
+            <button onclick="selectDay(2)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
+              2회차 수업 보기
+            </button>
+            <button onclick="selectDay('assignment')" class="px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs sm:text-sm border border-amber-200 transition-all">
+              📋 과제 갤러리
             </button>
           </div>
         </div>
