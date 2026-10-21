@@ -1782,9 +1782,12 @@
                 수강생들이 직접 제작하고 배포한 과제와 웹사이트 결과물을 서로 확인하고 감상하는 공간입니다.
               </p>
             </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <button onclick="toggleAssignmentForm()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white hover:bg-amber-50 text-amber-950 font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5">
-                <span>✍️</span> 내 과제 등록하기
+            <div class="flex items-center gap-2 shrink-0 flex-wrap sm:flex-nowrap">
+              <button onclick="triggerDirectFileUpload()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-amber-300 hover:bg-amber-200 text-amber-950 font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5 border border-amber-400">
+                <span>📁</span> 파일 직접 올리기
+              </button>
+              <button onclick="toggleAssignmentForm()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white hover:bg-amber-50 text-slate-800 font-extrabold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5">
+                <span>✍️</span> 상세 폼 등록
               </button>
             </div>
           </div>
@@ -1978,6 +1981,37 @@
              [게시판 본체: 1. 갤러리 카드 뷰]
              ============================================== -->
         <div id="boardGalleryView" class="space-y-4">
+          
+          <!-- 📂 과제 갤러리 직통 파일 드롭존 배너 -->
+          <div id="galleryDropBanner"
+               onclick="triggerDirectFileUpload()"
+               ondragover="handleGalleryDirectDragOver(event)"
+               ondragleave="handleGalleryDirectDragLeave(event)"
+               ondrop="handleGalleryDirectDrop(event)"
+               class="border-2 border-dashed border-amber-300 hover:border-amber-500 bg-gradient-to-r from-amber-50 via-orange-50/40 to-amber-50/70 rounded-3xl p-4 sm:p-5 text-center cursor-pointer transition-all group shadow-2xs hover:shadow-md">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div class="flex items-center gap-3 text-left">
+                <div class="w-11 h-11 rounded-2xl bg-amber-500 text-white group-hover:scale-110 transition-transform flex items-center justify-center text-2xl shadow-2xs shrink-0">
+                  📂
+                </div>
+                <div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <strong class="text-xs sm:text-sm font-black text-slate-900">과제 갤러리에 내 파일 직접 올리기 (HTML 즉시 실행 · 이미지)</strong>
+                    <span class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-950 text-[10px] font-black">드래그 & 드롭 지원</span>
+                  </div>
+                  <p class="text-[11px] sm:text-xs text-slate-600 mt-0.5">
+                    컴퓨터에서 다운로드한 <strong>index.html</strong>이나 결과물 이미지를 <strong>여기로 끌어다 놓거나 클릭</strong>하여 갤러리에 바로 등록하세요!
+                  </p>
+                </div>
+              </div>
+              <div class="shrink-0 w-full sm:w-auto">
+                <span class="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-900 group-hover:bg-amber-600 text-white font-extrabold text-xs shadow-2xs transition-colors inline-flex items-center justify-center gap-1.5">
+                  <span>⬆️</span> 파일 선택하기
+                </span>
+              </div>
+            </div>
+          </div>
+
           <div id="assignmentGalleryList" class="grid sm:grid-cols-2 gap-4 sm:gap-5">
             <!-- 자바스크립트로 렌더링됨 -->
           </div>
@@ -2838,6 +2872,99 @@
     </div>
   </div>
 
+  <!-- 과제 갤러리 직통 파일 업로드용 숨김 인풋 -->
+  <input type="file" id="directGalleryFileInput" accept=".html,.htm,.txt,.json,.png,.jpg,.jpeg,.webp,.gif,.css,.js" class="hidden" onchange="handleDirectFileSelect(event)">
+
+  <!-- ==============================================
+       [과제 갤러리 직통 파일 빠른 등록 모달]
+       ============================================== -->
+  <div id="quickUploadModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 transition-all">
+    <div class="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-200 animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- 모달 헤더 -->
+      <div class="bg-gradient-to-r from-amber-600 via-amber-700 to-slate-900 text-white px-5 sm:px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center text-lg">📁</span>
+          <div>
+            <h3 class="text-sm sm:text-base font-black">과제 갤러리에 파일 즉시 등록</h3>
+            <p class="text-[11px] text-amber-100">이름만 적으시면 갤러리에서 즉시 실시간 웹으로 동작합니다</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeQuickUploadModal()" class="p-1.5 rounded-lg bg-black/20 hover:bg-black/30 text-white text-sm font-bold transition-all">
+          ✕
+        </button>
+      </div>
+
+      <!-- 모달 폼 본체 -->
+      <form onsubmit="handleQuickUploadSubmit(event)" class="p-5 sm:p-6 space-y-4">
+        
+        <!-- 첨부된 파일 배지 -->
+        <div class="p-3.5 bg-gradient-to-r from-amber-50 to-orange-50/40 rounded-2xl border border-amber-200 flex items-center justify-between gap-3 shadow-2xs">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="text-2xl shrink-0" id="quickFileIcon">📄</span>
+            <div class="min-w-0">
+              <div class="text-xs font-mono font-bold text-slate-900 truncate" id="quickFileName">index.html</div>
+              <div class="text-[11px] text-slate-500 flex items-center gap-2 mt-0.5">
+                <span id="quickFileSize" class="font-medium">0 KB</span>
+                <span id="quickFileTypeBadge" class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px]">HTML 실시간 실행</span>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="triggerDirectFileUpload()" class="shrink-0 px-2.5 py-1.5 rounded-xl bg-white border border-amber-300 text-amber-950 text-xs font-bold hover:bg-amber-100 transition-colors shadow-2xs">
+            파일 변경
+          </button>
+        </div>
+
+        <!-- 수강생 성명 (필수, 자동 포커스) -->
+        <div>
+          <label class="block text-xs font-black text-slate-800 mb-1">
+            수강생 성명 <span class="text-rose-500">*</span>
+          </label>
+          <input type="text" id="quickStudentName" required placeholder="예: 김영희 수강생"
+                 class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white font-bold transition-all">
+        </div>
+
+        <!-- 회차 선택 -->
+        <div>
+          <label class="block text-xs font-black text-slate-800 mb-1">제출 회차 <span class="text-rose-500">*</span></label>
+          <select id="quickSession" required class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white font-bold text-slate-800">
+            <option value="1회차">1회차 : 아티팩트·웹인터랙션</option>
+            <option value="2회차" selected>2회차 : 프로젝트·랜딩·Git배포</option>
+            <option value="3회차">3회차 : 클라우드DB·온라인메모장</option>
+            <option value="4회차">4회차 : 수업 준비 중 (비공개)</option>
+            <option value="5회차">5회차 : 수업 준비 중 (비공개)</option>
+          </select>
+        </div>
+
+        <!-- 과제 제목 -->
+        <div>
+          <label class="block text-xs font-black text-slate-800 mb-1">과제 제목 <span class="text-rose-500">*</span></label>
+          <input type="text" id="quickAssignmentTitle" required placeholder="예: 2회차 랜딩페이지 실습 완성본"
+                 class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white font-medium transition-all">
+        </div>
+
+        <!-- 한 줄 소감 (선택) -->
+        <div>
+          <label class="block text-xs font-black text-slate-800 mb-1">수업 소감 또는 한 줄 설명 (선택)</label>
+          <input type="text" id="quickStudentFeedback" placeholder="예: 코딩 없이 클로드와 대화해서 10분 만에 웹사이트 완성!"
+                 class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white transition-all">
+        </div>
+
+        <!-- 제출 버튼 -->
+        <div class="pt-2 flex items-center gap-2.5">
+          <button type="submit" class="flex-1 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5">
+            <span>🚀</span> 갤러리에 바로 등록 & 웹 실행
+          </button>
+          <button type="button" onclick="closeQuickUploadModal()" class="px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
+            취소
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
   <!-- ==============================================
        [자바스크립트 인터랙션 & 로컬 저장 로직]
        ============================================== -->
@@ -3065,6 +3192,209 @@
       if (fileInput) fileInput.value = '';
       const badge = document.getElementById('fileSelectedBadge');
       if (badge) badge.classList.add('hidden');
+    }
+
+    // 5-1. 과제 갤러리 직통 파일 업로드 및 빠른 등록 로직
+    function triggerDirectFileUpload() {
+      const fi = document.getElementById('directGalleryFileInput');
+      if (fi) {
+        fi.value = '';
+        fi.click();
+      }
+    }
+
+    function handleDirectFileSelect(e) {
+      if (e.target && e.target.files && e.target.files.length > 0) {
+        openQuickUploadWithFile(e.target.files[0]);
+      }
+    }
+
+    function handleGalleryDirectDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const banner = document.getElementById('galleryDropBanner');
+      if (banner) {
+        banner.classList.add('border-amber-600', 'bg-amber-100/70', 'scale-[1.01]');
+      }
+    }
+
+    function handleGalleryDirectDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const banner = document.getElementById('galleryDropBanner');
+      if (banner) {
+        banner.classList.remove('border-amber-600', 'bg-amber-100/70', 'scale-[1.01]');
+      }
+    }
+
+    function handleGalleryDirectDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const banner = document.getElementById('galleryDropBanner');
+      if (banner) {
+        banner.classList.remove('border-amber-600', 'bg-amber-100/70', 'scale-[1.01]');
+      }
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        openQuickUploadWithFile(e.dataTransfer.files[0]);
+      }
+    }
+
+    function openQuickUploadWithFile(file) {
+      if (!file) return;
+
+      const MAX_SIZE = 3 * 1024 * 1024;
+      if (file.size > MAX_SIZE) {
+        alert('파일 용량이 3MB를 초과합니다. 3MB 이하의 파일을 선택해주세요.');
+        return;
+      }
+
+      const fileName = file.name;
+      const ext = fileName.slice((fileName.lastIndexOf(".") - 1 >>> 0) + 2).toLowerCase();
+      const isHtml = ['html', 'htm'].includes(ext) || file.type === 'text/html';
+      const isImage = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg'].includes(ext) || file.type.startsWith('image/');
+
+      const reader = new FileReader();
+
+      function onLoaded(data) {
+        currentUploadedFileData = {
+          name: fileName,
+          type: isImage ? (file.type || 'image/png') : isHtml ? 'text/html' : (file.type || 'text/plain'),
+          size: file.size,
+          data: data,
+          isHtml: isHtml,
+          isImage: isImage
+        };
+
+        const modal = document.getElementById('quickUploadModal');
+        const nameEl = document.getElementById('quickFileName');
+        const sizeEl = document.getElementById('quickFileSize');
+        const iconEl = document.getElementById('quickFileIcon');
+        const badgeEl = document.getElementById('quickFileTypeBadge');
+        const titleInput = document.getElementById('quickAssignmentTitle');
+        const nameInput = document.getElementById('quickStudentName');
+        const sessionSelect = document.getElementById('quickSession');
+
+        if (nameEl) nameEl.innerText = fileName;
+        if (sizeEl) sizeEl.innerText = formatFileSize(file.size);
+        if (iconEl) iconEl.innerText = isHtml ? '🥐' : isImage ? '🖼️' : '📄';
+
+        if (badgeEl) {
+          if (isHtml) {
+            badgeEl.innerText = '🖥️ HTML 실시간 실행 지원';
+            badgeEl.className = 'px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px]';
+          } else if (isImage) {
+            badgeEl.innerText = '🖼️ 이미지 원본 뷰어 지원';
+            badgeEl.className = 'px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold text-[10px]';
+          } else {
+            badgeEl.innerText = '📄 파일 다운로드 지원';
+            badgeEl.className = 'px-2 py-0.5 rounded bg-slate-200 text-slate-800 font-bold text-[10px]';
+          }
+        }
+
+        if (titleInput) {
+          const baseName = fileName.replace(/\.[^/.]+$/, "");
+          titleInput.value = `${baseName} 실습 완성 작품`;
+        }
+
+        const rememberedName = localStorage.getItem('vibe_student_name');
+        if (nameInput && rememberedName) {
+          nameInput.value = rememberedName;
+        }
+
+        if (sessionSelect && currentDay && typeof currentDay === 'number') {
+          sessionSelect.value = `${currentDay}회차`;
+        }
+
+        if (modal) {
+          modal.classList.remove('hidden');
+          setTimeout(() => {
+            if (nameInput && !nameInput.value) nameInput.focus();
+            else if (titleInput) titleInput.focus();
+          }, 100);
+        }
+      }
+
+      if (isImage) {
+        reader.onload = (e) => onLoaded(e.target.result);
+        reader.readAsDataURL(file);
+      } else {
+        reader.onload = (e) => onLoaded(e.target.result);
+        reader.readAsText(file, 'utf-8');
+      }
+    }
+
+    function closeQuickUploadModal() {
+      const modal = document.getElementById('quickUploadModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function handleQuickUploadSubmit(e) {
+      e.preventDefault();
+
+      if (!currentUploadedFileData) {
+        alert('업로드할 파일이 준비되지 않았습니다. 파일을 다시 선택해주세요.');
+        return;
+      }
+
+      const name = document.getElementById('quickStudentName').value.trim();
+      const day = document.getElementById('quickSession').value;
+      const title = document.getElementById('quickAssignmentTitle').value.trim();
+      const feedback = document.getElementById('quickStudentFeedback').value.trim();
+
+      if (!name) {
+        alert('수강생 성명을 입력해주세요.');
+        document.getElementById('quickStudentName').focus();
+        return;
+      }
+
+      localStorage.setItem('vibe_student_name', name);
+
+      const now = new Date();
+      const formattedDate = `${now.getMonth() + 1}월 ${now.getDate()}일 ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+      const newAssignment = {
+        id: Date.now(),
+        date: formattedDate,
+        name,
+        day,
+        type: '파일업로드',
+        title: title || `${currentUploadedFileData.name} 실습 작품`,
+        content: `[업로드된 파일] ${currentUploadedFileData.name} (${formatFileSize(currentUploadedFileData.size)})`,
+        feedback,
+        fileData: currentUploadedFileData.data,
+        fileName: currentUploadedFileData.name,
+        fileSize: currentUploadedFileData.size,
+        isHtml: !!currentUploadedFileData.isHtml,
+        isImage: !!currentUploadedFileData.isImage,
+        likes: 0,
+        isMyRecent: true
+      };
+
+      const list = getAssignments();
+      list.unshift(newAssignment);
+      saveAssignments(list);
+
+      closeQuickUploadModal();
+      renderBoard(true);
+      broadcastUpdate();
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.6 }
+        });
+      }
+
+      showToast('과제가 갤러리에 등록되었습니다! 🎉', '실시간 실행 화면을 엽니다...');
+
+      setTimeout(() => {
+        if (newAssignment.isHtml) {
+          openPreviewModal(newAssignment.fileData, newAssignment.title, true);
+        } else if (newAssignment.isImage) {
+          openImagePreviewModal(newAssignment.fileData, newAssignment.title);
+        }
+      }, 400);
     }
 
     // 6. 실시간 키워드 검색
@@ -3492,16 +3822,40 @@
 
       // 1. 갤러리 카드 뷰 렌더링
       if (galleryList) {
+        const uploadPromptCard = `
+          <div onclick="triggerDirectFileUpload()"
+               ondragover="handleGalleryDirectDragOver(event)"
+               ondragleave="handleGalleryDirectDragLeave(event)"
+               ondrop="handleGalleryDirectDrop(event)"
+               class="border-2 border-dashed border-amber-300 hover:border-amber-500 bg-gradient-to-br from-amber-50/70 via-white to-orange-50/40 hover:bg-amber-50/80 rounded-3xl p-5 sm:p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all space-y-3 group min-h-[220px] shadow-2xs hover:shadow-md">
+            <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all flex items-center justify-center text-3xl shadow-2xs">
+              ➕
+            </div>
+            <div class="space-y-1">
+              <h4 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-amber-900 transition-colors">
+                내 과제 파일 직접 올려서 갤러리에 등록하기
+              </h4>
+              <p class="text-xs text-slate-500 max-w-xs leading-relaxed">
+                클로드에서 저장한 <strong>index.html</strong>이나 결과물 이미지를 마우스로 끌어다 놓으세요. 갤러리에서 즉시 실행됩니다!
+              </p>
+            </div>
+            <span class="px-4 py-2 rounded-xl bg-amber-500 group-hover:bg-amber-600 text-white font-extrabold text-xs shadow-2xs transition-colors inline-flex items-center gap-1.5">
+              <span>📁</span> 파일 끌어다 놓기 또는 선택
+            </span>
+          </div>
+        `;
+
         if (filtered.length === 0) {
           galleryList.innerHTML = `
-            <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-slate-300 p-8 space-y-2">
-              <span class="text-4xl block">🔍</span>
-              <p class="text-sm font-bold text-slate-700">해당 조건에 맞는 과제가 없습니다.</p>
-              <p class="text-xs text-slate-400">상단의 [내 과제 / 결과물 등록하기] 버튼을 눌러 첫 번째 과제를 올려보세요!</p>
+            ${uploadPromptCard}
+            <div class="col-span-full sm:col-span-1 text-center py-10 bg-white rounded-3xl border border-dashed border-slate-300 p-8 space-y-2 flex flex-col items-center justify-center">
+              <span class="text-3xl block">🔍</span>
+              <p class="text-sm font-bold text-slate-700">해당 조건에 일치하는 등록 과제가 없습니다.</p>
+              <p class="text-xs text-slate-400">옆의 파일 등록 카드를 눌러 첫 번째 과제를 올려보세요!</p>
             </div>
           `;
         } else {
-          galleryList.innerHTML = filtered.map(item => {
+          galleryList.innerHTML = uploadPromptCard + filtered.map(item => {
             const col = getDayColor(item.day);
             const isLink = isUrl(item.content);
             const hasHtmlFile = item.fileData && (item.isHtml || (item.fileName && (item.fileName.endsWith('.html') || item.fileName.endsWith('.htm'))));
