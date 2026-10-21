@@ -1,0 +1,15 @@
+*.py
+*.json
+*.txt
+transcripts/
+transcripts_2nd/
+*.log
+line_177_backup.html
+temp_site_at_345.html
+version_at_177.html
+restored_at_403.html
+coremate_page.html
+course_guide.html
+current_playlist.html
+final_restored_website.html
+playlist_page.html
