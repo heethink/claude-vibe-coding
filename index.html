@@ -160,6 +160,9 @@
         <button onclick="selectDay(2)" id="top-nav-2" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1.5">
           <span>2회차</span> <span class="text-[10px] text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded font-black">배포</span>
         </button>
+        <button onclick="selectDay(3)" id="top-nav-3" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1.5">
+          <span>3회차</span> <span class="text-[10px] text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded font-black">스킬·DB</span>
+        </button>
         <button onclick="selectDay('assignment')" id="top-nav-assignment" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-amber-900 hover:bg-white flex items-center gap-1.5 text-amber-800">
           <span>📋</span> 과제 갤러리
         </button>
@@ -186,7 +189,7 @@
       <button onclick="selectDay('home')" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700 m-tab-active" id="m-tab-home">🏠 과정안내</button>
       <button onclick="selectDay(1)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-1">1회차 : 아티팩트·웹인터랙션</button>
       <button onclick="selectDay(2)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-2">2회차 : 프로젝트·랜딩·Git배포</button>
-      <button onclick="selectDay(3)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-slate-100 border border-slate-200 text-slate-400" id="m-tab-3">🔒 3회차 (오픈 예정)</button>
+      <button onclick="selectDay(3)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-3">3회차 : AI스킬·피트니스·로컬서버·DB</button>
       <button onclick="selectDay(4)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-slate-100 border border-slate-200 text-slate-400" id="m-tab-4">🔒 4회차 (비공개)</button>
       <button onclick="selectDay(5)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-slate-100 border border-slate-200 text-slate-400" id="m-tab-5">🔒 5회차 (비공개)</button>
       <button onclick="selectDay('assignment')" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-amber-50 border border-amber-200 text-amber-800" id="m-tab-assignment">📋 과제 공유 갤러리</button>
@@ -267,16 +270,13 @@
           <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">배포</span>
         </button>
 
-        <!-- 3회차 (비공개 / 오픈 예정) -->
-        <button onclick="selectDay(3)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-400 hover:bg-slate-50 opacity-75" id="nav-day-3">
+        <!-- 3회차 -->
+        <button onclick="selectDay(3)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-700 hover:bg-slate-50" id="nav-day-3">
           <div>
-            <div class="font-extrabold text-sm flex items-center gap-1.5">
-              <span>🔒</span>
-              <span>3회차 : 클라우드 DB 연동</span>
-            </div>
-            <div class="text-[11px] text-slate-400 mt-0.5">순차 오픈 예정</div>
+            <div class="font-extrabold text-sm">3회차 : AI 스킬·랜딩·로컬서버·DB</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">스킬원리·피트니스MVP·카피라이팅·서버·DB</div>
           </div>
-          <span class="text-[11px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-md">오픈 예정</span>
+          <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md">실습</span>
         </button>
 
         <!-- 4회차 (비공개 / 오픈 예정) -->
@@ -425,23 +425,26 @@
               </div>
             </div>
 
-            <!-- 3회차 카드 (오픈 예정) -->
-            <div onclick="selectDay(3)" class="cursor-pointer p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-dashed border-slate-300 bg-slate-50/40 hover:bg-white hover:border-slate-400 transition-all space-y-2.5 sm:space-y-3 flex flex-col justify-between opacity-80">
+            <!-- 3회차 카드 (공개) -->
+            <div onclick="selectDay(3)" class="cursor-pointer p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:shadow-md transition-all space-y-2.5 sm:space-y-3 flex flex-col justify-between group">
               <div class="space-y-1.5 sm:space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-xs font-bold">3회차</span>
-                  <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[11px] font-medium">오픈 예정</span>
+                  <span class="px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">3회차</span>
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    공개 수업
+                  </span>
                 </div>
-                <h4 class="text-sm sm:text-base font-extrabold text-slate-700 leading-snug">
-                  클라우드 DB 연동 & 웹앱 구현
+                <h4 class="text-sm sm:text-base font-extrabold text-slate-800 group-hover:text-emerald-700 leading-snug transition-colors">
+                  AI 스킬(Skills) 장착 & 피트니스 랜딩페이지, 로컬 서버, 클라우드 DB 연동
                 </h4>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                  Supabase 클라우드 데이터베이스 연동, 모바일-PC 실시간 동기화 온라인 메모장 구축
+                  SKILL.md 원리와 카피라이팅 스킬 적용, 피트니스 MVP 랜딩페이지 제작, 로컬 정적 웹 서버 구동, 클라우드 DB 연동 온라인 메모장 웹앱 구축
                 </p>
               </div>
-              <div class="pt-2.5 sm:pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs font-medium text-slate-400">
-                <span>데이터베이스</span>
-                <span>🔒 준비 중</span>
+              <div class="pt-2.5 sm:pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-600">
+                <span>실습 프로젝트 (4개 마스터)</span>
+                <span>수업 열기 ➔</span>
               </div>
             </div>
 
@@ -1634,7 +1637,7 @@
         <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200 flex items-center justify-between">
           <div>
             <div class="text-xs text-amber-800 font-bold">2회차 Git & 배포 실습을 모두 마치셨나요?</div>
-            <div class="font-extrabold text-slate-900 text-sm">3회차: 클라우드 데이터베이스(Supabase) 연동 웹앱으로 이동하기</div>
+            <div class="font-extrabold text-slate-900 text-sm">3회차: AI 스킬(Skills) 장착, 피트니스 MVP 랜딩, 로컬 서버, 클라우드 DB 연동으로 이동하기</div>
           </div>
           <button onclick="selectDay(3)" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold transition-all">
             3회차로 이동 ➔
@@ -1644,51 +1647,589 @@
       </article>
 
       <!-- ==============================================
-           [3회차 콘텐츠 - 비공개 / 오픈 예정 상태]
+           [3회차 콘텐츠 - 공개 수업 자료]
            ============================================== -->
-      <article id="day-section-3" class="day-article hidden space-y-6">
+      <article id="day-section-3" class="day-article hidden space-y-8">
         
-        <div class="bg-gradient-to-r from-slate-800 via-slate-900 to-indigo-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm space-y-3">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-mono font-bold border border-white/30">CLAUDE VIBE CODING</span>
-            <span class="px-3 py-1 rounded-full bg-rose-500 text-white text-xs font-black flex items-center gap-1">
-              <span>🔒</span> 수업 준비 중 (비공개)
+        <!-- 차시 헤더 -->
+        <div class="bg-gradient-to-r from-emerald-800 via-teal-900 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm space-y-3">
+          <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <span class="px-2.5 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-bold border border-emerald-400/30">3회차 정규과정</span>
+            <span class="px-2.5 py-1 rounded-full bg-teal-400/20 text-teal-200 text-xs font-bold border border-teal-400/30">AI 스킬(Skills) · 피트니스 MVP 랜딩 · 로컬 서버 · 클라우드 DB 연동</span>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-500 text-slate-950 text-xs font-black flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse"></span>
+              OPEN NOW
             </span>
           </div>
-          <div>
-            <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-snug">
-              <span class="inline-block">3회차 : 클라우드 데이터베이스 연동,</span> <span class="inline-block">웹앱, 클라우드 구현</span>
-            </h2>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-1">
-              본 회차 수업 내용은 정규 강의 일정(2026년 10월 28일)에 맞춰 순차적으로 공개됩니다.
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-snug">
+            <span class="inline-block">3회차 : AI 스킬(Skills) 전문화,</span> <span class="inline-block">피트니스 MVP 랜딩페이지 &</span> <span class="inline-block">로컬 웹 서버, 클라우드 DB 연동</span>
+          </h2>
+          <p class="text-emerald-100 text-xs sm:text-sm leading-relaxed max-w-4xl">
+            처음부터 10가지를 다 하려다 실패하지 않고, '상담 신청 확보' 딱 한 가지 핵심 가치에 집중하는 <strong>MVP(최소 기능 제품)</strong> 사고방식을 마스터합니다. 
+            스마트폰에 앱을 깔듯 AI에게 전문가의 표준 작업 매뉴얼을 주입하는 <strong>스킬(Skills)의 원리와 SKILL.md</strong>를 배우고, 
+            <strong>모던 다크모드 피트니스 클럽 랜딩페이지</strong>를 제작한 뒤 <strong>AIDA 카피라이팅 스킬</strong>로 고객 후킹 문구를 극대화합니다. 
+            더불어 <code>file://</code>과 <strong>로컬 정적 웹 서버(http://localhost:8080)</strong>의 차이를 직접 체험하고, 
+            <strong>클라우드 데이터베이스(Supabase / 실시간 스토리지) 연동 메모장 웹앱</strong>을 구축하여 실시간 과제 갤러리에 배포합니다!
+          </p>
+
+          <!-- 3회차 퀵 실습 네비게이션 배너 -->
+          <div class="mt-4 pt-4 border-t border-emerald-700/50 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <span class="bg-emerald-400 text-slate-950 font-black text-xs px-2.5 py-1 rounded-full shadow-xs">4대 실습</span>
+              <span class="text-xs sm:text-sm font-bold text-white">피트니스 MVP ➔ AIDA 카피라이팅 ➔ 로컬 정적 서버 ➔ 클라우드 DB 웹앱</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="selectDay('assignment')" class="inline-flex items-center gap-1.5 bg-white text-slate-900 hover:bg-emerald-50 text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition">
+                <span>📋 과제 갤러리 확인</span>
+              </button>
+              <button onclick="openUploadModal()" class="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black px-3.5 py-2 rounded-xl shadow-sm transition">
+                <span>🚀 3회차 과제 즉시 제출</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. 교육 일정 & 강좌 정보 카드 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex items-center justify-between flex-wrap gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-black text-xl shrink-0">📅</div>
+            <div>
+              <span class="text-xs font-bold text-slate-400">동구평생학습관 AI 바이브코딩 실무 3회차</span>
+              <div class="text-base font-extrabold text-slate-900">2026년 10월 28일 (수요일)</div>
+              <p class="text-xs text-slate-500 mt-0.5">AI 스킬(Skills) 장착, 피트니스 MVP 랜딩페이지, 로컬 웹 서버, 클라우드 DB 실시간 연동</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 font-bold border border-slate-200">Claude 5.5 Sonnet</span>
+            <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 font-bold border border-slate-200">Tailwind CSS CDN</span>
+            <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 font-bold border border-emerald-200">Supabase & Blob</span>
+          </div>
+        </div>
+
+        <!-- 2. 핵심 학습 목표 (10대 마스터 과제) -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">🎯</span>
+              3회차 핵심 학습 목표 (10대 마스터 과제)
+            </h3>
+            <span class="text-xs text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded-md">실무 핵심 역량</span>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-slate-700">
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>MVP(최소 기능 제품) 사고방식</strong>: 10가지를 분산하지 않고 '상담 신청 확보' 딱 1가지 핵심 가치에 집중</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>랜딩페이지 vs 홈페이지 차이</strong>: 방대한 메뉴 구조 대신 단일 페이지 스크롤과 전환율(CVR) 극대화 구조 이해</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>AI 스킬(Skills)의 원리</strong>: 스마트폰 앱처럼 전문가의 표준 작업 매뉴얼(<code>SKILL.md</code>)을 AI에 장착</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>전역 스킬 vs 프로젝트 스킬</strong>: 내 PC 전체 공용 도구와 특정 프로젝트 전용 스킬의 격리 원리 구분</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>피트니스 MVP 랜딩페이지 제작</strong>: 강렬한 다크모드, 3종 특장점, 트레이너 프로필, 예약 폼 단일 HTML 구현</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>AIDA 카피라이팅 스킬 주입</strong>: Attention(주의) ➔ Interest(흥미) ➔ Desire(욕구) ➔ Action(행동) 문구 업그레이드</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>file:// vs http://localhost 차이</strong>: 로컬 하드 파일 열기의 보안 제약(CORS/권한)과 가상 웹서버의 필요성 체득</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>로컬 정적 웹 서버 1초 구동</strong>: <code>python3 -m http.server 8080</code> 명령어로 내 컴퓨터를 실시간 간이 방송국으로 전환</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>클라우드 DB 연동 원리</strong>: 로컬 저장소 한계를 넘어 Supabase / 클라우드 API를 통한 실시간 CRUD 동기화 체득</span>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100 sm:col-span-2 lg:col-span-1">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span><strong>실시간 과제 갤러리 배포</strong>: 완성된 랜딩페이지 & 메모장 웹앱을 파일 및 URL로 과제 갤러리에 즉시 등록 공유</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 상세 핵심 이론 & 구조 카드 (6대 핵심 개념) -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 shadow-xs">
+          <div class="border-b border-slate-100 pb-4 flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h3 class="text-lg sm:text-xl font-black text-slate-900 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-base">📖</span>
+                3회차 핵심 이론 & 바이브코딩 구조 완전 정복
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">MVP 전략부터 AI 스킬 장착, 로컬 웹 서버, 클라우드 DB까지 실무 6대 핵심 원리입니다.</p>
+            </div>
+            <span class="text-xs text-emerald-800 font-bold bg-emerald-50 px-2.5 py-1 rounded-md">실무 핵심 이론</span>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700">
+
+            <!-- 개념 1: MVP(최소 기능 제품) 사고방식 & AI 업무 위임의 원칙 -->
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3 md:col-span-2">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded bg-emerald-600 text-white font-black text-[11px]">개념 1</span>
+                  <strong class="text-slate-900 text-base">MVP(최소 기능 제품) 사고방식 & AI 업무 위임의 원칙</strong>
+                </div>
+                <span class="text-xs text-emerald-800 font-bold bg-emerald-100 px-2.5 py-1 rounded-md">기획 필승 전략</span>
+              </div>
+
+              <!-- 실전 핵심 조언 콜아웃 -->
+              <div class="p-4 bg-emerald-50/80 border-l-4 border-emerald-500 rounded-r-xl text-slate-800 leading-relaxed space-y-1.5">
+                <div class="font-extrabold text-emerald-900 flex items-center gap-1.5">
+                  <span>💡</span> 실전 핵심 조언 (강의 하이라이트)
+                </div>
+                <p class="text-xs sm:text-sm text-slate-700">
+                  "처음부터 결제 시스템, 복잡한 회원가입, 화려한 관리자 화면 10가지를 다 하려고 하면 백퍼센트 망합니다. <strong>한 가지 핵심 가치에 집중</strong>해야 합니다. 
+                  내가 헬스장을 운영하는데 종이 전단지만 돌리기 아쉬워서 온라인에 우리 헬스장 장점을 알리고 상담 신청을 받아 고객 전화번호를 모으는 것! 
+                  딱 이 <strong>'상담 신청 확보' 하나에만 집중해서 가장 작게 빠르게 만드는 것</strong>, 이게 바로 MVP입니다."
+                </p>
+              </div>
+
+              <!-- 용어 사전 그리드 -->
+              <div class="grid sm:grid-cols-2 gap-3 pt-1">
+                <div class="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1 shadow-2xs">
+                  <div class="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+                    <span class="text-emerald-600">🎯</span> MVP (Minimum Viable Product, 최소 기능 제품)
+                  </div>
+                  <p class="text-slate-600 text-xs leading-relaxed">
+                    고객이 우리 서비스를 이용하는 데 꼭 필요한 <strong>'핵심 기능 딱 한 가지'</strong>만 갖추어 가장 빠르고 저렴하게 세상에 내놓고 고객 반응을 검증하는 시제품입니다.
+                  </p>
+                </div>
+                <div class="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1 shadow-2xs">
+                  <div class="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+                    <span class="text-blue-600">🛬</span> 랜딩 페이지 (Landing Page)
+                  </div>
+                  <p class="text-slate-600 text-xs leading-relaxed">
+                    온라인 광고나 SNS 링크를 누른 고객이 가장 먼저 착륙(Landing)하여, 스크롤을 내리며 매력을 느끼고 최종적으로 <strong>'상담 신청'이나 '체험 예약' 버튼을 누르도록 설계된 1페이지 웹사이트</strong>입니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 개념 2: 바이브코딩 PRD(Product Requirements Document, 제품 설계도) -->
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded bg-blue-600 text-white font-black text-[11px]">개념 2</span>
+                <strong class="text-slate-900 text-sm">바이브코딩 PRD(제품 요구사항 정의서) 작성법</strong>
+              </div>
+              <p class="text-slate-600 leading-relaxed text-xs">
+                AI에게 "알아서 잘 만들어줘"라고 요청하면 AI는 온갖 불필요한 코드를 상상으로 채워 넣습니다. 
+                AI에게 개발을 위임할 때는 아래 <strong>4대 PRD 요소</strong>를 명확히 선언해야 합니다:
+              </p>
+              <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1 text-xs">
+                <div>• <strong>1. 목적(Goal)</strong>: 신규 방문자의 1회 무료 PT 상담 예약 접수</div>
+                <div>• <strong>2. 타깃(Target)</strong>: 퇴근 후 운동을 시작하고 싶은 2040 직장인</div>
+                <div>• <strong>3. 핵심 기능(Must-have)</strong>: 히어로 배너, 3종 특장점, 강사 프로필, 폼 입력</div>
+                <div>• <strong>4. 배제 기능(Not-to-do)</strong>: 결제창, 로그인 기능 제외 (MVP 범위 통제)</div>
+              </div>
+            </div>
+
+            <!-- 개념 3: AI 스킬(Skills)이란 무엇인가? -->
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded bg-purple-600 text-white font-black text-[11px]">개념 3</span>
+                <strong class="text-slate-900 text-sm">AI 스킬(Skills)과 SKILL.md 표준 작업 매뉴얼</strong>
+              </div>
+              <p class="text-slate-600 leading-relaxed text-xs">
+                AI에게 "세련되게 써줘"라고 하면 기준이 모호합니다. 
+                스마트폰에 앱을 깔듯 전문가의 작업 지침을 담은 <strong>표준 작업 매뉴얼(<code>SKILL.md</code>)</strong>을 AI에게 쥐어주면, 
+                AI가 그 규칙대로 전문가 수준의 결과물을 일관되게 산출합니다.
+              </p>
+              
+              <!-- 일반 프롬프트 vs 스킬 장착 시각 비교 -->
+              <div class="grid grid-cols-2 gap-2 pt-1 text-[11px]">
+                <div class="p-2.5 bg-rose-50 rounded-xl border border-rose-200 space-y-1">
+                  <div class="font-bold text-rose-800">❌ 일반 AI 프롬프트</div>
+                  <div class="text-slate-600">"멋진 헬스장 문구 써줘"</div>
+                  <div class="text-rose-700 font-semibold mt-1">➔ 밋밋한 결과: "건강을 위해 운동하세요"</div>
+                </div>
+                <div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200 space-y-1">
+                  <div class="font-bold text-emerald-800">✅ 카피라이팅 스킬 장착</div>
+                  <div class="text-slate-600">"AIDA 공식 & 결핍/숫자 규칙"</div>
+                  <div class="text-emerald-700 font-semibold mt-1">➔ 후킹 카피: "30일 만에 달라지는 바디라인, 첫 방문 1:1 체형분석 무료"</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 개념 4: 전환율을 극대화하는 AIDA 카피라이팅 공식 -->
+            <div class="p-5 bg-gradient-to-br from-amber-50 to-orange-50/60 rounded-2xl border border-amber-300 space-y-3 md:col-span-2">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded bg-amber-600 text-white font-black text-[11px]">개념 4</span>
+                  <strong class="text-slate-900 text-base">전환율(CVR)을 폭발시키는 AIDA 카피라이팅 공식</strong>
+                </div>
+                <span class="text-xs text-amber-800 font-bold bg-amber-100 px-2.5 py-1 rounded-md">마케팅 필승 공식</span>
+              </div>
+              <p class="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                웹사이트 디자인이 아무리 예뻐도 문구가 <em>"헬스장입니다. 운동하러 오세요"</em> 수준이면 고객은 3초 만에 이탈합니다. 
+                고객이 겪고 있는 고통(다이어트 실패, 바쁜 직장인의 체력 저하)을 콕 찔러주고, 무료 체험이라는 확실한 혜택을 제시해야 신청 버튼을 누릅니다!
+              </p>
+              
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+                <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-2xs space-y-1">
+                  <span class="px-2 py-0.5 rounded bg-red-100 text-red-700 font-black text-[10px]">A (Attention)</span>
+                  <div class="font-extrabold text-slate-900">1. 시선 강탈(주의)</div>
+                  <p class="text-slate-600 text-[11px] leading-snug">고객의 숨은 결핍이나 고통을 직접 찌르는 강력한 헤드라인</p>
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-2xs space-y-1">
+                  <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-black text-[10px]">I (Interest)</span>
+                  <div class="font-extrabold text-slate-900">2. 흥미 유발(관심)</div>
+                  <p class="text-slate-600 text-[11px] leading-snug">구체적인 숫자(30일, 98% 만족도)와 차별화된 머신/샤워룸 소개</p>
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-2xs space-y-1">
+                  <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-black text-[10px]">D (Desire)</span>
+                  <div class="font-extrabold text-slate-900">3. 욕구 자극(갈망)</div>
+                  <p class="text-slate-600 text-[11px] leading-snug">5만 원 상당 1:1 체형분석 리포트 무료 증정 등 거절할 수 없는 제안</p>
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-amber-200 shadow-2xs space-y-1">
+                  <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-black text-[10px]">A (Action)</span>
+                  <div class="font-extrabold text-slate-900">4. 즉각 행동(예약)</div>
+                  <p class="text-slate-600 text-[11px] leading-snug">"선착순 10명 한정! 지금 무료 체험 신청하기" 마감 임박 CTA</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 개념 5: file:// vs http://localhost 차이점 -->
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded bg-teal-600 text-white font-black text-[11px]">개념 5</span>
+                <strong class="text-slate-900 text-sm">file:// 파일 열기 vs http://localhost 로컬 웹 서버</strong>
+              </div>
+              <p class="text-slate-600 leading-relaxed text-xs">
+                브라우저에서 HTML 파일을 더블클릭해 여는 방식(<code>file://</code>)과 
+                터미널로 웹 서버를 띄워 여는 방식(<code>http://localhost:8080</code>)은 결정적 차이가 있습니다:
+              </p>
+              <div class="space-y-1.5 text-xs text-slate-600">
+                <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                  <strong class="text-slate-800">• file:// 프로토콜 (하드디스크 직접 읽기)</strong><br>
+                  브라우저의 보안 정책으로 인해 카메라/마이크 권한, 로컬 JSON 데이터 비동기 호출(CORS), 외부 API 연동 시 보안 차단 오류가 발생합니다.
+                </div>
+                <div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-950">
+                  <strong class="text-emerald-900">• http://localhost (로컬 정적 웹 서버)</strong><br>
+                  내 컴퓨터 안에 가상 웹서버(방송국)를 차려 실제 <code>naver.com</code> 같은 인터넷 서버에 접속한 것과 100% 동일한 환경을 제공합니다.
+                </div>
+              </div>
+            </div>
+
+            <!-- 개념 6: 클라우드 데이터베이스(Supabase / 실시간 스토리지)와 동기화 -->
+            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded bg-indigo-600 text-white font-black text-[11px]">개념 6</span>
+                <strong class="text-slate-900 text-sm">클라우드 데이터베이스(DB)와 기기간 실시간 동기화</strong>
+              </div>
+              <p class="text-slate-600 leading-relaxed text-xs">
+                1회차에서 배운 <code>localStorage</code>는 내 컴퓨터 한 대의 브라우저 안에만 갇혀 있어서, 스마트폰으로 접속하거나 다른 사람과 공유할 수 없습니다.
+              </p>
+              <div class="space-y-1.5 text-xs text-slate-600">
+                <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                  <strong class="text-slate-800">• 클라우드 DB의 핵심 역할</strong><br>
+                  데이터를 내 기기가 아닌 안전한 인터넷 클라우드 서버(Supabase, Vercel Blob 등)에 저장하여, <strong>스마트폰, 태블릿, PC 어디서든 실시간 CRUD(생성·조회·수정·삭제)</strong>가 동기화됩니다.
+                </div>
+                <div class="p-2.5 bg-indigo-50 rounded-xl border border-indigo-200 text-indigo-950">
+                  <strong class="text-indigo-900">• 과제 공유 시스템의 원리</strong><br>
+                  우리가 구축한 실시간 과제 갤러리 역시 Vercel Blob 클라우드 스토리지를 통해 전 세계 어디서든 누구나 실시간으로 과제를 확인하고 공유할 수 있습니다!
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 4. 실전 실습 (4대 단계별 실무 가이드 & 프롬프트) -->
+        <div class="space-y-6">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h3 class="text-lg font-black text-slate-900 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-base">🛠️</span>
+                3회차 4대 단계별 실전 실습 가이드 (피트니스 MVP · AIDA 카피 · 로컬서버 · 클라우드DB)
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">프롬프트를 원클릭 복사하여 클로드 또는 ChatGPT에 붙여넣고 실시간 프로젝트를 완성하세요.</p>
+            </div>
+            <span class="text-xs text-slate-500 font-medium">원클릭 복사 지원</span>
+          </div>
+
+          <!-- 실습 1: 피트니스 클럽 MVP 랜딩페이지 제작 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">실습 1</span>
+                <h4 class="text-base font-extrabold text-slate-900">모던 다크모드 피트니스 클럽 MVP 랜딩페이지 단일 파일 제작</h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                방문자의 시선을 단번에 사로잡는 프리미엄 다크 모드 스타일의 피트니스 센터 랜딩페이지를 단일 파일(<code>index.html</code>)로 신속히 제작합니다.
+              </p>
+            </div>
+
+            <!-- 단계별 가이드 박스 -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2 text-xs">
+              <div class="font-bold text-slate-900 flex items-center gap-1.5">
+                <span>📋</span> 단계별 따라 하기 절차:
+              </div>
+              <div class="grid sm:grid-cols-4 gap-2 text-slate-700">
+                <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                  <div class="font-bold text-emerald-700">1단계 폴더 생성</div>
+                  <div class="text-[11px] mt-0.5">바탕화면에 <code>fitness-club</code> 폴더를 만듭니다.</div>
+                </div>
+                <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                  <div class="font-bold text-emerald-700">2단계 AI 연결</div>
+                  <div class="text-[11px] mt-0.5">Claude 또는 ChatGPT에 폴더를 연결합니다.</div>
+                </div>
+                <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                  <div class="font-bold text-emerald-700">3단계 프롬프트 전송</div>
+                  <div class="text-[11px] mt-0.5">아래 실전 프롬프트를 복사하여 붙여넣습니다.</div>
+                </div>
+                <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                  <div class="font-bold text-emerald-700">4단계 브라우저 확인</div>
+                  <div class="text-[11px] mt-0.5">생성된 <code>index.html</code>을 열어 디자인을 확인합니다.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative bg-slate-900 text-slate-200 rounded-xl p-4 pt-11 border border-slate-800">
+              <div class="absolute top-3 left-4 text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+                <span>💬</span> 실전 프롬프트 (피트니스 클럽 MVP 랜딩페이지)
+              </div>
+              <button onclick="copyCode('prompt-r3-1')" class="absolute top-2.5 right-3 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1">
+                <span>📋</span> 복사하기
+              </button>
+              <pre id="prompt-r3-1" class="text-xs sm:text-sm leading-relaxed text-slate-100 font-mono whitespace-pre-wrap">당신은 최고급 프리미엄 피트니스 클럽의 수석 마케터이자 UI 디자이너입니다.
+신규 회원의 상담 신청을 유도하기 위한 모던한 헬스장 랜딩페이지를 index.html 단일 파일로 만들어주세요.
+
+[디자인 컨셉]
+- 강렬하고 트렌디한 다크 모드 (배경: 블랙/다크 그레이 #0f172a, 포인트 컬러: 형광 네온 라임 #84cc16 또는 일렉트릭 블루 #06b6d4)
+- 폰트: 깔끔하고 가독성 높은 산세리프(Pretendard 등) 스타일 적용
+- 모바일과 PC 화면 모두에서 깨짐 없는 반응형 레이아웃
+
+[핵심 섹션 구성]
+1. 히어로 섹션: 시선을 사로잡는 메인 헤드카피와 배경 이미지, [1회 무료 체험 신청] 눈에 띄는 CTA 버튼
+2. 특장점 3종 카드: 최고급 해외 명품 머신 구비, 1:1 맞춤 정밀 체형분석, 프라이빗 1인 샤워룸
+3. 트레이너 프로필: 전문 자격 및 화려한 입상 경력이 돋보이는 트레이너 2인의 프로필 카드
+4. 상담 신청 폼: 이름, 전화번호, 희망 방문시간 입력란 및 [상담 예약하기] 제출 버튼
+
+[기술 제약조건]
+- 별도 설치 없이 Tailwind CSS CDN을 활용해 파일 하나로 브라우저에서 즉시 실행되게 해주세요.
+- 폼 제출 시 "상담 예약이 접수되었습니다! 담당 매니저가 곧 연락드립니다."라는 알림 팝업을 띄워주세요.</pre>
+            </div>
+          </div>
+
+          <!-- 실습 2: 카피라이팅 스킬 주입 & AIDA 문구 업그레이드 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">실습 2</span>
+                <h4 class="text-base font-extrabold text-slate-900">전문 카피라이팅(Copywriting) 스킬 적용 & AIDA 후킹 문구 업그레이드</h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                밋밋하고 뻔한 기본 문구를 광고 카피라이팅 AIDA 공식(주의 ➔ 흥미 ➔ 욕구 ➔ 행동)을 적용한 강력한 후킹 멘트로 전면 업그레이드합니다.
+              </p>
+            </div>
+
+            <!-- Before & After 비교 카드 -->
+            <div class="grid sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3.5 bg-rose-50/70 rounded-xl border border-rose-200 space-y-1">
+                <div class="font-black text-rose-800 flex items-center gap-1.5">
+                  <span>❌</span> Before (기본 AI의 진부한 문구)
+                </div>
+                <div class="text-slate-600 italic">"최고의 트레이너와 함께 건강한 몸을 만드세요."</div>
+                <div class="text-slate-600 italic">"신청하기"</div>
+                <p class="text-rose-700 text-[11px] pt-1">➔ 고객의 결핍을 건드리지 못해 이탈률이 높음</p>
+              </div>
+              <div class="p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-200 space-y-1">
+                <div class="font-black text-emerald-800 flex items-center gap-1.5">
+                  <span>✨</span> After (AIDA 카피라이팅 스킬 적용)
+                </div>
+                <div class="font-bold text-slate-900">"혼자 하는 운동은 이제 그만. 30일 만에 옷핏이 바뀌는 1:1 밀착 트레이닝"</div>
+                <div class="font-bold text-emerald-800">"지금 1회 무료 체험 신청하기 (오늘 마감 선착순 10명)"</div>
+                <p class="text-emerald-700 text-[11px] pt-1">➔ 구체적 기간(30일), 결핍 해소, 무료 혜택으로 신청 폭증</p>
+              </div>
+            </div>
+
+            <div class="relative bg-slate-900 text-slate-200 rounded-xl p-4 pt-11 border border-slate-800">
+              <div class="absolute top-3 left-4 text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                <span>💬</span> 실전 프롬프트 (카피라이팅 스킬 적용 & AIDA 고도화)
+              </div>
+              <button onclick="copyCode('prompt-r3-2')" class="absolute top-2.5 right-3 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1">
+                <span>📋</span> 복사하기
+              </button>
+              <pre id="prompt-r3-2" class="text-xs sm:text-sm leading-relaxed text-slate-100 font-mono whitespace-pre-wrap">전문 '카피라이팅(Copywriting) 스킬'을 발휘하여, 현재 피트니스 랜딩페이지의 모든 문구를 고객의 행동을 유도하는 매력적인 문장으로 전면 수정해주세요:
+
+1. [메인 히어로 헤드라인]
+- 고객의 결핍과 목표를 직접 건드리는 강력한 후킹 카피로 변경해주세요. (예: "혼자 하는 운동은 이제 그만! 30일 만에 옷핏이 바뀌는 1:1 밀착 트레이닝")
+- 서브 헤드라인에는 구체적인 숫자(30일, 98% 회원 만족도, 10년 경력 마스터 등)를 넣어 신뢰도를 높여주세요.
+
+2. [CTA(Call to Action) 버튼]
+- 단순한 '신청하기' 대신 '지금 1회 무료 체험 신청하기 (선착순 10명)'처럼 행동을 즉각 자극하는 마감 임박 문구로 바꿔주세요.
+
+3. [상담 폼 안내 문구]
+- "지금 예약 시 5만 원 상당의 인바디 & 체형분석 3D 리포트를 100% 무료로 제공해 드립니다"라는 파격 혜택 문구를 폼 상단에 굵고 선명하게 강조해주세요.
+
+4. [특장점 3종 설명문]
+- 단순 기능 설명이 아닌, 고객이 얻게 될 실제 이득(Benefit) 관점에서 감성적이면서도 신뢰감 있게 다듬어주세요.</pre>
+            </div>
+          </div>
+
+          <!-- 실습 3: 로컬 정적 웹 서버 구동하기 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-800 text-xs font-bold">실습 3</span>
+                <h4 class="text-base font-extrabold text-slate-900">내 컴퓨터에 1초 만에 로컬 정적 웹 서버(http://localhost:8080) 구동하기</h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                단순 파일 열기(<code>file://</code>)의 보안 한계를 극복하고, 실제 인터넷 호스팅과 동일한 간이 웹 서버를 내 컴퓨터 터미널에서 즉시 실행합니다.
+              </p>
+            </div>
+
+            <!-- 터미널 명령어 가이드 박스 -->
+            <div class="bg-slate-900 text-slate-200 rounded-xl p-4 text-xs font-mono space-y-2 border border-slate-800">
+              <div class="text-teal-400 font-bold flex items-center justify-between pb-1 border-b border-slate-800">
+                <div class="flex items-center gap-1.5">
+                  <span>💻</span> 터미널 / 명령 프롬프트(CMD)에서 실행할 한 줄 명령어
+                </div>
+                <span class="text-[10px] text-slate-400">Windows / macOS 공통</span>
+              </div>
+              <div class="text-slate-400"># 1. 랜딩페이지가 있는 폴더(fitness-club)로 터미널 이동 후 실행</div>
+              <div class="text-emerald-400 text-sm font-bold bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between">
+                <span>python3 -m http.server 8080</span>
+                <span class="text-[10px] text-slate-500 font-normal">(또는 python -m http.server 8080)</span>
+              </div>
+              <div class="text-slate-400"># 2. 크롬 브라우저를 열고 주소창에 아래 주소 입력 후 엔터!</div>
+              <div class="text-teal-300 font-bold">http://localhost:8080</div>
+              <div class="text-slate-400"># 3. 서버를 종료할 때는 터미널 창에서 키보드로 입력:</div>
+              <div class="text-amber-400 font-bold">Ctrl + C</div>
+            </div>
+
+            <div class="relative bg-slate-900 text-slate-200 rounded-xl p-4 pt-11 border border-slate-800">
+              <div class="absolute top-3 left-4 text-xs font-bold text-teal-400 flex items-center gap-1.5">
+                <span>💬</span> AI 요청 프롬프트 (로컬 서버 문제 해결 및 원리 자문)
+              </div>
+              <button onclick="copyCode('prompt-r3-3')" class="absolute top-2.5 right-3 px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1">
+                <span>📋</span> 복사하기
+              </button>
+              <pre id="prompt-r3-3" class="text-xs sm:text-sm leading-relaxed text-slate-100 font-mono whitespace-pre-wrap">친절한 웹 개발 멘토로서 답변해주세요:
+1. 내 컴퓨터에서 `file:///C:/Users/.../index.html`로 파일을 열었을 때와 `http://localhost:8080` 웹 서버로 열었을 때의 결정적인 차이점을 초보자가 이해하기 쉽게 비유로 설명해주세요.
+2. 파이썬이 설치되어 있지 않은 환경(Windows/Mac)에서 VS Code Live Server 확장 프로그램이나 Node.js `npx serve`를 활용해 1초 만에 로컬 서버를 띄우는 대안을 안내해주세요.
+3. 로컬 서버 실행 중 "Address already in use(포트 충돌)" 오류가 발생했을 때 해결하는 포트 변경 방법(예: 8081, 3000)을 알려주세요.</pre>
+            </div>
+          </div>
+
+          <!-- 실습 4: 클라우드 DB 연동 & 온라인 메모장 웹앱 구축 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-800 text-xs font-bold">실습 4 / 과제</span>
+                <h4 class="text-base font-extrabold text-slate-900">클라우드 DB 연동 온라인 메모장(Notes) 웹앱 구축 & 과제 갤러리 등록</h4>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                스마트폰과 PC에서 작성한 메모가 실시간으로 동기화되는 풀스택 메모장 웹앱을 만들고, 완성된 코드를 과제 갤러리에 직접 업로드하거나 URL로 배포합니다.
+              </p>
+            </div>
+
+            <div class="relative bg-slate-900 text-slate-200 rounded-xl p-4 pt-11 border border-slate-800">
+              <div class="absolute top-3 left-4 text-xs font-bold text-indigo-400 flex items-center gap-1.5">
+                <span>💬</span> 실전 프롬프트 (클라우드 DB 연동 실시간 메모장 웹앱)
+              </div>
+              <button onclick="copyCode('prompt-r3-4')" class="absolute top-2.5 right-3 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1">
+                <span>📋</span> 복사하기
+              </button>
+              <pre id="prompt-r3-4" class="text-xs sm:text-sm leading-relaxed text-slate-100 font-mono whitespace-pre-wrap">당신은 풀스택 웹 개발 전문가입니다.
+단일 HTML 파일(index.html)로 실행되는 모던하고 깔끔한 [실시간 온라인 메모장(Cloud Notes)] 웹앱을 만들어주세요.
+
+[핵심 기능]
+1. 메모 작성: 제목과 내용 입력 후 [메모 저장] 버튼을 누르면 실시간 카드 목록에 즉시 추가
+2. 메모 카테고리 태그: [업무], [개인], [아이디어], [학습] 4가지 색상 태그 선택 지원
+3. 메모 검색 & 필터링: 실시간 키워드 검색 및 태그별 모아보기
+4. 데이터 보존: 우선 로컬 스토리지(localStorage)로 즉시 작동하게 구현하되, 상단에 [클라우드 DB(Supabase) 연동 설정] 토글을 두어 Supabase Project URL과 Anon Key를 입력하면 클라우드 DB 테이블('notes')과 실시간 양방향 동기화(CRUD)되도록 확장 코드를 작성해주세요.
+5. 디자인: 모바일과 데스크톱 모두에서 시원하고 직관적인 Tailwind CSS 카드 레이아웃, 다크모드/라이트모드 토글 스위치 지원</pre>
+            </div>
+
+            <!-- 과제 갤러리 등록 바로가기 배너 -->
+            <div class="p-4 bg-indigo-50/80 rounded-xl border border-indigo-200 text-xs flex items-center justify-between flex-wrap gap-3">
+              <div class="space-y-0.5">
+                <span class="font-bold text-indigo-950 flex items-center gap-1.5">
+                  <span>🎉</span> 실습 1(피트니스 랜딩페이지) 또는 실습 4(메모장)를 완성하셨나요?
+                </span>
+                <p class="text-indigo-800 text-[11px]">
+                  [파일 직접 올리기]로 HTML 파일을 업로드하거나, 2회차에서 배운 GitHub Pages / Netlify URL을 공유해 보세요!
+                </p>
+              </div>
+              <button onclick="openUploadModal()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs rounded-xl shadow-xs transition-all">
+                🚀 과제 갤러리에 내 작품 올리기 ➔
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 5. 3회차 핵심 체크리스트 & 4회차 예고 -->
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 shadow-xs">
+          <div class="border-b border-slate-100 pb-3 flex items-center justify-between flex-wrap gap-2">
+            <h3 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">📌</span>
+              3회차 학습 마무리 자가 진단 체크리스트
+            </h3>
+            <span class="text-xs text-emerald-800 font-bold bg-emerald-50 px-2.5 py-1 rounded-md">학습 자가 진단</span>
+          </div>
+
+          <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
+            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-emerald-50/50 transition-colors">
+              <input type="checkbox" class="mt-0.5 rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+              <span><strong>MVP 전략</strong>: 10가지를 분산하지 않고 '상담 신청 확보' 딱 1가지 핵심 가치에 집중한 랜딩페이지를 기획했는가?</span>
+            </label>
+            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-emerald-50/50 transition-colors">
+              <input type="checkbox" class="mt-0.5 rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+              <span><strong>AI 스킬 장착</strong>: AI에게 표준 작업 매뉴얼(<code>SKILL.md</code>)을 쥐어주는 원리와 프롬프트 작성법을 이해했는가?</span>
+            </label>
+            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-emerald-50/50 transition-colors">
+              <input type="checkbox" class="mt-0.5 rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+              <span><strong>AIDA 카피라이팅</strong>: 결핍과 기간(30일), 파격 혜택(선착순 체형분석)을 적용한 후킹 카피를 랜딩페이지에 반영했는가?</span>
+            </label>
+            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-emerald-50/50 transition-colors">
+              <input type="checkbox" class="mt-0.5 rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+              <span><strong>로컬 웹 서버 & 배포</strong>: <code>python3 -m http.server 8080</code> 서버를 띄워보고, 과제 갤러리에 결과물을 등록했는가?</span>
+            </label>
+          </div>
+
+          <!-- 4회차 예고 박스 (🔒 잠금 상태 유지) -->
+          <div class="p-5 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-2xl border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-slate-700 text-slate-300 text-xs font-bold flex items-center gap-1">
+                  <span>🔒</span> 차기 예고 (수업 준비 중)
+                </span>
+                <span class="text-sm font-extrabold text-amber-300">4회차 : 스마트폰 모바일 반응형 웹 & 실시간 폼 유효성 검증</span>
+              </div>
+              <span class="text-xs text-slate-400 font-mono">2026년 11월 4일 (수) 공개</span>
+            </div>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              모든 기기(아이폰, 갤럭시, 아이패드)의 화면 크기에 맞춰 레이아웃이 자유자재로 반응하는 <strong>미디어 쿼리와 플렉스박스</strong>를 심화 학습하고, 
+              고객이 전화번호나 이메일을 잘못 입력했을 때 친절하게 안내하는 <strong>실시간 폼 유효성 검사(Validation)</strong>를 마스터합니다!
             </p>
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-6 sm:p-10 text-center space-y-5 shadow-xs">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl bg-amber-50 text-amber-600 flex items-center justify-center font-black text-3xl sm:text-4xl mx-auto border border-amber-200 shadow-2xs">
-            🔒
-          </div>
-          <div class="space-y-2 max-w-lg mx-auto">
-            <span class="px-3.5 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black">2026년 10월 28일 (수요일) 공개 예정</span>
-            <h3 class="text-lg sm:text-2xl font-black text-slate-900 leading-snug">3회차 수업자료는 아직 비공개 상태입니다.</h3>
-            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              수강생 여러분의 체계적인 단계별 학습을 위해 3회차 실습 프롬프트와 상세 교안은 3회차 강의 당일 활성화됩니다.<br>
-              현재 진행 중인 <strong>1회차(아티팩트 & 웹 인터랙션)</strong>와 <strong>2회차(프로젝트, 랜딩페이지, Git 배포)</strong> 복습을 먼저 진행해 주세요!
-            </p>
-          </div>
-          <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
-            <button onclick="selectDay('home')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition-all">
+        <!-- 하단 차시 이동 내비게이션 바 -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between flex-wrap gap-3">
+          <button onclick="selectDay(2)" class="px-4 py-2 bg-white hover:bg-slate-100 text-slate-700 rounded-xl text-xs font-bold border border-slate-200 transition-all">
+            ⬅️ 2회차 (Git·GitHub·배포) 복습하기
+          </button>
+          <div class="flex items-center gap-2">
+            <button onclick="selectDay('assignment')" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-xs font-black shadow-xs transition-all">
+              📋 과제 갤러리 확인하기
+            </button>
+            <button onclick="selectDay('home')" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all">
               🏠 과정 안내(홈)으로 이동
-            </button>
-            <button onclick="selectDay(1)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
-              1회차 수업 보기
-            </button>
-            <button onclick="selectDay(2)" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-all">
-              2회차 수업 보기
-            </button>
-            <button onclick="selectDay('assignment')" class="px-4 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold text-xs sm:text-sm border border-amber-200 transition-all">
-              📋 과제 갤러리
             </button>
           </div>
         </div>
@@ -1919,7 +2460,7 @@
                   <select id="asDay" required class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white transition-all font-bold text-slate-800">
                     <option value="1회차">1회차 : 아티팩트·웹인터랙션</option>
                     <option value="2회차">2회차 : 프로젝트·랜딩·Git배포</option>
-                    <option value="3회차">3회차 : 클라우드DB·온라인메모장</option>
+                    <option value="3회차">3회차 : AI스킬·피트니스·로컬서버·DB</option>
                     <option value="4회차">4회차 : 수업 준비 중 (비공개)</option>
                     <option value="5회차">5회차 : 수업 준비 중 (비공개)</option>
                   </select>
@@ -3036,8 +3577,8 @@
             <label class="block text-xs font-black text-slate-800 mb-1">제출 회차 <span class="text-rose-500">*</span></label>
             <select id="quickSession" required class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-amber-500 bg-slate-50 focus:bg-white font-bold text-slate-800">
               <option value="1회차">1회차 : 아티팩트·웹인터랙션</option>
-              <option value="2회차" selected>2회차 : 프로젝트·랜딩·Git배포</option>
-              <option value="3회차">3회차 : 클라우드DB·온라인메모장</option>
+              <option value="2회차">2회차 : 프로젝트·랜딩·Git배포</option>
+              <option value="3회차" selected>3회차 : AI스킬·피트니스·로컬서버·DB</option>
               <option value="4회차">4회차 : 수업 준비 중 (비공개)</option>
               <option value="5회차">5회차 : 수업 준비 중 (비공개)</option>
             </select>
