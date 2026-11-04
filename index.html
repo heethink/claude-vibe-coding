@@ -140,17 +140,20 @@
         </div>
         <div class="min-w-0">
           <div class="flex items-center gap-1.5 sm:gap-2">
-            <span class="text-xs sm:text-sm font-black tracking-tight text-slate-900 truncate">AI 클로드(Claude) 실습</span>
+            <span class="text-xs sm:text-sm font-black tracking-tight text-slate-900 truncate">
+              <span class="sm:hidden">클로드 실습</span>
+              <span class="hidden sm:inline">AI 클로드(Claude) 실습</span>
+            </span>
             <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-1.5 sm:px-2 py-0.5 rounded-full border border-blue-200 shrink-0">동구평생학습관</span>
           </div>
-          <h1 class="text-[11px] sm:text-xs font-semibold text-slate-500 tracking-tight leading-tight mt-0.5 truncate sm:overflow-visible">
+          <h1 class="hidden sm:block text-[11px] sm:text-xs font-semibold text-slate-500 tracking-tight leading-tight mt-0.5 truncate sm:overflow-visible">
             일상과 업무가 쉬워지는 AI 비서 만들기
           </h1>
         </div>
       </div>
 
-      <!-- 데스크톱 중앙 퀵 네비게이션 탭 바 -->
-      <nav class="hidden md:flex items-center gap-1 bg-slate-100/90 p-1 rounded-2xl border border-slate-200/80 text-xs font-bold text-slate-600">
+      <!-- 데스크톱 중앙 퀵 네비게이션 탭 바 (1024px 이상 데스크톱 전용) -->
+      <nav class="hidden lg:flex items-center gap-1 bg-slate-100/90 p-1 rounded-2xl border border-slate-200/80 text-xs font-bold text-slate-600">
         <button onclick="selectDay('home')" id="top-nav-home" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1.5">
           과정안내
         </button>
@@ -174,21 +177,24 @@
         </button>
       </nav>
 
-      <!-- 상단 도구 모음: 갤러리 바로가기 -->
-      <div class="flex items-center gap-2 shrink-0">
-        <button onclick="selectDay('assignment')" class="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold shadow-xs flex items-center gap-1.5 sm:gap-2 transition-all">
+      <!-- 상단 도구 모음: 작품 등록 & 갤러리 바로가기 -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button onclick="openProjectUploadModal()" class="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold shadow-xs flex items-center gap-1.5 transition-all">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          <span>작품 등록</span>
+        </button>
+        <button onclick="selectDay('assignment')" class="hidden sm:flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold shadow-xs transition-all">
           <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
           </svg>
-          <span class="hidden sm:inline">갤러리</span>
-          <span class="sm:hidden text-xs">갤러리</span>
+          <span class="text-xs sm:text-sm font-bold">갤러리</span>
         </button>
       </div>
 
     </div>
 
-    <!-- 모바일 전용 가로 스크롤 탭 네비게이션 (날짜 제외) -->
-    <div class="lg:hidden border-t border-slate-100 bg-slate-50/80 px-3 py-2 overflow-x-auto no-scrollbar flex items-center gap-1.5" id="mobile-tabs-container">
+    <!-- 모바일/태블릿 전용 가로 스크롤 탭 네비게이션 (1024px 미만 반응형 바) -->
+    <div class="lg:hidden border-t border-slate-100 bg-slate-50/90 px-3 py-2 overflow-x-auto no-scrollbar flex items-center gap-1.5 touch-pan-x" id="mobile-tabs-container">
       <button onclick="selectDay('home')" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700 m-tab-active" id="m-tab-home">과정안내</button>
       <button onclick="selectDay(1)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-1">1회차: 아티팩트</button>
       <button onclick="selectDay(2)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-2">2회차: 배포·Git</button>
@@ -206,9 +212,9 @@
   <div class="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 pb-24 sm:pb-12 flex gap-6 sm:gap-8">
 
     <!-- ==============================================
-         [데스크톱 좌측 내비게이션 사이드바 (날짜 제외)]
+         [데스크톱 좌측 내비게이션 사이드바 (1024px 이상 스티키 고정)]
          ============================================== -->
-    <aside class="hidden lg:flex flex-col w-72 shrink-0 space-y-5">
+    <aside class="hidden lg:flex flex-col w-72 shrink-0 space-y-5 sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto no-scrollbar">
       
       <!-- 코스 개요 카드 -->
       <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-2xl p-5 shadow-xs space-y-3 border border-slate-800">
@@ -353,16 +359,22 @@
           </div>
 
           <div class="pt-2 grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 sm:gap-2.5">
-            <button onclick="selectDay(1)" class="col-span-1 px-3 sm:px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5">
-              1회차 실습 (기초)
+            <button onclick="selectDay(1)" class="col-span-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5">
+              1회차 기초
             </button>
-            <button onclick="selectDay(2)" class="col-span-1 px-3 sm:px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold rounded-xl border border-white/20 shadow-xs transition-all flex items-center justify-center gap-1.5">
-              2회차 실습 (배포)
+            <button onclick="selectDay(2)" class="col-span-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-bold rounded-xl border border-white/20 shadow-xs transition-all flex items-center justify-center gap-1.5">
+              2회차 배포
             </button>
-            <button onclick="selectDay('assignment')" class="col-span-1 px-3 sm:px-4 py-2.5 bg-white/10 hover:bg-white/20 text-slate-200 text-xs sm:text-sm font-semibold rounded-xl border border-white/15 transition-all flex items-center justify-center gap-1.5">
-              갤러리
+            <button onclick="selectDay(3)" class="col-span-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-bold rounded-xl border border-emerald-400/30 shadow-xs transition-all flex items-center justify-center gap-1.5">
+              3회차 스킬·DB
             </button>
-            <button onclick="selectDay('guide')" class="col-span-1 px-3 sm:px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs sm:text-sm font-medium rounded-xl transition-all flex items-center justify-center">
+            <button onclick="selectDay(4)" class="col-span-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 text-xs sm:text-sm font-bold rounded-xl border border-purple-400/30 shadow-xs transition-all flex items-center justify-center gap-1.5">
+              4회차 반응형·폼
+            </button>
+            <button onclick="selectDay('assignment')" class="col-span-2 sm:col-span-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs sm:text-sm font-bold rounded-xl border border-amber-400/30 transition-all flex items-center justify-center gap-1.5">
+              작품 갤러리 LIVE
+            </button>
+            <button onclick="selectDay('guide')" class="col-span-2 sm:col-span-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs sm:text-sm font-medium rounded-xl transition-all flex items-center justify-center">
               용어 사전
             </button>
           </div>
@@ -3031,7 +3043,7 @@ function doPost(e) {
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </span>
                 <input type="text" id="boardSearchInput" oninput="handleBoardSearch(this.value)" placeholder="작성자, 작품명 검색..."
-                       class="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white transition-all">
+                       class="w-full pl-8 pr-3 py-1.5 text-base sm:text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white transition-all">
               </div>
             </div>
 
@@ -3040,7 +3052,7 @@ function doPost(e) {
 
         <!-- 1. 갤러리 카드 뷰 -->
         <div id="boardGalleryView" class="space-y-4">
-          <div id="assignmentGalleryList" class="grid sm:grid-cols-2 gap-4 sm:gap-5">
+          <div id="assignmentGalleryList" class="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
             <!-- 자바스크립트로 렌더링됨 -->
           </div>
         </div>
@@ -3810,26 +3822,28 @@ function doPost(e) {
   <!-- ==============================================
        [모바일 하단 고정 퀵 네비게이션 바]
        ============================================== -->
-  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2 flex items-center justify-around shadow-lg">
-    <button onclick="selectDay('home')" class="flex flex-col items-center gap-1 text-slate-600 hover:text-blue-600">
-      
-      <span class="text-[10px] font-bold">홈안내</span>
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-1.5 flex items-center justify-around shadow-lg">
+    <button onclick="selectDay('home')" class="flex flex-col items-center gap-0.5 text-slate-600 hover:text-slate-900 transition-colors">
+      <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      <span class="text-[10px] font-bold">과정안내</span>
     </button>
-    <button onclick="selectDay(currentDay === 'home' ? 1 : currentDay)" class="flex flex-col items-center gap-1 text-blue-600 font-extrabold">
-      <span class="text-base"><svg class="w-4 h-4 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
-      <span class="text-[10px]">수업내용</span>
+    <button onclick="selectDay(currentDay === 'home' || currentDay === 'assignment' || currentDay === 'guide' ? 4 : currentDay)" class="flex flex-col items-center gap-0.5 text-slate-600 hover:text-slate-900 transition-colors">
+      <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+      <span class="text-[10px] font-bold">수업교안</span>
     </button>
-    <button onclick="selectDay('assignment')" class="flex flex-col items-center gap-1 text-amber-600 font-extrabold">
-      
-      <span class="text-[10px]">갤러리</span>
+    <button onclick="openProjectUploadModal()" class="flex flex-col items-center gap-0.5 text-blue-600 hover:text-blue-700 transition-colors">
+      <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center -mt-2 shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+      </div>
+      <span class="text-[10px] font-bold">작품등록</span>
     </button>
-    <button onclick="selectDay('guide')" class="flex flex-col items-center gap-1 text-slate-600 hover:text-blue-600">
-      
-      <span class="text-[10px] font-bold">용어사전</span>
+    <button onclick="selectDay('assignment')" class="flex flex-col items-center gap-0.5 text-slate-600 hover:text-slate-900 transition-colors">
+      <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+      <span class="text-[10px] font-bold">갤러리</span>
     </button>
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center gap-1 text-slate-400">
-      <span class="text-base">⬆️</span>
-      <span class="text-[10px]">맨위로</span>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-700 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+      <span class="text-[10px] font-bold">맨위로</span>
     </button>
   </div>
 
@@ -3860,41 +3874,48 @@ function doPost(e) {
   <div id="websitePreviewModal" onclick="if(event.target === this) closePreviewModal();" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 transition-all">
     <div class="bg-slate-900 rounded-3xl w-full max-w-6xl h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-700 animate-in fade-in zoom-in-95 duration-200">
       
-      <!-- 모달 상단 주소창 헤더 -->
-      <div class="bg-slate-900 text-white px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
-        <div class="flex items-center gap-2 overflow-hidden min-w-0">
-          <div class="flex gap-1.5 shrink-0">
-            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+      <!-- 모달 상단 주소창 헤더 (모바일/PC 반응형 툴바) -->
+      <div class="bg-slate-900 text-white px-3 sm:px-6 py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-slate-800">
+        <div class="flex items-center justify-between gap-2 overflow-hidden min-w-0 w-full sm:w-auto">
+          <div class="flex items-center gap-2 min-w-0">
+            <div class="flex gap-1.5 shrink-0">
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-amber-500 inline-block"></span>
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500 inline-block"></span>
+            </div>
+            <span class="text-[11px] sm:text-xs text-slate-400 font-mono shrink-0 hidden sm:inline">결과물:</span>
+            <span id="previewModalTitle" class="text-xs sm:text-sm font-bold text-slate-100 truncate"></span>
           </div>
-          <span class="text-xs text-slate-400 font-mono ml-2 shrink-0">결과물:</span>
-          <span id="previewModalTitle" class="text-xs sm:text-sm font-bold text-slate-100 truncate"></span>
+          <!-- 모바일 전용 닫기 버튼 -->
+          <button type="button" onclick="closePreviewModal()" class="sm:hidden p-1 rounded-lg bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white text-xs font-bold transition-all shrink-0">
+            ✕
+          </button>
         </div>
 
         <!-- 모바일 / 데스크톱 뷰 전환 컨트롤 바 -->
-        <div class="flex items-center gap-2 shrink-0">
-          <div class="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700 text-xs font-bold">
+        <div class="flex items-center justify-between sm:justify-end gap-1.5 sm:gap-2 w-full sm:w-auto overflow-x-auto pb-0.5 sm:pb-0 scrollbar-none">
+          <div class="flex items-center bg-slate-800 p-0.5 sm:p-1 rounded-xl border border-slate-700 text-xs font-bold shrink-0">
             <button type="button" onclick="setPreviewDeviceMode('desktop')" id="prevDevDesktopBtn"
-                    class="px-3 py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1.5">
-               <span class="hidden sm:inline">데스크톱(웹)</span><span>뷰</span>
+                    class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1">
+               <span class="text-[11px] sm:text-xs">데스크톱</span>
             </button>
             <button type="button" onclick="setPreviewDeviceMode('mobile')" id="prevDevMobileBtn"
-                    class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5">
-              <span class="hidden sm:inline">모바일</span><span>뷰</span>
+                    class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1">
+              <span class="text-[11px] sm:text-xs">모바일(390px)</span>
             </button>
           </div>
 
           <button type="button" id="previewModalShareBtn" onclick="openShareDeployFromPreview()"
-                  class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black transition-all flex items-center gap-1.5 shadow-sm hover:scale-[1.02]">
-            <span>URL 공유</span>
+                  class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-indigo-700 text-white text-[11px] sm:text-xs font-black transition-all flex items-center gap-1 shadow-sm shrink-0">
+            <span>공유</span>
           </button>
 
           <a id="previewModalExternalLink" href="#" target="_blank" rel="noopener noreferrer"
-             class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all flex items-center gap-1 border border-slate-700 shadow-2xs">
-             <span class="hidden sm:inline">새 탭 전체화면</span> ↗
+             class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] sm:text-xs font-bold transition-all flex items-center gap-1 border border-slate-700 shadow-2xs shrink-0">
+             <span>새 탭</span> ↗
           </a>
-          <button type="button" onclick="closePreviewModal()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white text-sm font-bold transition-all">
+          <!-- 데스크톱 닫기 버튼 -->
+          <button type="button" onclick="closePreviewModal()" class="hidden sm:inline-flex p-1.5 rounded-xl bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white text-sm font-bold transition-all shrink-0">
             ✕
           </button>
         </div>
@@ -4003,13 +4024,13 @@ function doPost(e) {
               작성자 성명 <span class="text-rose-500">*</span>
             </label>
             <input type="text" id="quickStudentName" required placeholder="예: 홍길동"
-                   class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-bold transition-all">
+                   class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-bold transition-all">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">
               제출 회차 <span class="text-rose-500">*</span>
             </label>
-            <select id="quickSession" required class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-semibold text-slate-800">
+            <select id="quickSession" required class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-semibold text-slate-800">
               <option value="1회차">1회차 : 아티팩트·웹인터랙션</option>
               <option value="2회차">2회차 : 프로젝트·랜딩·Git배포</option>
               <option value="3회차">3회차 : AI스킬·피트니스·로컬서버·DB</option>
@@ -4025,7 +4046,7 @@ function doPost(e) {
             작품 제목 <span class="text-slate-400 font-normal">(선택)</span>
           </label>
           <input type="text" id="quickAssignmentTitle" placeholder="비워두시면 자동 생성됩니다"
-                 class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white transition-all">
+                 class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white transition-all">
         </div>
 
         <!-- 4. 설명 또는 웹 배포 링크 URL -->
@@ -4034,7 +4055,7 @@ function doPost(e) {
             작품 설명 또는 배포 URL 링크 <span class="text-slate-400 font-normal">(선택)</span>
           </label>
           <textarea id="quickStudentContent" rows="2" placeholder="작품 설명이나 Netlify / GitHub Pages 링크를 자유롭게 입력하세요."
-                    class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white transition-all"></textarea>
+                    class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white transition-all"></textarea>
         </div>
 
         <!-- 5. 간편 비밀번호 -->
@@ -4046,7 +4067,7 @@ function doPost(e) {
             <span class="text-[10px] text-slate-500 font-medium">내 브라우저에서는 자동 승인</span>
           </div>
           <input type="password" id="quickPin" maxlength="8" placeholder="예: 1234 (기본 1234)"
-                 class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-mono transition-all">
+                 class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-mono transition-all">
         </div>
 
         <!-- 액션 버튼 -->
@@ -4092,17 +4113,17 @@ function doPost(e) {
               작성자 성명 <span class="text-rose-500">*</span>
             </label>
             <input type="text" id="editStudentName" required
-                   class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-bold transition-all">
+                   class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-bold transition-all">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">
               제출 회차 <span class="text-rose-500">*</span>
             </label>
-            <select id="editSession" required class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-semibold text-slate-800">
+            <select id="editSession" required class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-semibold text-slate-800">
               <option value="1회차">1회차 : 아티팩트·웹인터랙션</option>
               <option value="2회차">2회차 : 프로젝트·랜딩·Git배포</option>
               <option value="3회차">3회차 : AI스킬·피트니스·로컬서버·DB</option>
-              <option value="4회차">4회차 : 모바일반응형·상담폼·구글시트</option>
+              <option value="4회차" selected>4회차 : 모바일반응형·상담폼·구글시트</option>
               <option value="5회차">5회차 : 수업 준비 중 (비공개)</option>
             </select>
           </div>
@@ -4114,7 +4135,7 @@ function doPost(e) {
             작품 제목 <span class="text-rose-500">*</span>
           </label>
           <input type="text" id="editAssignmentTitle" required
-                 class="w-full px-3.5 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-bold transition-all">
+                 class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white font-bold transition-all">
         </div>
 
         <!-- 3. 첨부 파일 관리 -->
@@ -4145,7 +4166,7 @@ function doPost(e) {
             작품 설명 또는 배포 URL 링크 <span class="text-slate-400 font-normal">(선택)</span>
           </label>
           <textarea id="editStudentContent" rows="2" placeholder="작품 설명이나 배포 링크를 입력하세요"
-                    class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white transition-all"></textarea>
+                    class="w-full px-3.5 py-2 text-base sm:text-sm rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-slate-900 bg-slate-50 focus:bg-white transition-all"></textarea>
         </div>
 
         <!-- 버튼 -->
@@ -4168,7 +4189,7 @@ function doPost(e) {
       <!-- 모달 헤더 -->
       <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-slate-900 text-white px-5 sm:px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-2.5">
-          <span class="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center text-lg shadow-2xs"<svg class="w-4 h-4 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>/span>
+          <span class="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center text-lg shadow-2xs"><svg class="w-4 h-4 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
           <div>
             <h3 class="text-sm sm:text-base font-black flex items-center gap-2">
               <span>과제 실시간 웹 배포 & URL 공유</span>
@@ -6368,29 +6389,29 @@ function doPost(e) {
       if (!container || !iframe) return;
 
       if (currentPreviewDeviceMode === 'mobile') {
-        // 모바일 스마트폰 뷰 (390px 스마트폰 프레임 규격)
-        container.className = 'w-[390px] max-w-full h-full max-h-[780px] p-2 bg-slate-800 rounded-[44px] border-4 border-slate-700 shadow-2xl transition-all duration-300 flex items-center justify-center';
-        iframe.className = 'w-full h-full border-0 bg-white rounded-[36px] shadow-inner transition-all duration-300';
+        // 모바일 스마트폰 뷰 (스마트폰에서는 100% 핏, 태블릿/PC에서는 390px 스마트폰 프레임 규격)
+        container.className = 'w-full sm:w-[390px] max-w-full h-full sm:max-h-[780px] p-0 sm:p-2 bg-transparent sm:bg-slate-800 rounded-none sm:rounded-[44px] border-0 sm:border-4 sm:border-slate-700 shadow-none sm:shadow-2xl transition-all duration-300 flex items-center justify-center';
+        iframe.className = 'w-full h-full border-0 bg-white rounded-none sm:rounded-[36px] shadow-none sm:shadow-inner transition-all duration-300';
 
         if (desktopBtn) {
-          desktopBtn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5';
+          desktopBtn.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1';
         }
         if (mobileBtn) {
-          mobileBtn.className = 'px-3 py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1.5';
+          mobileBtn.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1';
         }
         if (statusText) {
-          statusText.innerText = '모바일 화면 (390px 세로 프레임)으로 표시 중';
+          statusText.innerText = '모바일 화면 (390px 프레임)으로 표시 중';
         }
       } else {
         // 데스크톱(웹) 전체화면 뷰
         container.className = 'w-full h-full transition-all duration-300 flex items-center justify-center';
-        iframe.className = 'w-full h-full border-0 bg-white rounded-2xl shadow-md transition-all duration-300';
+        iframe.className = 'w-full h-full border-0 bg-white rounded-none sm:rounded-2xl shadow-none sm:shadow-md transition-all duration-300';
 
         if (desktopBtn) {
-          desktopBtn.className = 'px-3 py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1.5';
+          desktopBtn.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-blue-600 text-white shadow-xs font-black transition-all flex items-center gap-1';
         }
         if (mobileBtn) {
-          mobileBtn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5';
+          mobileBtn.className = 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1';
         }
         if (statusText) {
           statusText.innerText = '데스크톱 전체화면으로 표시 중';
