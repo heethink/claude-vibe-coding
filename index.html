@@ -94,50 +94,6 @@
       color: #ffffff !important;
       font-weight: 700 !important;
     }
-
-    /* 사이드바 컴팩트(작게 보기) 스타일 */
-    #desktop-sidebar {
-      transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    #desktop-sidebar.is-compact {
-      width: 14.5rem !important; /* 232px */
-    }
-    #desktop-sidebar.is-compact #sidebar-course-details {
-      display: none !important;
-    }
-    #desktop-sidebar.is-compact #sidebar-course-card {
-      padding: 0.65rem 0.85rem !important;
-      margin-bottom: 0.65rem !important;
-    }
-    #desktop-sidebar.is-compact #sideSearchContainer {
-      margin-bottom: 0.65rem !important;
-    }
-    #desktop-sidebar.is-compact #sideSearch {
-      padding-top: 0.4rem !important;
-      padding-bottom: 0.4rem !important;
-      font-size: 0.75rem !important;
-    }
-    #desktop-sidebar.is-compact .side-nav-btn {
-      padding: 0.45rem 0.65rem !important;
-      border-radius: 0.65rem !important;
-    }
-    #desktop-sidebar.is-compact .side-nav-title {
-      font-size: 0.8rem !important;
-      line-height: 1.15rem !important;
-    }
-    #desktop-sidebar.is-compact .compact-hide {
-      display: none !important;
-    }
-    #desktop-sidebar.is-compact .compact-show {
-      display: inline !important;
-    }
-    #desktop-sidebar.is-compact .side-nav-sub {
-      display: none !important;
-    }
-    #desktop-sidebar.is-compact .side-nav-badge {
-      font-size: 0.65rem !important;
-      padding: 0.15rem 0.4rem !important;
-    }
     
     /* 코드 및 영문 토큰 줄바꿈 */
     pre {
@@ -261,146 +217,114 @@
     <!-- ==============================================
          [데스크톱 좌측 내비게이션 사이드바 (1024px 이상 스티키 고정)]
          ============================================== -->
-    <aside id="desktop-sidebar" class="hidden lg:flex flex-col w-72 shrink-0 space-y-4 sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto no-scrollbar transition-all duration-300">
+    <aside class="hidden lg:flex flex-col w-72 shrink-0 space-y-5 sticky top-20 self-start max-h-[calc(100vh-6rem)] overflow-y-auto no-scrollbar">
       
-      <!-- 코스 개요 카드 (회차 진입 시 컴팩트 슬림 바 전환) -->
-      <div id="sidebar-course-card" class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-2xl p-4 shadow-xs border border-slate-800 transition-all">
+      <!-- 코스 개요 카드 -->
+      <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-2xl p-5 shadow-xs space-y-3 border border-slate-800">
         <div class="flex items-center justify-between">
-          <div class="flex items-center gap-1.5 min-w-0">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse"></span>
-            <span class="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-bold text-[10px] border border-amber-500/30">VIBE CODING</span>
-            <span class="text-[10px] font-mono text-slate-400">Claude 5.5</span>
-          </div>
-          <button type="button" onclick="toggleSidebarCompact()" id="sidebar-toggle-badge" class="text-[10px] font-bold text-slate-300 hover:text-white px-1.5 py-0.5 rounded bg-white/10 hover:bg-white/20 transition-all" title="사이드바 크기 전환">
-            <span id="sidebar-toggle-text">작게 보기</span>
-          </button>
+          <span class="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-bold text-[11px] border border-amber-500/30">VIBE CODING</span>
+          <span class="text-[11px] font-mono text-slate-400">Claude 5.5</span>
         </div>
-        
-        <div id="sidebar-course-details" class="mt-3 space-y-2">
-          <div>
-            <h3 class="text-sm font-extrabold text-white leading-snug">
-              클로드(Claude) AI 비서 만들기
-            </h3>
-            <p class="text-xs text-slate-300 mt-1 leading-relaxed">
-              일상과 업무가 쉬워지는 바이브코딩 & 웹 배포
-            </p>
-          </div>
-          <div class="pt-2 border-t border-slate-700/60 flex items-center justify-between text-[11px] text-slate-400">
-            <span>5단계 실무 커리큘럼</span>
-            <span class="text-emerald-400 font-bold flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              ACTIVE
-            </span>
-          </div>
+        <div>
+          <h3 class="text-sm font-extrabold text-white leading-snug">
+            클로드(Claude) AI 비서 만들기
+          </h3>
+          <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+            일상과 업무가 쉬워지는 바이브코딩 & 웹 배포
+          </p>
+        </div>
+        <div class="pt-2 border-t border-slate-700/60 flex items-center justify-between text-[11px] text-slate-400">
+          <span>5단계 실무 커리큘럼</span>
+          <span class="text-emerald-400 font-bold flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            ACTIVE
+          </span>
         </div>
       </div>
 
       <!-- 실시간 키워드 검색 -->
-      <div id="sideSearchContainer" class="relative">
+      <div class="relative">
         <input type="text" id="sideSearch" oninput="searchCourse()" placeholder="용어, 프롬프트, 주제 검색..."
-               class="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-600 bg-white transition-all shadow-2xs">
-        <span class="absolute left-3 top-2.5 text-xs text-slate-400"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></span>
+               class="w-full pl-9 pr-3 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-600 bg-white transition-all shadow-2xs">
+        <span class="absolute left-3 top-3 text-xs text-slate-400"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></span>
       </div>
 
-      <!-- 수업 카테고리 네비게이션 -->
-      <nav class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-2 space-y-1 transition-all" id="sidebar-nav">
+      <!-- 수업 카테고리 네비게이션 (날짜 제외) -->
+      <nav class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-2 space-y-1" id="sidebar-nav">
         
-        <!-- 네비게이션 상단 헤더 & 작게 보기/펼치기 토글 버튼 -->
-        <div class="flex items-center justify-between px-2 pt-1 pb-1.5 text-slate-500 border-b border-slate-100 mb-1">
-          <span class="text-[11px] font-bold">커리큘럼 차시</span>
-          <button type="button" onclick="toggleSidebarCompact()" class="text-[11px] font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center gap-1" id="sidebar-toggle-btn" title="사이드바 크기 전환">
-            작게 보기
-          </button>
-        </div>
-
         <!-- 홈 과정 안내 -->
         <button onclick="selectDay('home')" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between tab-active" id="nav-home">
-          <div class="min-w-0">
-            <div class="side-nav-title font-extrabold text-sm truncate">
-              <span class="compact-hide">과정 안내 (홈)</span>
-              <span class="compact-show hidden">과정 안내</span>
+          <div class="flex items-center gap-2">
+            <div>
+              <div class="font-extrabold text-sm">과정 안내 (홈)</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">전체 강좌 소개 & 커리큘럼</div>
             </div>
-            <div class="side-nav-sub text-[11px] text-slate-500 mt-0.5 truncate">전체 강좌 소개 & 커리큘럼</div>
           </div>
-          <span class="side-nav-badge text-xs font-bold text-blue-200 shrink-0 ml-1">INTRO</span>
+          <span class="text-xs font-bold text-blue-200">INTRO</span>
         </button>
 
         <!-- 1회차 -->
         <button onclick="selectDay(1)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-700 hover:bg-slate-50" id="nav-day-1">
-          <div class="min-w-0">
-            <div class="side-nav-title font-extrabold text-sm truncate">
-              <span class="compact-hide">1회차 : 아티팩트 & 웹 인터랙션</span>
-              <span class="compact-show hidden">1회차 : 아티팩트</span>
-            </div>
-            <div class="side-nav-sub text-[11px] text-slate-500 mt-0.5 truncate">클로드 기초·빵집·게임·3D우주·손그림</div>
+          <div>
+            <div class="font-extrabold text-sm">1회차 : 아티팩트 & 웹 인터랙션</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">클로드 기초·빵집·게임·3D우주·손그림</div>
           </div>
-          <span class="side-nav-badge text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md shrink-0 ml-1">기초</span>
+          <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">기초</span>
         </button>
 
         <!-- 2회차 -->
         <button onclick="selectDay(2)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-700 hover:bg-slate-50" id="nav-day-2">
-          <div class="min-w-0">
-            <div class="side-nav-title font-extrabold text-sm truncate">
-              <span class="compact-hide">2회차 : 프로젝트·랜딩·Git 배포</span>
-              <span class="compact-show hidden">2회차 : 배포·Git</span>
-            </div>
-            <div class="side-nav-sub text-[11px] text-slate-500 mt-0.5 truncate">지침·반복스킬·피트니스웹·Git/배포</div>
+          <div>
+            <div class="font-extrabold text-sm">2회차 : 프로젝트·랜딩·Git 배포</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">지침·반복스킬·피트니스웹·Git/배포</div>
           </div>
-          <span class="side-nav-badge text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md shrink-0 ml-1">배포</span>
+          <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">배포</span>
         </button>
 
         <!-- 3회차 -->
         <button onclick="selectDay(3)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-700 hover:bg-slate-50" id="nav-day-3">
-          <div class="min-w-0">
-            <div class="side-nav-title font-extrabold text-sm truncate">
-              <span class="compact-hide">3회차 : AI 스킬·랜딩·로컬서버·DB</span>
-              <span class="compact-show hidden">3회차 : 스킬·DB</span>
-            </div>
-            <div class="side-nav-sub text-[11px] text-slate-500 mt-0.5 truncate">스킬원리·피트니스MVP·카피라이팅·서버·DB</div>
+          <div>
+            <div class="font-extrabold text-sm">3회차 : AI 스킬·랜딩·로컬서버·DB</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">스킬원리·피트니스MVP·카피라이팅·서버·DB</div>
           </div>
-          <span class="side-nav-badge text-xs font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md shrink-0 ml-1">실습</span>
+          <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md">실습</span>
         </button>
 
         <!-- 4회차 -->
         <button onclick="selectDay(4)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-700 hover:bg-slate-50" id="nav-day-4">
-          <div class="min-w-0">
-            <div class="side-nav-title font-extrabold text-sm truncate">
-              <span class="compact-hide">4회차 : 모바일 반응형 & 상담 폼·시트 연동</span>
-              <span class="compact-show hidden">4회차 : 반응형·폼</span>
-            </div>
-            <div class="side-nav-sub text-[11px] text-slate-500 mt-0.5 truncate">모바일퍼스트·유효성검증·구글시트DB</div>
+          <div>
+            <div class="font-extrabold text-sm">4회차 : 모바일 반응형 & 상담 폼·시트 연동</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">모바일퍼스트·유효성검증·구글시트DB</div>
           </div>
-          <span class="side-nav-badge text-xs font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-md shrink-0 ml-1">실습</span>
+          <span class="text-xs font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-md">실습</span>
         </button>
 
         <!-- 5회차 (비공개 / 오픈 예정) -->
         <button onclick="selectDay(5)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-400 hover:bg-slate-50 opacity-75" id="nav-day-5">
-          <div class="min-w-0">
-            <div class="side-nav-title font-extrabold text-sm flex items-center gap-1.5 truncate">
-              <span class="compact-hide">5회차 : 수업 준비 중</span>
-              <span class="compact-show hidden">5회차 : 준비 중</span>
+          <div>
+            <div class="font-extrabold text-sm flex items-center gap-1.5">
+              <span>5회차 : 수업 준비 중</span>
             </div>
-            <div class="side-nav-sub text-[11px] text-slate-400 mt-0.5 truncate">순차 오픈 예정</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">순차 오픈 예정</div>
           </div>
-          <span class="side-nav-badge text-[11px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-md shrink-0 ml-1">예정</span>
+          <span class="text-[11px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-md">오픈 예정</span>
         </button>
 
         <div class="pt-2 border-t border-slate-100 space-y-1">
           <button onclick="selectDay('assignment')" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-800 hover:bg-slate-50 font-extrabold text-sm" id="nav-assignment">
-            <div class="min-w-0">
-              <span class="side-nav-title truncate">갤러리</span>
+            <div class="flex items-center gap-2">
+              
+              <span>갤러리</span>
             </div>
-            <span class="side-nav-badge text-xs bg-slate-200 text-slate-800 px-2 py-0.5 rounded-full font-bold shrink-0 ml-1">LIVE</span>
+            <span class="text-xs bg-slate-200 text-slate-800 px-2 py-0.5 rounded-full font-bold">LIVE</span>
           </button>
 
           <button onclick="selectDay('guide')" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-800 hover:bg-slate-50 font-extrabold text-sm" id="nav-guide">
-            <div class="min-w-0">
-              <span class="side-nav-title truncate">
-                <span class="compact-hide">클로드 가이드 & 용어 사전</span>
-                <span class="compact-show hidden">가이드 & 사전</span>
-              </span>
+            <div class="flex items-center gap-2">
+              
+              <span>클로드 가이드 & 용어 사전</span>
             </div>
-            <span class="side-nav-badge text-xs text-blue-600 font-bold shrink-0 ml-1">필독</span>
+            <span class="text-xs text-blue-600 font-bold">필독</span>
           </button>
         </div>
       </nav>
@@ -4644,42 +4568,11 @@ function doPost(e) {
        ============================================== -->
   <script>
     let currentDay = 'home';
-    let isSidebarCompact = false;
-
-    // 좌측 사이드바 컴팩트(작게 보기) 제어
-    function setSidebarCompact(compact) {
-      isSidebarCompact = !!compact;
-      const sidebar = document.getElementById('desktop-sidebar');
-      const toggleBtn = document.getElementById('sidebar-toggle-btn');
-      const toggleText = document.getElementById('sidebar-toggle-text');
-      if (!sidebar) return;
-
-      if (isSidebarCompact) {
-        sidebar.classList.add('is-compact');
-        if (toggleBtn) toggleBtn.textContent = '크게 보기';
-        if (toggleText) toggleText.textContent = '크게 보기';
-      } else {
-        sidebar.classList.remove('is-compact');
-        if (toggleBtn) toggleBtn.textContent = '작게 보기';
-        if (toggleText) toggleText.textContent = '작게 보기';
-      }
-    }
-
-    function toggleSidebarCompact() {
-      setSidebarCompact(!isSidebarCompact);
-    }
 
     // 1. 차시 선택 전환
     function selectDay(day) {
       if (day === 'board') day = 'assignment';
       currentDay = day;
-
-      // 각 회차 클릭 시 좌측 리스트 작게 표시 (홈 과정안내로 복귀 시 기본 크기로 복원)
-      if (day === 'home') {
-        setSidebarCompact(false);
-      } else {
-        setSidebarCompact(true);
-      }
 
       document.querySelectorAll('.day-article').forEach(el => el.classList.add('hidden'));
 
