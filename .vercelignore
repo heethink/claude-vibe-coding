@@ -7,6 +7,12 @@
 transcripts/
 transcripts_2nd/
 *.log
+*.mp4
+*.pptx
+*.sh
+playlist_oct27.html
+presentation_2nd.html
+나만의_로보트_만들기*
 line_177_backup.html
 temp_site_at_345.html
 version_at_177.html
