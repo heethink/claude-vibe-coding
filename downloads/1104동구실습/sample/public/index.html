@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대한민국 기상청 날씨 예보 | KMA Weather</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 상단 헤더 -->
+    <header class="header">
+      <div class="header-brand">
+        <div class="logo-icon">⛅</div>
+        <div>
+          <h1>기상청 날씨누리 뷰어</h1>
+          <p class="subtitle">대한민국 기상청 단기예보 Open API 연동</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btnGeo" class="btn btn-secondary" title="현재 GPS 위치로 날씨 조회">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y1="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+          <span>내 위치</span>
+        </button>
+        <button id="btnSettings" class="btn btn-primary" title="기상청 API 키 및 설정">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span id="settingsBtnLabel">API 키 설정</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 지역 선택 패널 -->
+    <section class="selection-card">
+      <div class="selector-controls">
+        <div class="form-group">
+          <label for="sidoSelect">시/도 선택</label>
+          <select id="sidoSelect" class="form-control">
+            <option value="">시/도를 선택하세요</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="districtSelect">시/군/구 선택</label>
+          <select id="districtSelect" class="form-control" disabled>
+            <option value="">시/군/구를 선택하세요</option>
+          </select>
+        </div>
+        <button id="btnFetchWeather" class="btn btn-accent">
+          <span>날씨 조회</span>
+        </button>
+      </div>
+
+      <!-- 추천/빠른 지역 바로가기 칩 -->
+      <div class="quick-chips">
+        <span class="chips-label">주요 지역:</span>
+        <div class="chips-container" id="quickChipsContainer">
+          <!-- 동적 생성 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 상태 알림 배너 (데모 모드 or API 안내) -->
+    <div id="noticeBanner" class="notice-banner" style="display: none;">
+      <span class="notice-icon">ℹ️</span>
+      <span id="noticeText" class="notice-text">현재 데모(체험) 모드로 동작 중입니다.</span>
+      <button id="btnBannerSettings" class="btn-banner-link">API 키 등록하기 &rarr;</button>
+    </div>
+
+    <!-- 로딩 스피너 -->
+    <div id="loadingSpinner" class="spinner-container" style="display: none;">
+      <div class="spinner"></div>
+      <p>기상청 최신 기상 정보를 조회하는 중...</p>
+    </div>
+
+    <!-- 메인 날씨 카드 -->
+    <main id="weatherContent" class="weather-content">
+      <!-- 실시간 날씨 히어로 카드 -->
+      <section class="current-weather-card">
+        <div class="current-header">
+          <div>
+            <div class="location-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span id="currentRegionText">서울특별시 종로구</span>
+            </div>
+            <span class="data-source-tag" id="dataSourceTag">기상청 단기예보</span>
+          </div>
+          <div class="update-time" id="updateTimeText">업데이트: --:--</div>
+        </div>
+
+        <div class="current-main">
+          <div class="weather-visual">
+            <div id="weatherIconContainer" class="hero-icon-wrapper">
+              <!-- SVG 아이콘 삽입 -->
+            </div>
+            <div class="weather-condition-text" id="weatherConditionText">맑음</div>
+          </div>
+          <div class="temperature-block">
+            <div class="temp-now">
+              <span id="currentTempText">--</span><span class="degree-unit">°C</span>
+            </div>
+            <div class="temp-range">
+              <span>최저 <b id="minTempText">--°</b></span>
+              <span class="divider">•</span>
+              <span>최고 <b id="maxTempText">--°</b></span>
+            </div>
+            <div class="sensory-temp">
+              체감 온도 <span id="sensoryTempText">--°C</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4개 세부 지표 그리드 -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon">💧</div>
+            <div class="metric-info">
+              <span class="metric-title">습도</span>
+              <span class="metric-value" id="humidityText">--%</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">🌧️</div>
+            <div class="metric-info">
+              <span class="metric-title">강수확률</span>
+              <span class="metric-value" id="popText">--%</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">💨</div>
+            <div class="metric-info">
+              <span class="metric-title">풍속</span>
+              <span class="metric-value" id="windSpeedText">-- m/s</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">📍</div>
+            <div class="metric-info">
+              <span class="metric-title">기상청 격자</span>
+              <span class="metric-value" id="gridCoordText">X: 60, Y: 127</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 24시간 시간별 예보 -->
+      <section class="forecast-section">
+        <h2 class="section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          시간대별 예보
+        </h2>
+        <div class="hourly-scroll" id="hourlyList">
+          <!-- 시간별 아이템 동적 생성 -->
+        </div>
+      </section>
+    </main>
+
+    <!-- 설정 / API 키 모달 -->
+    <div id="settingsModal" class="modal-backdrop" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>기상청 API 설정</h3>
+          <button id="btnCloseModal" class="btn-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-desc">
+            기상청 공공데이터포털(data.go.kr)에서 발급받은 <strong>단기예보 Open API 인증키</strong>를 등록하면 실시간 기상 데이터를 직접 받아옵니다.
+          </p>
+
+          <div class="form-group">
+            <label for="apiKeyInput">공공데이터포털 일반 인증키 (Decoding 또는 Encoding)</label>
+            <input type="text" id="apiKeyInput" class="form-control" placeholder="API 키를 입력하세요">
+            <span class="input-hint">입력한 키는 브라우저 로컬 저장소(LocalStorage)에 안전하게 저장됩니다.</span>
+          </div>
+
+          <div class="demo-toggle-box">
+            <label class="toggle-switch">
+              <input type="checkbox" id="demoToggle">
+              <span class="slider"></span>
+            </label>
+            <div class="toggle-desc">
+              <strong>데모(체험) 모드 사용하기</strong>
+              <p>API 키 없이도 사이트의 모든 기능을 테스트할 수 있습니다.</p>
+            </div>
+          </div>
+
+          <div class="guide-box">
+            <h4>💡 기상청 API 키 무료 발급 방법 (3분 소요)</h4>
+            <ol>
+              <li><a href="https://www.data.go.kr" target="_blank" rel="noopener">공공데이터포털(data.go.kr)</a> 회원가입 및 로그인</li>
+              <li>통합검색창에 <strong>"기상청_단기예보 ((구)동네예보) 조회서비스"</strong> 검색</li>
+              <li>[활용신청] 클릭 후 즉시 승인된 <strong>일반 인증키(Encoding/Decoding)</strong> 복사 후 위 입력창에 붙여넣기</li>
+            </ol>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="btnSaveKey" class="btn btn-primary">설정 저장</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <p>데이터 제공: 대한민국 기상청(KMA) 공공데이터포털</p>
+      <p class="footer-sub">위경도-기상청 격자(LCC 투영) 실시간 좌표 변환 알고리즘 적용</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
