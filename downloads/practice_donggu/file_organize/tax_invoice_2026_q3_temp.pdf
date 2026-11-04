@@ -1,0 +1,53 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 487 >>
+stream
+BT
+/F1 18 Tf
+50 740 Td
+(ELECTRONIC TAX INVOICE) Tj
+/F1 12 Tf
+0 -30 Td
+(Invoice No: 20261104-TAX-0921) Tj
+0 -25 Td
+(Date: 2026-11-04) Tj
+0 -35 Td
+(Supplier: Antigravity AI Inc. [Biz No: 120-88-29381]) Tj
+0 -25 Td
+(Client: Global Marketing Corp. [Biz No: 211-81-49201]) Tj
+0 -40 Td
+(Item: AI Consulting & Automation System Development) Tj
+0 -25 Td
+(Supply Amount: KRW 5,000,000) Tj
+0 -20 Td
+(Tax Amount: KRW 500,000) Tj
+0 -25 Td
+(Total Amount: KRW 5,500,000 [Paid via Bank Transfer]) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000060 00000 n 
+0000000117 00000 n 
+0000000243 00000 n 
+0000000346 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+431
+%%EOF
