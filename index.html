@@ -202,7 +202,7 @@
       <button onclick="selectDay(1)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-1">1회차: 아티팩트</button>
       <button onclick="selectDay(2)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-2">2회차: 배포·Git</button>
       <button onclick="selectDay(3)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-3">3회차: 스킬·DB</button>
-      <button onclick="selectDay(4)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-4">4회차: 반응형·폼</button>
+      <button onclick="selectDay(4)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-white border border-slate-200 text-slate-700" id="m-tab-4">4회차: 인증·개인DB·날씨API·배포</button>
       <button onclick="selectDay(5)" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-slate-100 border border-slate-200 text-slate-400" id="m-tab-5">5회차 (준비 중)</button>
       <button onclick="selectDay('assignment')" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-amber-50 border border-amber-200 text-slate-700" id="m-tab-assignment">갤러리</button>
       <button onclick="selectDay('guide')" class="m-tab px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-blue-50 border border-blue-200 text-blue-800" id="m-tab-guide">가이드 & 용어사전</button>
@@ -293,10 +293,10 @@
         <!-- 4회차 -->
         <button onclick="selectDay(4)" class="side-nav-btn w-full text-left px-3.5 py-3 rounded-xl transition-all flex items-center justify-between text-slate-700 hover:bg-slate-50" id="nav-day-4">
           <div>
-            <div class="font-extrabold text-sm">4회차 : 모바일 반응형 & 상담 폼·시트 연동</div>
-            <div class="text-[11px] text-slate-500 mt-0.5">모바일퍼스트·유효성검증·구글시트DB</div>
+            <div class="font-extrabold text-sm">4회차 : Supabase 인증·개인DB & 날씨 API & 배포</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">회원가입·개인화DB·기상청API·Git·GitHub·Vercel</div>
           </div>
-          <span class="text-xs font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-md">실습</span>
+          <span class="text-xs font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-md">풀스택</span>
         </button>
 
         <!-- 5회차 (비공개 / 오픈 예정) -->
@@ -472,14 +472,14 @@
                   </span>
                 </div>
                 <h4 class="text-sm sm:text-base font-extrabold text-slate-800 group-hover:text-purple-700 leading-snug transition-colors">
-                  모바일 퍼스트 반응형 웹 & 상담 폼 유효성 검증 & 구글 시트 연동
+                  Supabase 인증·개인화 DB & 기상청 API & Git·Vercel 배포
                 </h4>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                  모바일 퍼스트 레이아웃 최적화, 전화번호 자동 하이픈 및 실시간 폼 유효성 검증, 구글 스프레드시트 클라우드 실시간 데이터 자동 기록
+                  Supabase 회원가입·로그인 및 사용자별 데이터 격리, 기상청 공공 날씨 API 연동, Git·GitHub·Vercel·Supabase 풀사이클 파이프라인
                 </p>
               </div>
               <div class="pt-2.5 sm:pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-purple-600">
-                <span>실무 프로젝트 (4대 마스터)</span>
+                <span>풀스택 실습 (5대 마스터)</span>
                 <span>수업 열기</span>
               </div>
             </div>
@@ -2336,7 +2336,7 @@
         <div class="bg-gradient-to-r from-purple-900 via-indigo-950 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-9 shadow-sm space-y-4">
           <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <span class="px-2.5 py-1 rounded-full bg-purple-400/20 text-purple-200 text-xs font-bold border border-purple-400/30">4회차 정규과정</span>
-            <span class="px-2.5 py-1 rounded-full bg-indigo-400/20 text-indigo-200 text-xs font-bold border border-indigo-400/30">모바일 퍼스트 · 반응형 웹 · 폼 유효성 검증 · 구글 시트 연동</span>
+            <span class="px-2.5 py-1 rounded-full bg-indigo-400/20 text-indigo-200 text-xs font-bold border border-indigo-400/30">Supabase Auth · 개인화 DB · 기상청 날씨 API · Git · GitHub · Vercel 배포</span>
             <span class="px-2.5 py-1 rounded-full bg-purple-500 text-white text-xs font-black flex items-center gap-1">
               <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
               OPEN NOW
@@ -2345,16 +2345,16 @@
 
           <div class="space-y-2">
             <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-snug">
-              <span class="inline-block">4회차 : 모바일 퍼스트(Mobile-First) 반응형 웹,</span><br class="hidden sm:inline">
+              <span class="inline-block">4회차 : Supabase 회원가입·로그인 & 개인화 데이터베이스,</span><br class="hidden sm:inline">
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-indigo-200 to-amber-200 inline-block">
-                스마트 상담 폼 유효성 검증 & 구글 스프레드시트 클라우드 연동
+                기상청 공공 API 연동 & Git · GitHub · Vercel · Supabase 실전 배포 파이프라인
               </span>
             </h2>
             <p class="text-purple-100 text-xs sm:text-sm leading-relaxed max-w-4xl">
-              실제 웹사이트 방문자의 80% 이상은 스마트폰으로 접속합니다. 모바일 화면에서 글자가 콩알만 하거나 버튼이 터치되지 않으면 고객은 3초 만에 이탈합니다. 
-              스마트폰 화면(390px)을 기본으로 설계하는 <strong>모바일 퍼스트(Mobile-First) 디자인 원리</strong>와 Tailwind CSS 반응형 중단점(<code>sm:</code>, <code>md:</code>, <code>lg:</code>)을 마스터합니다. 
-              더불어 오타를 사전에 막아주는 <strong>전화번호 자동 하이픈 및 실시간 폼 유효성 검증(Validation)</strong>을 구축하고, 
-              복잡한 백엔드 서버나 DB 설치 없이도 제출된 고객 데이터가 내 <strong>구글 스프레드시트(Google Sheets)에 1초 만에 자동 기록되는 실전 비즈니스 자동화 웹앱</strong>을 완성합니다!
+              단순한 정적 페이지를 넘어 <strong>진짜 사용자가 로그인하고 나만의 데이터를 안전하게 관리하는 풀스택 웹서비스</strong>로 도약합니다!
+              글로벌 오픈소스 BaaS <strong>Supabase</strong>를 연동하여 이메일 회원가입·로그인(Auth)을 구축하고, 사용자 ID(<code>user.id</code>) 기반의 <strong>개인화 데이터베이스(Personalized DB)</strong>와 RLS 행 단위 보안을 설정합니다.
+              더불어 공공데이터포털의 <strong>기상청 단기예보 API</strong>를 연동해 실시간 날씨 카드를 만들고,
+              <strong>Git 버전 관리 ➔ GitHub 원격 저장소 푸시 ➔ Vercel 클라우드 자동 배포 ➔ Supabase 대시보드 관리</strong>로 이어지는 실무 풀사이클 파이프라인을 완성합니다!
             </p>
           </div>
 
@@ -2362,7 +2362,7 @@
           <div class="pt-4 border-t border-purple-700/50 flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-2">
               <span class="bg-purple-400 text-slate-950 font-black text-xs px-2.5 py-1 rounded-full shadow-xs">4대 실습</span>
-              <span class="text-xs sm:text-sm font-bold text-white">모바일 반응형 최적화 &rarr; 폼 실시간 유효성 검증 &rarr; 구글 시트 클라우드 연동 &rarr; 실시간 갤러리 시연</span>
+              <span class="text-xs sm:text-sm font-bold text-white">Supabase 로그인·개인DB &rarr; 기상청 날씨 API 연동 &rarr; Git·GitHub·Vercel 배포 파이프라인 &rarr; 갤러리 등록</span>
             </div>
             <div class="flex items-center gap-2">
               <button onclick="selectDay('assignment')" class="inline-flex items-center gap-1.5 bg-white text-slate-900 hover:bg-purple-50 text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition">
@@ -2384,13 +2384,14 @@
             <div>
               <span class="text-xs font-bold text-slate-400">동구평생학습관 AI 바이브코딩 실무 4회차</span>
               <div class="text-base font-extrabold text-slate-900">2026년 11월 4일 (수요일)</div>
-              <p class="text-xs text-slate-500 mt-0.5">모바일 퍼스트 반응형 레이아웃, 스마트 폼 유효성 검증, 구글 스프레드시트 실시간 데이터 연동</p>
+              <p class="text-xs text-slate-500 mt-0.5">Supabase Auth & 개인화 DB, 기상청 공공 날씨 API, Git·GitHub·Vercel 풀사이클 배포</p>
             </div>
           </div>
           <div class="flex items-center gap-2 text-xs">
             <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 font-bold border border-slate-200">Claude 5.5 Sonnet</span>
-            <span class="px-3 py-1.5 rounded-xl bg-purple-50 text-purple-800 font-bold border border-purple-200">Tailwind Mobile-First</span>
-            <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 font-bold border border-emerald-200">Google Sheets DB</span>
+            <span class="px-3 py-1.5 rounded-xl bg-purple-50 text-purple-800 font-bold border border-purple-200">Supabase Auth & DB</span>
+            <span class="px-3 py-1.5 rounded-xl bg-sky-50 text-sky-800 font-bold border border-sky-200">기상청 날씨 API</span>
+            <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 font-bold border border-emerald-200">Git · Vercel CI/CD</span>
           </div>
         </div>
 
@@ -2403,48 +2404,48 @@
               </span>
               4회차 핵심 학습 목표 (10대 마스터 과제)
             </h3>
-            <span class="text-xs text-purple-700 font-bold bg-purple-50 px-2.5 py-1 rounded-md">실무 핵심 역량</span>
+            <span class="text-xs text-purple-700 font-bold bg-purple-50 px-2.5 py-1 rounded-md">풀스택 핵심 역량</span>
           </div>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs text-slate-700">
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>모바일 퍼스트(Mobile-First) 철학</strong>: 스마트폰 화면을 기본(Base)으로 잡고 데스크톱으로 확장하는 설계 순서 체득</span>
+              <span><strong>Supabase 회원가입·로그인(Auth)</strong>: 이메일/비밀번호 기반 인증, 세션 유지 및 안전한 로그아웃 구현</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>뷰포트 메타태그 원리</strong>: <code>width=device-width, initial-scale=1.0</code>로 모바일 브라우저의 축소 왜곡 방지</span>
+              <span><strong>개인화 데이터베이스(Personalized DB)</strong>: <code>user.id</code> 고유 식별자로 내 데이터만 격리 조회/저장</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>Tailwind 반응형 중단점 마스터</strong>: 접두사 없는 기본값은 모바일, <code>sm:</code>, <code>md:</code>, <code>lg:</code>로 자연스러운 열 전환</span>
+              <span><strong>RLS(Row Level Security) 행 보안</strong>: 다른 사용자의 개인 데이터를 절대 열람·변조할 수 없도록 DB 보안 정책 설정</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>엄지존(Thumb Zone) 터치 최적화</strong>: 버튼 높이 최소 48px 확보 및 입력창 16px 폰트로 자동 확대 방지</span>
+              <span><strong>공공데이터포털 REST API 이해</strong>: 기상청 단기예보 Open API의 데이터 구조와 엔드포인트 파악</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>개발자 도구 모바일 시뮬레이터</strong>: <code>F12</code> &rarr; <code>Ctrl+Shift+M</code>(Mac: <code>Cmd+Opt+M</code>)으로 기기별 실시간 검증</span>
+              <span><strong>위경도 &rarr; 격자(X, Y) 좌표 변환</strong>: GPS 위치를 기상청 예보 격자 좌표로 실시간 변환하는 알고리즘 적용</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>전환율(CVR) 극대화 폼 설계</strong>: 불필요한 입력 항목을 제거하고 3~4개 핵심 필드로 예약 완료율 극대화</span>
+              <span><strong>실시간 날씨 반응형 위젯</strong>: 비동기 <code>fetch()</code>로 현재 기온, 하늘상태, 강수확률을 세련된 카드로 렌더링</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>전화번호 자동 포맷팅</strong>: 타이핑 시 <code>010-XXXX-XXXX</code> 하이픈 자동 삽입 및 정규식 실시간 검증</span>
+              <span><strong>Git 로컬 버전 관리 체득</strong>: <code>git init</code>, <code>git add .</code>, <code>git commit</code>으로 안전한 소스코드 이력 관리</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>인터랙티브 에러 피드백</strong>: 잘못된 번호 입력 시 붉은 테두리, 부드러운 흔들림 및 경고 안내 텍스트 노출</span>
+              <span><strong>GitHub 원격 저장소 푸시</strong>: 클라우드 원격 리포지토리에 푸시하여 협업 및 소스코드 영구 보존</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>노코드 구글 시트 백엔드 연동</strong>: 웹에서 [예약 신청]을 누르면 1초 만에 내 구글 시트에 행으로 자동 저장</span>
+              <span><strong>Vercel 자동 배포 & 환경변수</strong>: GitHub 푸시 시 1초 자동 빌드 배포 및 API Key 환경변수(Environment Variables) 설정</span>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl flex items-start gap-2 border border-slate-100">
               <svg class="w-3.5 h-3.5 text-purple-600 shrink-0 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span><strong>실시간 갤러리 등록 및 모바일 뷰 시연</strong>: 완성된 결과물을 갤러리에 올리고 스마트폰 뷰어로 직접 시연 및 테스트</span>
+              <span><strong>Supabase 관리 대시보드 운용</strong>: Table Editor 스키마 확인, Authentication 이메일 템플릿 제어</span>
             </div>
           </div>
         </div>
@@ -2457,23 +2458,23 @@
                 <span class="w-8 h-8 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-base">
                   <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                 </span>
-                <span>4회차 핵심 이론 & 바이브코딩 구조 완전 정복</span>
+                <span>4회차 핵심 이론 & 풀스택 바이브코딩 구조 완전 정복</span>
               </h3>
-              <p class="text-xs text-slate-500 mt-1">모바일 퍼스트 설계부터 스마트 폼 유효성 검증, 구글 시트 클라우드 연동까지 실무 6대 핵심 원리입니다.</p>
+              <p class="text-xs text-slate-500 mt-1">Supabase 회원 인증, 개인화 데이터베이스, 기상청 공공 API, Git-GitHub-Vercel 풀사이클 배포의 6대 핵심 원리입니다.</p>
             </div>
-            <span class="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-bold border border-purple-200">실무 핵심 이론 6선</span>
+            <span class="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-bold border border-purple-200">풀스택 실무 핵심 이론 6선</span>
           </div>
 
           <div class="grid md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700">
 
-            <!-- 개념 1: 모바일 퍼스트(Mobile-First) 디자인 원리 -->
+            <!-- 개념 1: Supabase Auth & 개인화 데이터베이스 격리 원리 -->
             <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3 md:col-span-2">
               <div class="flex items-center justify-between flex-wrap gap-2">
                 <div class="flex items-center gap-2">
                   <span class="px-2.5 py-0.5 rounded bg-purple-600 text-white font-black text-[11px]">개념 1</span>
-                  <strong class="text-slate-900 text-base">모바일 퍼스트(Mobile-First) 디자인 원리 & 뷰포트 메타태그</strong>
+                  <strong class="text-slate-900 text-base">Supabase 회원 인증(Auth) & 개인화 데이터베이스(Personalized DB) 원리</strong>
                 </div>
-                <span class="text-xs text-purple-800 font-bold bg-purple-100 px-2.5 py-1 rounded-md">필수 설계 원칙</span>
+                <span class="text-xs text-purple-800 font-bold bg-purple-100 px-2.5 py-1 rounded-md">필수 아키텍처</span>
               </div>
 
               <!-- 실전 핵심 조언 콜아웃 -->
@@ -2483,270 +2484,258 @@
                   <span>실전 핵심 조언 (강의 하이라이트)</span>
                 </div>
                 <p class="text-xs sm:text-sm text-slate-700">
-                  "많은 초보자분들이 큰 모니터에서 웹사이트를 화려하게 만들고 뿌듯해합니다. 
-                  하지만 여러분의 고객이 인스타그램 광고나 카카오톡 링크를 눌러 접속하는 기기는 <strong>90%가 스마트폰</strong>입니다! 
-                  스마트폰에서 글씨가 콩알만 하거나 버튼이 손가락으로 안 눌리면 고객은 3초 만에 나갑니다. 
-                  처음부터 스마트폰 화면(390px)을 기본으로 잡고, 작은 화면에서 꼭 필요한 상담 신청과 핵심 혜택만 1열로 배치한 뒤 데스크톱으로 넓히는 것이 <strong>'모바일 퍼스트'</strong>의 핵심입니다."
+                  "모든 사용자가 똑같은 화면을 보는 정적 사이트는 진정한 '웹 서비스'가 아닙니다. 
+                  사용자가 회원가입하고 로그인하면 <strong>오직 그 사람만의 고유 번호(<code>user.id</code>)</strong>가 발급됩니다. 
+                  이 고유 ID를 데이터베이스 행(Row)에 꼬리표처럼 달아 저장함으로써, <strong>'내가 작성한 메모', '내가 저장한 즐겨찾기', '내 1:1 상담 내역'만 나에게 보여주는 '개인화 데이터베이스 서비스'</strong>를 단 몇 줄의 프롬프트로 완성할 수 있습니다!"
                 </p>
               </div>
 
-              <!-- 용어 사전 그리드 -->
-              <div class="grid sm:grid-cols-2 gap-3 pt-1">
+              <!-- 원리 3단계 요약 -->
+              <div class="grid sm:grid-cols-3 gap-3 pt-1">
                 <div class="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1 shadow-2xs">
                   <div class="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
-                    <span class="text-purple-600 font-black">1.</span> 뷰포트(Viewport) 메타태그
+                    <span class="text-purple-600 font-black">1.</span> 이메일 가입 & 로그인
                   </div>
                   <p class="text-slate-600 text-xs leading-relaxed">
-                    <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> 코드는 모바일 브라우저에게 '화면을 강제로 PC처럼 축소하지 말고 스마트폰 실제 가로 너비에 맞춰 1:1로 렌더링하라'고 명령하는 첫 번째 필수 선언문입니다.
+                    <code>supabase.auth.signUp()</code> / <code>signInWithPassword()</code>로 간편하게 인증 토큰(JWT)과 세션을 브라우저에 안전 보관합니다.
                   </p>
                 </div>
                 <div class="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1 shadow-2xs">
                   <div class="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
-                    <span class="text-purple-600 font-black">2.</span> 미디어 쿼리(Media Query) & 중단점(Breakpoint)
+                    <span class="text-purple-600 font-black">2.</span> 개인 식별자(user.id) 태깅
                   </div>
                   <p class="text-slate-600 text-xs leading-relaxed">
-                    접속한 화면의 가로 폭(너비)에 따라 CSS 스타일을 실시간으로 바꾸어주는 기술입니다. Tailwind CSS에서는 <code>sm:</code>(640px), <code>md:</code>(768px), <code>lg:</code>(1024px) 접두사로 직관적으로 코딩합니다.
+                    데이터를 저장할 때 <code>user_id: user.id</code> 필드를 함께 전송하여 데이터의 소유자를 명확히 기록합니다.
+                  </p>
+                </div>
+                <div class="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1 shadow-2xs">
+                  <div class="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+                    <span class="text-purple-600 font-black">3.</span> 내 데이터만 자동 필터링
+                  </div>
+                  <p class="text-slate-600 text-xs leading-relaxed">
+                    <code>.from('notes').select().eq('user_id', user.id)</code>로 로그인한 회원의 데이터만 안전하게 화면에 렌더링합니다.
                   </p>
                 </div>
               </div>
-
-              <!-- 반응형 중단점 표 -->
-              <div class="overflow-x-auto pt-2">
-                <table class="w-full text-left text-xs border border-slate-200 bg-white rounded-xl overflow-hidden">
-                  <thead class="bg-slate-100 text-slate-800 font-bold">
-                    <tr>
-                      <th class="p-2.5">Tailwind 접두사</th>
-                      <th class="p-2.5">최소 가로 해상도 (Breakpoint)</th>
-                      <th class="p-2.5">대응 대상 기기</th>
-                      <th class="p-2.5">실제 예시 클래스</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-slate-100 text-slate-700">
-                    <tr>
-                      <td class="p-2.5 font-mono text-purple-700 font-bold">(접두사 없음)</td>
-                      <td class="p-2.5">모든 해상도 (0px ~)</td>
-                      <td class="p-2.5 font-bold text-slate-900">스마트폰 (기본 Base)</td>
-                      <td class="p-2.5 font-mono"><code>grid-cols-1 w-full text-base</code></td>
-                    </tr>
-                    <tr>
-                      <td class="p-2.5 font-mono text-purple-700 font-bold">sm:</td>
-                      <td class="p-2.5">640px 이상</td>
-                      <td class="p-2.5">대화면 스마트폰 가로모드</td>
-                      <td class="p-2.5 font-mono"><code>sm:grid-cols-2 sm:text-lg</code></td>
-                    </tr>
-                    <tr>
-                      <td class="p-2.5 font-mono text-purple-700 font-bold">md:</td>
-                      <td class="p-2.5">768px 이상</td>
-                      <td class="p-2.5">아이패드, 태블릿 세로모드</td>
-                      <td class="p-2.5 font-mono"><code>md:flex md:items-center</code></td>
-                    </tr>
-                    <tr>
-                      <td class="p-2.5 font-mono text-purple-700 font-bold">lg:</td>
-                      <td class="p-2.5">1024px 이상</td>
-                      <td class="p-2.5">노트북, 데스크톱 모니터</td>
-                      <td class="p-2.5 font-mono"><code>lg:grid-cols-3 lg:max-w-6xl</code></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </div>
 
-            <!-- 개념 2: 엄지손가락 법칙(Thumb Zone)과 터치 친화적 UI -->
+            <!-- 개념 2: RLS (Row Level Security) 행 단위 보안 정책 -->
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2">
               <div class="flex items-center gap-2">
-                <span class="px-2.5 py-0.5 rounded bg-blue-600 text-white font-black text-[11px]">개념 2</span>
-                <strong class="text-slate-900 text-sm">엄지손가락 법칙(Thumb Zone)과 모바일 4대 UX 규칙</strong>
+                <span class="px-2.5 py-0.5 rounded bg-rose-600 text-white font-black text-[11px]">개념 2</span>
+                <strong class="text-slate-900 text-sm">RLS (Row Level Security) - 내 데이터만 지키는 보안 방패</strong>
               </div>
               <p class="text-slate-600 leading-relaxed text-xs">
-                스마트폰 사용자는 마우스 포인터가 아니라 두꺼운 엄지손가락으로 화면을 조작합니다. 아래 4대 규칙을 지켜야 터치 오류로 인한 이탈을 막을 수 있습니다:
+                프론트엔드에서 데이터베이스에 직접 접속할 때, 악의적인 사용자가 남의 글을 삭제하거나 열람하지 못하도록 데이터베이스 자체에서 차단하는 핵심 보안 기능입니다:
               </p>
-              <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1.5 text-xs text-slate-700">
-                <div>• <strong>1. 버튼 높이 48px 이상</strong>: 최소 <code>py-3</code>(12px 패딩) 이상을 주어 빗나가지 않게 설계</div>
-                <div>• <strong>2. 폰트 최소 16px 원칙</strong>: 16px 미만의 입력창(input)은 아이폰 사파리에서 화면을 강제로 자동 확대(Zoom-in)시켜 화면이 깨지므로 필수 방지</div>
-                <div>• <strong>3. 햄버거 메뉴 & 바텀 시트</strong>: 상단 긴 메뉴 대신 우측 상단 햄버거 버튼과 아래에서 올라오는 바텀 시트 채택</div>
-                <div>• <strong>4. 하단 플로팅 CTA 바</strong>: 엄지가 가장 편하게 닿는 화면 맨 아래에 [무료 체험 신청하기] 고정 바 노출</div>
+              <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1.5 text-xs text-slate-700 font-mono">
+                <div>• <strong>ALTER TABLE notes ENABLE ROW LEVEL SECURITY;</strong></div>
+                <div class="text-slate-500">// 테이블의 행 보안 스위치를 켭니다.</div>
+                <div>• <strong>CREATE POLICY "Users can only read own notes"</strong></div>
+                <div class="text-indigo-600 font-bold">• USING (auth.uid() = user_id);</div>
+                <div class="text-slate-500">// 오직 로그인한 본인의 UID와 일치하는 행만 조회/수정/삭제 허용!</div>
               </div>
             </div>
 
-            <!-- 개념 3: 크롬 개발자 도구 모바일 시뮬레이터 실전 활용법 -->
+            <!-- 개념 3: 공공데이터포털 & 기상청 단기예보 REST API -->
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2">
               <div class="flex items-center gap-2">
-                <span class="px-2.5 py-0.5 rounded bg-indigo-600 text-white font-black text-[11px]">개념 3</span>
-                <strong class="text-slate-900 text-sm">크롬 개발자 도구 모바일 시뮬레이터 마스터</strong>
+                <span class="px-2.5 py-0.5 rounded bg-sky-600 text-white font-black text-[11px]">개념 3</span>
+                <strong class="text-slate-900 text-sm">기상청 단기예보 Open API & 격자(X, Y) 좌표 변환</strong>
               </div>
               <p class="text-slate-600 leading-relaxed text-xs">
-                매번 스마트폰으로 링크를 보내지 않고도, PC 크롬 브라우저에서 1초 만에 실제 스마트폰과 동일한 터치 환경을 시뮬레이션할 수 있습니다:
+                대한민국 공공데이터포털의 기상청 API는 위도/경도가 아니라 독자적인 '기상 격자 좌표(NX, NY)'를 사용합니다:
               </p>
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1.5 text-xs text-slate-700">
-                <div>• <strong>1. 개발자 도구 단축키</strong>: <code>F12</code> 또는 <code>Cmd + Option + I</code>(Mac)</div>
-                <div>• <strong>2. 디바이스 툴바 켜기</strong>: <code>Ctrl + Shift + M</code> (Mac: <code>Cmd + Option + M</code>)</div>
-                <div>• <strong>3. 권장 테스트 기기</strong>: <code>iPhone 14 Pro (390px)</code> & <code>Galaxy S20 Ultra (412px)</code></div>
-                <div>• <strong>4. 회전 테스트</strong>: 상단 [회전(Rotate)] 아이콘을 눌러 스마트폰을 가로로 돌렸을 때 카드 배열 점검</div>
+                <div>• <strong>1. 위경도 &rarr; 격자 변환(DFS)</strong>: GPS(위도 35.13°, 경도 129.04°)를 기상청 격자(부산 동구: X=98, Y=75)로 변환하는 공식 적용</div>
+                <div>• <strong>2. 핵심 예보 카테고리</strong>: <code>TMP</code>(1시간 기온), <code>SKY</code>(하늘상태 1:맑음, 3:구름많음, 4:흐림), <code>POP</code>(강수확률 %)</div>
+                <div>• <strong>3. 비동기 통신(fetch)</strong>: 로딩 스피너를 보여주며 API로부터 실시간 JSON 데이터를 받아 날씨 위젯에 반영</div>
               </div>
             </div>
 
-            <!-- 개념 4: 전환율(CVR) 극대화 스마트 폼 & 실시간 유효성 검증 -->
+            <!-- 개념 4: 풀사이클 배포 파이프라인 (Git ➔ GitHub ➔ Vercel ➔ Supabase) -->
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2">
               <div class="flex items-center gap-2">
-                <span class="px-2.5 py-0.5 rounded bg-amber-600 text-white font-black text-[11px]">개념 4</span>
-                <strong class="text-slate-900 text-sm">전환율(CVR)을 높이는 스마트 폼 유효성 검증(Validation)</strong>
+                <span class="px-2.5 py-0.5 rounded bg-emerald-600 text-white font-black text-[11px]">개념 4</span>
+                <strong class="text-slate-900 text-sm">실무 풀사이클 파이프라인 (Git ➔ GitHub ➔ Vercel ➔ Supabase)</strong>
               </div>
               <p class="text-slate-600 leading-relaxed text-xs">
-                고객이 상담 신청 버튼을 눌렀을 때 아무 반응이 없거나, 오타가 났는데 뒤늦게 페이지가 새로고침되며 에러가 뜨면 90%는 이탈합니다:
+                실리콘밸리와 유니콘 스타트업이 채택한 가장 빠르고 안정적인 자동화 배포 파이프라인입니다:
               </p>
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1.5 text-xs text-slate-700">
-                <div>• <strong>1. 전화번호 자동 하이픈</strong>: 타이핑 시 <code>010-1234-5678</code> 형태로 즉시 자동 포맷팅</div>
-                <div>• <strong>2. 정규식 실시간 검증</strong>: <code>^01[016789]-?\d{3,4}-?\d{4}$</code>로 자릿수 미달 시 붉은 테두리 알림</div>
-                <div>• <strong>3. 좌우 흔들림(Shake) 효과</strong>: 필수 항목 누락 시 해당 인풋 박스가 부드럽게 흔들리며 자동 포커스</div>
-                <div>• <strong>4. 제출 중 중복 방지</strong>: [접수 중...] 로딩 스피너 작동 및 버튼 비활성화(disabled)</div>
+                <div>• <strong>1. Git (로컬 관리)</strong>: 내 컴퓨터에서 코드 변경 사항을 스냅샷으로 안전하게 커밋(Commit)</div>
+                <div>• <strong>2. GitHub (원격 저장)</strong>: 클라우드 원격 리포지토리에 푸시하여 전 세계 어디서나 백업/공유</div>
+                <div>• <strong>3. Vercel (자동 배포)</strong>: GitHub에 푸시되는 순간 감지하여 1초 만에 전 세계 CDN으로 초고속 배포</div>
+                <div>• <strong>4. Supabase (DB 운영)</strong>: 실시간 클라우드 DB 대시보드에서 유저 및 데이터를 실시간 모니터링</div>
               </div>
             </div>
 
-            <!-- 개념 5: 노코드 백엔드 - 구글 스프레드시트(Google Sheets) 연동 -->
+            <!-- 개념 5: API Key & 환경변수(Environment Variables) 보안 수칙 -->
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-2">
               <div class="flex items-center gap-2">
-                <span class="px-2.5 py-0.5 rounded bg-emerald-600 text-white font-black text-[11px]">개념 5</span>
-                <strong class="text-slate-900 text-sm">무료 구글 스프레드시트를 클라우드 DB로 활용하는 원리</strong>
+                <span class="px-2.5 py-0.5 rounded bg-amber-600 text-white font-black text-[11px]">개념 5</span>
+                <strong class="text-slate-900 text-sm">API Key 유출 방지 & Vercel 환경변수(Env) 관리</strong>
               </div>
               <p class="text-slate-600 leading-relaxed text-xs">
-                비전공자에게 어려운 SQL 데이터베이스 대신, 전 세계에서 가장 친숙한 <strong>구글 엑셀 시트</strong>를 실시간 데이터 금고로 사용합니다:
+                공공데이터 포털 인증키나 데이터베이스 키를 GitHub 공개 저장소에 그대로 올리면 자동 크롤러에게 악용될 수 있습니다:
               </p>
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1.5 text-xs text-slate-700">
-                <div>• <strong>1. 비용 0원 & 평생 무료</strong>: 서버 호스팅비나 데이터베이스 유지비 전혀 없음</div>
-                <div>• <strong>2. Google Apps Script(웹앱)</strong>: 시트 내장 스크립트가 웹으로부터 POST 데이터를 수신하여 행(Row) 추가</div>
-                <div>• <strong>3. 1초 만에 엑셀 저장</strong>: 고객이 스마트폰에서 [신청]을 누르면 내 구글 시트에 즉시 새 행 기록</div>
-                <div>• <strong>4. 스마트폰 실시간 알림</strong>: 구글 시트 모바일 앱을 설치하면 신규 상담 신청 시 즉시 푸시 알림 수신</div>
+                <div>• <strong>1. .gitignore 등록</strong>: 로컬 환경설정 파일(<code>.env</code>)은 Git 커밋 대상에서 제외</div>
+                <div>• <strong>2. Vercel 환경변수 설정</strong>: Vercel 대시보드 [Settings] ➔ [Environment Variables]에 키를 안전하게 주입</div>
+                <div>• <strong>3. Supabase anon key</strong>: 프론트엔드용 anon key는 공개 가능하나, 절대 <strong>service_role key</strong>는 프론트에 노출 금지!</div>
               </div>
             </div>
 
-            <!-- 개념 6: 로컬스토리지(localStorage) 이중 백업 폴백 구조 -->
+            <!-- 개념 6: 모바일 반응형 뷰포트 & 터치 최적화 폼 -->
             <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3 md:col-span-2">
               <div class="flex items-center justify-between flex-wrap gap-2">
                 <div class="flex items-center gap-2">
                   <span class="px-2.5 py-0.5 rounded bg-slate-900 text-white font-black text-[11px]">개념 6</span>
-                  <strong class="text-slate-900 text-base">오프라인 대비 이중 안전장치 (Local Storage Fallback) 구조</strong>
+                  <strong class="text-slate-900 text-base">모바일 퍼스트(Mobile-First) 뷰포트 & 터치 친화적 폼 규칙</strong>
                 </div>
-                <span class="text-xs text-slate-700 font-bold bg-slate-200 px-2.5 py-1 rounded-md">안전 설계</span>
+                <span class="text-xs text-slate-700 font-bold bg-slate-200 px-2.5 py-1 rounded-md">UX 최적화</span>
               </div>
               <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                클라우드 네트워크가 불안정하거나 구글 API 응답이 지연되어도 소중한 고객 연락처가 유실되면 안 됩니다. 
-                따라서 <strong>1차로 고객 브라우저의 <code>localStorage</code>에 즉시 저장</strong>하고, 동시에 <strong>2차로 구글 스프레드시트 클라우드로 전송</strong>하는 2중 안전 폴백(Fallback) 구조를 설계합니다.
+                스마트폰(390px) 작은 화면에서도 회원가입과 날씨 카드가 깨지지 않도록 지켜야 하는 4대 UX 원칙입니다:
               </p>
-              <div class="p-3.5 bg-white rounded-xl border border-slate-200 font-mono text-xs text-slate-700 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
-                <span class="bg-purple-100 text-purple-800 px-2.5 py-1 rounded font-bold">1. 스마트폰 상담 폼 제출</span>
-                <span>&rarr;</span>
-                <span class="bg-blue-100 text-blue-800 px-2.5 py-1 rounded font-bold">2. localStorage 1차 즉시 보존</span>
-                <span>&rarr;</span>
-                <span class="bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded font-bold">3. Apps Script 비동기 POST</span>
-                <span>&rarr;</span>
-                <span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded font-bold">4. 내 구글 시트에 새 행 기록!</span>
+              <div class="grid sm:grid-cols-4 gap-2 text-xs">
+                <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                  <strong class="text-slate-900 block">1. 뷰포트 메타태그</strong>
+                  <span class="text-slate-500">width=device-width 필수</span>
+                </div>
+                <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                  <strong class="text-slate-900 block">2. 인풋 폰트 16px</strong>
+                  <span class="text-slate-500">iOS 자동 줌인 버그 차단</span>
+                </div>
+                <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                  <strong class="text-slate-900 block">3. 버튼 높이 48px</strong>
+                  <span class="text-slate-500">엄지손가락 터치 오류 방지</span>
+                </div>
+                <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                  <strong class="text-slate-900 block">4. 실시간 에러 피드백</strong>
+                  <span class="text-slate-500">흔들림 애니메이션 & 알림</span>
+                </div>
               </div>
             </div>
 
           </div>
         </div>
 
-        <!-- 4. Google Apps Script 5단계 연동 매뉴얼 & 코드 카드 -->
+        <!-- 4. Supabase DB 스키마 & Git-GitHub-Vercel 풀사이클 연동 매뉴얼 -->
         <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 shadow-xs">
           <div class="border-b border-slate-100 pb-3 flex items-center justify-between flex-wrap gap-2">
             <div>
               <h3 class="text-lg sm:text-xl font-black text-slate-900 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-base">
-                  <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="w-8 h-8 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-base">
+                  <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                 </span>
-                <span>구글 스프레드시트 1분 연동 매뉴얼 & Apps Script 코드</span>
+                <span>Supabase 개인화 DB 스키마 & Git · GitHub · Vercel 실전 배포 명령어</span>
               </h3>
-              <p class="text-xs text-slate-500 mt-1">구글 시트에 아래 코드를 붙여넣기만 하면 1분 만에 나만의 무료 백엔드 API 서버가 완성됩니다.</p>
+              <p class="text-xs text-slate-500 mt-1">Supabase 대시보드 SQL Editor에 붙여넣기만 하면 개인화 DB가 생성되고, 터미널 명령어로 Vercel까지 직결 배포됩니다.</p>
             </div>
-            <span class="px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">구글 클라우드 연동</span>
+            <span class="px-3 py-1.5 rounded-xl bg-purple-50 text-purple-800 text-xs font-bold border border-purple-200">풀스택 세팅 킷</span>
           </div>
 
-          <!-- 5단계 초간단 따라하기 가이드 -->
-          <div class="grid sm:grid-cols-5 gap-2.5 text-xs">
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <span class="font-extrabold text-emerald-700 block">1. 구글 시트 생성</span>
-              <p class="text-slate-600">구글 드라이브에서 새 스프레드시트를 만들고 1행에 [일시, 성함, 연락처, 운동목표, 희망시간]을 적습니다.</p>
+          <!-- 4단계 파이프라인 워크플로우 카드 -->
+          <div class="grid sm:grid-cols-4 gap-2.5 text-xs">
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <span class="font-extrabold text-purple-700 block">1. Supabase SQL 실행</span>
+              <p class="text-slate-600">아래 SQL 코드를 복사하여 Supabase [SQL Editor]에서 Run을 눌러 개인화 테이블을 즉시 만듭니다.</p>
             </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <span class="font-extrabold text-emerald-700 block">2. Apps Script 열기</span>
-              <p class="text-slate-600">상단 메뉴에서 [확장 프로그램] ➔ [Apps Script]를 클릭합니다.</p>
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <span class="font-extrabold text-blue-700 block">2. Git 로컬 커밋</span>
+              <p class="text-slate-600">내 작업 폴더에서 <code>git init</code>, <code>git add .</code>, <code>git commit</code>으로 이력을 저장합니다.</p>
             </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <span class="font-extrabold text-emerald-700 block">3. 코드 붙여넣기</span>
-              <p class="text-slate-600">기존 코드를 지우고 아래 [Apps Script 코드]를 복사해서 그대로 붙여넣습니다.</p>
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <span class="font-extrabold text-indigo-700 block">3. GitHub 원격 푸시</span>
+              <p class="text-slate-600">GitHub에 만든 새 리포지토리로 <code>git push -u origin main</code> 명령어를 실행합니다.</p>
             </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <span class="font-extrabold text-emerald-700 block">4. 웹 앱 배포</span>
-              <p class="text-slate-600">우측 상단 [배포] ➔ [새 배포] ➔ 유형: [웹 앱] 선택 ➔ <strong>액세스 권한: '모든 사용자'</strong> 선택 후 [배포] 클릭!</p>
-            </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-              <span class="font-extrabold text-emerald-700 block">5. URL 복사</span>
-              <p class="text-slate-600">발급된 [웹 앱 URL]을 복사하여 Claude에게 프롬프트와 함께 전달하면 끝!</p>
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <span class="font-extrabold text-emerald-700 block">4. Vercel 원클릭 배포</span>
+              <p class="text-slate-600">Vercel에서 GitHub 리포지토리를 Import하고 환경변수를 넣으면 영구 무료 라이브 사이트 완성!</p>
             </div>
           </div>
 
-          <!-- 실제 복사 가능한 Google Apps Script 코드 블록 (코드 바로 위 복사 버튼) -->
+          <!-- Supabase RLS 테이블 생성 SQL 코드 블록 -->
           <div class="space-y-0 shadow-xs">
             <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2.5 rounded-t-2xl border border-b-0 border-slate-700">
               <div class="flex items-center gap-2 min-w-0">
                 <span class="w-3 h-3 rounded-full bg-rose-500"></span>
                 <span class="w-3 h-3 rounded-full bg-amber-500"></span>
                 <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                <span class="text-xs font-mono font-bold text-slate-300 ml-1 truncate">Google Apps Script (doPost 백엔드 자동화 코드)</span>
+                <span class="text-xs font-mono font-bold text-slate-300 ml-1 truncate">Supabase SQL Editor (개인화 테이블 & RLS 보안 정책 일괄 생성)</span>
               </div>
-              <button onclick="copyCode('gas-script-code')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 shrink-0">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                <span>코드 복사</span>
+              <button onclick="copyCode('supabase-schema-sql')" class="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span>SQL 복사</span>
               </button>
             </div>
-            <pre id="gas-script-code" class="p-4 sm:p-5 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-2xl border border-slate-700 select-all">// [Google Apps Script] 구글 스프레드시트 실시간 상담 예약 접수 백엔드 스크립트
-function doPost(e) {
-  var lock = LockService.getScriptLock();
-  lock.tryLock(10000); // 동시 접수 충돌 방지 락 (최대 10초 대기)
+            <pre id="supabase-schema-sql" class="p-4 sm:p-5 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-2xl border border-slate-700 select-all">-- [1] 개인화 메모/예약 관리 테이블 생성
+CREATE TABLE public.user_notes (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+    title TEXT NOT NULL,
+    content TEXT,
+    weather_info JSONB, -- 작성 당시 날씨 데이터(기온, 날씨상태) 자동 저장
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
 
-  try {
-    var doc = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = doc.getActiveSheet();
+-- [2] 행 단위 보안 (Row Level Security) 활성화
+ALTER TABLE public.user_notes ENABLE ROW LEVEL SECURITY;
 
-    // 웹에서 전달받은 JSON 파싱 또는 Form 데이터 수신
-    var data;
-    if (e.postData && e.postData.contents) {
-      data = JSON.parse(e.postData.contents);
-    } else {
-      data = e.parameter;
-    }
+-- [3] 로그인한 사용자 본인 데이터만 조회(SELECT) 가능 정책
+CREATE POLICY "Users can view own notes" 
+ON public.user_notes FOR SELECT 
+TO authenticated 
+USING (auth.uid() = user_id);
 
-    var timestamp = new Date();
-    var formattedDate = Utilities.formatDate(timestamp, "Asia/Seoul", "yyyy-MM-dd HH:mm:ss");
+-- [4] 로그인한 사용자 본인 데이터만 추가(INSERT) 가능 정책
+CREATE POLICY "Users can create own notes" 
+ON public.user_notes FOR INSERT 
+TO authenticated 
+WITH CHECK (auth.uid() = user_id);
 
-    // 스프레드시트 마지막 행에 새 고객 상담 데이터 1초 만에 자동 추가
-    sheet.appendRow([
-      formattedDate,
-      data.name || '',
-      data.phone || '',
-      data.goal || '',
-      data.time || '',
-      data.notes || ''
-    ]);
+-- [5] 로그인한 사용자 본인 데이터만 수정/삭제(UPDATE/DELETE) 가능 정책
+CREATE POLICY "Users can update own notes" 
+ON public.user_notes FOR UPDATE 
+TO authenticated 
+USING (auth.uid() = user_id);
 
-    // 성공 JSON 응답 반환
-    return ContentService.createTextOutput(JSON.stringify({
-      result: "success",
-      message: "상담 신청이 정상 접수되었습니다.",
-      timestamp: formattedDate
-    })).setMimeType(ContentService.MimeType.JSON);
-
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
-      result: "error",
-      error: error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
-
-  } finally {
-    lock.releaseLock();
-  }
-}</pre>
+CREATE POLICY "Users can delete own notes" 
+ON public.user_notes FOR DELETE 
+TO authenticated 
+USING (auth.uid() = user_id);</pre>
           </div>
+
+          <!-- 터미널 Git-GitHub-Vercel 명령어 블록 -->
+          <div class="space-y-0 shadow-xs">
+            <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2.5 rounded-t-2xl border border-b-0 border-slate-700">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                <span class="text-xs font-mono font-bold text-slate-300 ml-1 truncate">터미널 Git & GitHub & Vercel 배포 한 줄 실행 명령어</span>
+              </div>
+              <button onclick="copyCode('git-deploy-cmds')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span>명령어 복사</span>
+              </button>
+            </div>
+            <pre id="git-deploy-cmds" class="p-4 sm:p-5 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-2xl border border-slate-700 select-all"># 1. 내 작업 폴더로 이동하여 Git 초기화 및 커밋
+cd ~/my-fullstack-app
+git init
+git add .
+git commit -m "feat: Supabase Auth, 개인화 DB, 기상청 날씨 API 풀스택 완성"
+
+# 2. GitHub에 새 저장소 생성 후 원격 연결 및 푸시
+git branch -M main
+git remote add origin https://github.com/내계정/내저장소이름.git
+git push -u origin main
+
+# 3. Vercel 초고속 배포 (또는 vercel.com 대시보드에서 GitHub Import)
+npx vercel --prod --yes</pre>
+          </div>
+
         </div>
 
         <!-- 5. 4대 실습 프로젝트 & 프롬프트 복사 카드 -->
@@ -2764,119 +2753,158 @@ function doPost(e) {
             <span class="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-bold border border-purple-200">원클릭 복사</span>
           </div>
 
-          <!-- 실습 1: 모바일 퍼스트 반응형 레이아웃 최적화 -->
+          <!-- 실습 1: Supabase 회원가입·로그인 & 개인화 데이터베이스 연동 -->
           <div class="border border-slate-200 rounded-2xl p-5 space-y-3 bg-white hover:border-purple-300 transition-all">
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded-lg bg-purple-600 text-white font-extrabold text-xs">실습 1</span>
-              <h4 class="text-base font-extrabold text-slate-900">피트니스 랜딩페이지 모바일 퍼스트(Mobile-First) 반응형 웹 최적화</h4>
+              <h4 class="text-base font-extrabold text-slate-900">Supabase 이메일 회원가입·로그인(Auth) & 개인화 데이터베이스(Personalized DB)</h4>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              3회차에서 만든 피트니스 클럽 랜딩페이지를 스마트폰 화면(390px)에서도 한눈에 읽히도록 헤더 네비게이션, 히어로 배너, 3열 프로그램 카드를 모바일 1열 반응형으로 최적화합니다.
+              Supabase 클라우드를 연동하여 모달 로그인/회원가입 기능을 구현하고, 로그인한 회원 고유 식별자(<code>user.id</code>)로 나만의 개인 메모/기록을 저장하고 내 글만 조회하는 개인화 DB를 완성합니다.
             </p>
 
             <!-- 코드 바로 위 복사 버튼 헤더 바 -->
             <div class="space-y-0 shadow-xs">
               <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2.5 rounded-t-xl border border-b-0 border-slate-700">
                 <span class="text-xs font-mono font-bold text-purple-300 flex items-center gap-1.5 truncate">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-                  <span>실습 1 AI 프롬프트 (모바일 퍼스트 반응형 최적화)</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                  <span>실습 1 AI 프롬프트 (Supabase 인증 & 개인화 DB 연동)</span>
                 </span>
                 <button onclick="copyCode('prompt-day4-1')" class="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 shrink-0">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
                   <span>프롬프트 복사</span>
                 </button>
               </div>
-              <pre id="prompt-day4-1" class="p-4 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-xl border border-slate-800 select-all">당신은 최고의 모바일 웹 프론트엔드 전문 개발자입니다.
-기존에 작성된 피트니스 클럽 랜딩페이지 HTML 코드를 '모바일 퍼스트(Mobile-First)' 원칙에 맞춰 완벽한 반응형 웹으로 전면 개편해 주세요.
+              <pre id="prompt-day4-1" class="p-4 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-xl border border-slate-800 select-all">당신은 최고의 풀스택 프론트엔드 전문 개발자입니다.
+단일 HTML 파일 내에서 'Supabase' 클라이언트를 연동하여 완벽한 [회원 인증 & 개인화 데이터베이스 웹앱]을 구현해 주세요.
 
 [요구사항]
-1. 뷰포트 최적화: &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt; 메타태그를 적용하세요.
-2. 모바일 내비게이션: 데스크톱 가로 메뉴는 모바일에서 숨기고, 우측 상단 햄버거 메뉴 버튼을 누르면 부드럽게 열리는 모바일 전용 슬라이드 오버레이(바텀 시트)를 구현하세요.
-3. 반응형 그리드: 데스크톱 3열 카드(PT 프로그램, 시설 소개)는 모바일(기본)에서 세로 1열(grid-cols-1)로 표시되고, 태블릿(sm:)에서 2열, 데스크톱(lg:)에서 3열로 유려하게 변환되게 하세요.
-4. 터치 친화적 UI: 모든 CTA 버튼의 높이를 최소 48px 이상 확보하고, 스마트폰 엄지손가락으로 쉽게 누를 수 있도록 하단 플로팅 '지금 무료 체험 신청하기' 바를 모바일에만 노출하세요.
-5. Tailwind CSS CDN 기반 단일 index.html 파일로 모든 인터랙션 스크립트를 포함하여 완성해 주세요.</pre>
+1. Supabase CDN 로드:
+   &lt;script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"&gt;&lt;/script&gt;를 헤더에 포함하고, SUPABASE_URL과 SUPABASE_ANON_KEY를 설정하여 클라이언트를 초기화하세요.
+
+2. 사용자 인증(Auth) UI & 기능:
+   - 상단 헤더 우측에 [로그인 / 회원가입] 버튼을 배치하세요.
+   - 클릭 시 부드럽게 열리는 모달 팝업에서 [이메일, 비밀번호]로 회원가입(signUp) 및 로그인(signInWithPassword)이 가능하게 하세요.
+   - 로그인 성공 시 모달이 닫히며 상단에 "환영합니다, {user.email}님!" 뱃지와 [로그아웃] 버튼이 표시되게 하세요.
+   - 페이지를 새로고침해도 세션이 유지되도록 onAuthStateChange 리스너를 구현하세요.
+
+3. 개인화 데이터베이스(Personalized DB) 연동:
+   - 로그인한 사용자만 이용할 수 있는 '나만의 개인 스마트 노트/메모장' 섹션을 제공하세요.
+   - 메모 추가 시 로그인한 회원의 고유 ID(user.id)를 함께 'user_notes' 테이블에 INSERT 하세요.
+   - 메모 목록 조회 시 로그인한 사용자의 메모만 .eq('user_id', user.id)로 SELECT하여 화면에 실시간 렌더링하세요.
+   - 메모 삭제 버튼 클릭 시 본인 글만 삭제되게 처리하세요.
+   - 로그아웃 상태에서는 "로그인 후 나만의 개인 데이터를 안전하게 보관하세요" 안내 배너를 보여주세요.
+
+4. 단일 index.html 파일 안에 Tailwind CSS 스타일과 자바스크립트 전체 코드를 포함하여 완성해 주세요.</pre>
             </div>
           </div>
 
-          <!-- 실습 2: 실시간 유효성 검증 스마트 상담 폼 -->
+          <!-- 실습 2: 공공데이터 기상청 단기예보 & 실시간 날씨 위젯 API 연동 -->
           <div class="border border-slate-200 rounded-2xl p-5 space-y-3 bg-white hover:border-purple-300 transition-all">
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-extrabold text-xs">실습 2</span>
-              <h4 class="text-base font-extrabold text-slate-900">전화번호 자동 하이픈 & 실시간 유효성 검증 [VIP 1:1 상담 예약 폼]</h4>
+              <span class="px-2.5 py-1 rounded-lg bg-sky-600 text-white font-extrabold text-xs">실습 2</span>
+              <h4 class="text-base font-extrabold text-slate-900">공공데이터 기상청 단기예보 & 실시간 날씨 카드 위젯 API 연동</h4>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              고객이 입력하는 즉시 전화번호에 하이픈을 넣고 오타를 실시간 감지하여 경고를 띄워주는 스마트 인터랙티브 상담 예약 폼을 구현합니다.
+              대한민국 공공데이터포털 기상청 단기예보 Open API를 연동하여, GPS 위경도를 기상청 격자(X, Y) 좌표로 변환하고 현재 기온, 하늘상태, 강수확률을 모바일 반응형 카드로 렌더링합니다.
             </p>
 
             <!-- 코드 바로 위 복사 버튼 헤더 바 -->
             <div class="space-y-0 shadow-xs">
               <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2.5 rounded-t-xl border border-b-0 border-slate-700">
-                <span class="text-xs font-mono font-bold text-indigo-300 flex items-center gap-1.5 truncate">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                  <span>실습 2 AI 프롬프트 (전화번호 하이픈 & 유효성 검증 폼)</span>
+                <span class="text-xs font-mono font-bold text-sky-300 flex items-center gap-1.5 truncate">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                  <span>실습 2 AI 프롬프트 (공공데이터 기상청 날씨 API 연동)</span>
                 </span>
-                <button onclick="copyCode('prompt-day4-2')" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 shrink-0">
+                <button onclick="copyCode('prompt-day4-2')" class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 shrink-0">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
                   <span>프롬프트 복사</span>
                 </button>
               </div>
-              <pre id="prompt-day4-2" class="p-4 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-xl border border-slate-800 select-all">전환율을 극대화하는 'VIP 1:1 맞춤 상담 예약 폼' 섹션을 구현해 주세요.
+              <pre id="prompt-day4-2" class="p-4 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-xl border border-slate-800 select-all">공공데이터포털의 '기상청 단기예보(동네예보) Open API'를 연동한 세련된 [실시간 날씨 예보 위젯 카드]를 구현해 주세요.
 
-[폼 구성 필드]
-1. 성함 (필수, 2자 이상 한글/영문)
-2. 연락처 (필수, 휴대폰 번호)
-3. 운동 목표 선택 (라디오 또는 칩 버튼: 체중 감량, 근력 강화, 체형 교정, 바디프로필)
-4. 희망 시간대 (선택: 오전, 오후, 저녁)
-5. 개인정보 수집 및 상담 동의 체크박스
+[요구사항]
+1. 격자 좌표(NX, NY) 변환:
+   - 기상청 API는 위도/경도가 아닌 독자적인 기상 격자 좌표(NX, NY)를 사용합니다.
+   - 표준 LCC DFS 좌표 변환 공식을 자바스크립트 함수(dfs_xy_conv)로 내장하여, 기본 위치(부산 동구: 위도 35.13°, 경도 129.04° ➔ NX=98, NY=75) 또는 브라우저 GPS 위치를 자동 변환하세요.
 
-[인터랙티브 유효성 검증 규칙]
-- 전화번호 필드에 숫자를 입력할 때 자동으로 '010-XXXX-XXXX' 형태로 하이픈이 삽입되게 작성해 주세요.
-- 정규식(^01[016789]-?\d{3,4}-?\d{4}$)으로 번호 자릿수가 부족하거나 형식이 맞지 않으면 실시간으로 입력창 테두리가 붉어지며 하단에 "올바른 휴대폰 번호 11자리를 입력해 주세요" 경고 문구가 표시되게 하세요.
-- 필수 항목 미입력 상태에서 [상담 신청하기] 버튼을 누르면 부드러운 좌우 흔들림(shake) 애니메이션과 함께 빈 필드로 자동 포커스되게 하세요.
-- 정상 제출 시 버튼에 로딩 스피너와 함께 "접수 중..." 상태로 변하고, 1초 후 세련된 [상담 접수 완료] 축하 모달 팝업이 뜨게 구현해 주세요.</pre>
+2. 기상청 API 비동기 fetch 호출:
+   - 기상청 단기예보 엔드포인트:
+     https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst
+   - 파라미터: serviceKey, numOfRows=60, pageNo=1, dataType=JSON, base_date, base_time(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 중 최근 시간 계산), nx, ny
+   - (보안 및 테스트 팁): 공공 API 키가 없거나 CORS 제한이 발생할 경우를 대비하여, 전 세계 무료 날씨 API(Open-Meteo: https://api.open-meteo.com/v1/forecast)로 자동 폴백(Fallback) 전환되도록 2중 안전 구조를 작성하세요.
+
+3. 날씨 카드 UI 디자인:
+   - 현재 기온(TMP): 대형 폰트로 '18°C' 표시
+   - 하늘 상태(SKY): 맑음(☀️), 구름많음(⛅), 흐림(☁️), 비/눈(🌧️) 아이콘 및 텍스트 뱃지
+   - 강수 확률(POP): '강수확률 20%' 물방울 게이지 바
+   - 로딩 중에는 반짝이는 스켈레톤(Skeleton) 애니메이션을 표시하세요.
+
+4. Tailwind CSS 기반으로 모바일(390px)에서도 깔끔하게 반응형으로 렌더링되도록 완성해 주세요.</pre>
             </div>
           </div>
 
-          <!-- 실습 3: 구글 스프레드시트 실시간 데이터 자동 기록 -->
+          <!-- 실습 3: Git ➔ GitHub ➔ Vercel ➔ Supabase 풀사이클 실전 배포 -->
           <div class="border border-slate-200 rounded-2xl p-5 space-y-3 bg-white hover:border-purple-300 transition-all">
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-extrabold text-xs">실습 3</span>
-              <h4 class="text-base font-extrabold text-slate-900">구글 스프레드시트(Google Sheets) 실시간 데이터 자동 저장 연동</h4>
+              <h4 class="text-base font-extrabold text-slate-900">Git 관리 ➔ GitHub 원격 푸시 ➔ Vercel 자동 배포 ➔ Supabase 대시보드 관리</h4>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              수강생 웹사이트에서 제출된 상담 예약 데이터가 구글 스프레드시트(엑셀)에 1초 만에 새로운 행(Row)으로 실시간 기록되는 Google Apps Script 연동 코드를 완성합니다.
+              로컬에서 완성한 풀스택 웹서비스를 Git으로 버전 관리하고, GitHub에 원격 푸시한 뒤 Vercel에 연결하여 환경변수를 등록하고 전 세계에 실시간 자동 배포(CI/CD)합니다.
             </p>
 
             <!-- 코드 바로 위 복사 버튼 헤더 바 -->
             <div class="space-y-0 shadow-xs">
               <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-4 py-2.5 rounded-t-xl border border-b-0 border-slate-700">
                 <span class="text-xs font-mono font-bold text-emerald-300 flex items-center gap-1.5 truncate">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                  <span>실습 3 AI 프롬프트 (구글 시트 클라우드 DB 연동)</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                  <span>실습 3 풀사이클 배포 프롬프트 & 터미널 가이드</span>
                 </span>
                 <button onclick="copyCode('prompt-day4-3')" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 shrink-0">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                  <span>프롬프트 복사</span>
+                  <span>가이드 복사</span>
                 </button>
               </div>
-              <pre id="prompt-day4-3" class="p-4 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-xl border border-slate-800 select-all">상담 신청 폼의 데이터를 '구글 스프레드시트'에 실시간으로 자동 저장하는 코드를 완성해 주세요.
+              <pre id="prompt-day4-3" class="p-4 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-xl border border-slate-800 select-all">완성된 풀스택 웹 애플리케이션을 Git, GitHub, Vercel, Supabase로 연동 배포하는 단계별 실전 가이드입니다:
 
-[요구사항]
-1. Google Apps Script 연동: 웹 페이지에서 폼이 제출되면, fetch() API를 사용하여 구글 웹앱 URL(GOOGLE_SHEET_URL)로 [접수일시, 성함, 연락처, 운동목표, 희망시간] 데이터를 JSON으로 전송하게 구현하세요.
-2. CORS 및 전송 옵션: 구글 앱스스크립트 전송 시 redirect 정책 문제를 방지하기 위해 mode: 'no-cors' 옵션을 지원하거나 JSON 문자열을 안전하게 전송하도록 처리해 주세요.
-3. 로컬 폴백 이중 안전장치: 구글 웹앱 URL이 아직 없거나 네트워크 오류가 발생하더라도, 브라우저 localStorage에 'fitness_leads' 키로 상담 신청 목록을 항상 영구 저장하여 접수 내역이 절대 날아가지 않게 해주세요.
-4. 모든 자바스크립트는 외부 라이브러리 없이 순수 바닐라 JS(Fetch API)로 작성해 주세요.</pre>
+[Step 1. 로컬 Git 관리 및 커밋]
+터미널을 열고 프로젝트 폴더에서 아래 명령어를 순서대로 실행하세요:
+$ git init
+$ git add .
+$ git commit -m "feat: Supabase 로그인, 개인화 DB, 기상청 날씨 위젯 완성"
+
+[Step 2. GitHub 원격 저장소 생성 및 푸시]
+1. github.com에 로그인 후 [New Repository] 클릭 ➔ 리포지토리 이름 입력 (예: my-weather-app)
+2. 터미널에서 로컬 저장소와 GitHub 원격 저장소를 연결하고 푸시:
+$ git branch -M main
+$ git remote add origin https://github.com/내계정/my-weather-app.git
+$ git push -u origin main
+
+[Step 3. Vercel 원클릭 자동 배포 & 환경변수 설정]
+1. vercel.com 로그인 ➔ [Add New...] ➔ [Project] 클릭
+2. 방금 올린 GitHub 리포지토리 'my-weather-app' 옆의 [Import] 클릭
+3. [Environment Variables] 섹션을 열고 다음 키를 등록:
+   - SUPABASE_URL: 내 Supabase 프로젝트 URL
+   - SUPABASE_ANON_KEY: 내 Supabase anon public key
+   - WEATHER_API_KEY: 공공데이터포털 인코딩 인증키
+4. [Deploy] 버튼을 클릭하면 약 20초 만에 전 세계 접속 가능한 나만의 고유 URL(예: my-weather-app.vercel.app)이 발급됩니다!
+5. 앞으로 로컬에서 코드를 수정하고 'git push'만 하면 Vercel이 1초 만에 자동 감지하여 실시간 업데이트됩니다.
+
+[Step 4. Supabase 대시보드 운영 점검]
+- Supabase 대시보드 [Authentication] ➔ [Users]에서 방금 내가 가입한 이메일 계정이 등록되었는지 확인하세요.
+- [Table Editor] ➔ 'user_notes' 테이블에서 내가 작성한 메모가 내 user_id와 함께 기록되었는지 실시간으로 확인하세요!</pre>
             </div>
           </div>
 
-          <!-- 실습 4: 실시간 갤러리 등록 및 모바일 뷰 시연 -->
+          <!-- 실습 4: 풀스택 통합 웹앱 완성 & 실시간 갤러리 LIVE 등록 -->
           <div class="border border-slate-200 rounded-2xl p-5 space-y-3 bg-white hover:border-purple-300 transition-all">
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-1 rounded-lg bg-slate-900 text-white font-extrabold text-xs">실습 4</span>
-              <h4 class="text-base font-extrabold text-slate-900">완성된 모바일 반응형 웹앱 실시간 갤러리 등록 & 390px 모바일 뷰 시연</h4>
+              <h4 class="text-base font-extrabold text-slate-900">완성된 풀스택 웹앱 갤러리 LIVE 등록 & 스마트폰 390px 모바일 뷰 시연</h4>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
-              완성된 4회차 `index.html` 결과물을 수강생 갤러리에 직접 등록하고, 동료 수강생들과 함께 [모바일 뷰] 시뮬레이터로 터치 동작과 폼 검증을 테스트합니다.
+              Supabase 로그인, 개인화 DB, 기상청 날씨 API가 모두 결합된 최종 웹앱 결과물을 수강생 갤러리에 직접 등록하고, 동료들과 실시간 모바일 뷰로 시연합니다.
             </p>
 
             <!-- 코드 바로 위 복사 버튼 헤더 바 -->
@@ -2891,16 +2919,16 @@ function doPost(e) {
                   <span>체크리스트 복사</span>
                 </button>
               </div>
-              <pre id="prompt-day4-4" class="p-4 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-xl border border-slate-800 select-all">지금까지 완성한 모바일 퍼스트 피트니스 상담 웹앱을 검증하기 위한 최종 체크리스트와 갤러리 등록 안내입니다:
+              <pre id="prompt-day4-4" class="p-4 bg-slate-950 text-slate-100 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre-wrap break-words overflow-x-auto rounded-b-xl border border-slate-800 select-all">지금까지 완성한 풀스택 웹앱을 검증하고 갤러리에 등록하기 위한 최종 3단계 체크리스트입니다:
 
 [제출 준비 3단계]
 1. Claude에서 생성된 최종 결과물 우측 상단 [Code] ➔ [Download]를 눌러 'index.html' 파일로 내 컴퓨터에 저장합니다.
 2. 현재 화면 상단의 [4회차 작품 등록] 버튼을 클릭합니다.
-3. 성함, 작품 제목("모바일 반응형 피트니스 상담 예약 웹앱"), 4회차를 선택하고 방금 내려받은 'index.html' 파일을 첨부하여 [등록하기]를 누릅니다.
+3. 성함, 작품 제목("Supabase 인증 & 기상청 날씨 풀스택 웹앱"), 4회차를 선택하고 방금 내려받은 'index.html' 파일을 첨부(또는 Vercel 배포 URL 링크)하여 [등록하기]를 누릅니다.
 
 [등록 후 확인 사항]
-- 갤러리 카드에서 [모바일 뷰] 버튼을 클릭하여 390px 아이폰 규격 화면에서 햄버거 메뉴와 상담 폼이 완벽히 작동하는지 확인합니다.
-- 본인의 스마트폰 카카오톡으로 링크를 보내 실제 스마트폰 브라우저에서 직접 상담 신청을 테스트해 보세요!</pre>
+- 갤러리 카드에서 [모바일 뷰] 버튼을 클릭하여 390px 스마트폰 화면에서 로그인 모달과 날씨 위젯이 완벽히 작동하는지 확인합니다.
+- 내 스마트폰 카카오톡으로 Vercel 배포 주소를 전송하여 실제 모바일 기기에서 직접 회원가입과 날씨 조회를 테스트해 보세요!</pre>
             </div>
           </div>
 
@@ -2921,30 +2949,38 @@ function doPost(e) {
           <div class="space-y-3 text-xs sm:text-sm text-slate-700">
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5">
               <div class="font-extrabold text-slate-900 flex items-center gap-2">
-                <span class="text-rose-600 font-black">Q1.</span> 스마트폰에서 상담 입력창을 터치하면 화면이 갑자기 지멋대로 확대되어 깨집니다!
+                <span class="text-rose-600 font-black">Q1.</span> Supabase 회원가입 후 로그인이 안 되거나 "Email not confirmed" 에러가 뜹니다!
               </div>
               <p class="text-slate-600 leading-relaxed">
-                <strong>원인 및 해결</strong>: 아이폰(iOS 사파리)은 글자 크기가 <code>16px</code> 미만인 <code>&lt;input&gt;</code>을 터치하면 가독성을 위해 화면을 강제로 자동 줌인(Zoom-in)합니다. 
-                모든 입력창 스타일 클래스에 반드시 <code>text-base</code>(16px 이상)를 지정하면 자동 확대 버그가 완벽히 해결됩니다.
+                <strong>원인 및 해결</strong>: Supabase의 기본 설정은 가입 시 확인 이메일(인증 링크)을 발송하도록 되어 있습니다. 
+                실습 중에는 Supabase 대시보드 ➔ <strong>[Authentication] ➔ [Providers] ➔ [Email]</strong>에서 <strong>"Confirm email" 스위치를 OFF</strong>로 꺼주시면 이메일 확인 없이 가입 즉시 로그인이 가능합니다!
               </p>
             </div>
 
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5">
               <div class="font-extrabold text-slate-900 flex items-center gap-2">
-                <span class="text-rose-600 font-black">Q2.</span> 구글 Apps Script로 데이터를 보냈는데 시트에 데이터가 안 들어오거나 CORS 오류가 납니다!
+                <span class="text-rose-600 font-black">Q2.</span> 기상청 API 호출 시 CORS 에러(출처 불일치) 또는 "SERVICE KEY IS NOT REGISTERED"가 뜹니다!
               </div>
               <p class="text-slate-600 leading-relaxed">
-                <strong>원인 및 해결</strong>: Apps Script [웹 앱 배포] 설정에서 **액세스 권한**이 '나만 보기'로 되어 있으면 외부 사이트의 접속을 구글이 차단합니다. 
-                반드시 배포 관리에서 <strong>액세스 권한: '모든 사용자(Anyone)'</strong>로 변경 후 재배포해 주세요.
+                <strong>원인 및 해결</strong>: 1) 공공데이터포털 승인 후 1~2시간 동안 키가 동기화되지 않을 수 있습니다. 2) 자바스크립트 <code>fetch()</code> 호출 시에는 반드시 <strong>'인코딩(Encoding)된 인증키'</strong>를 사용해야 특수문자가 깨지지 않습니다. 3) 로컬 파일(file://)에서 기상청 API를 호출하면 브라우저 보안(CORS)으로 차단되므로, 로컬 웹서버(Live Server)를 켜거나 Vercel에 배포한 후 테스트하세요. 실습 프롬프트의 Open-Meteo 무료 글로벌 날씨 API 자동 폴백을 활용하면 키 없이도 즉시 테스트할 수 있습니다.
               </p>
             </div>
 
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5">
               <div class="font-extrabold text-slate-900 flex items-center gap-2">
-                <span class="text-rose-600 font-black">Q3.</span> 모바일 햄버거 메뉴(바텀 시트)를 열었는데 뒷배경 화면이 같이 스크롤됩니다.
+                <span class="text-rose-600 font-black">Q3.</span> GitHub에 코드를 올릴 때 Supabase 키가 노출되면 해킹 위험이 없나요?
               </div>
               <p class="text-slate-600 leading-relaxed">
-                <strong>원인 및 해결</strong>: 햄버거 메뉴를 열 때 <code>document.body.style.overflow = 'hidden'</code>을 주어 뒷배경 스크롤을 잠그고, 닫을 때 <code>''</code>로 초기화해 주면 앱처럼 깔끔하게 동작합니다.
+                <strong>원인 및 해결</strong>: Supabase의 <code>anon key</code>(공개 키)는 브라우저용으로 설계되어 공개되어도 괜찮으며, 앞서 설정한 <strong>RLS(행 단위 보안 정책)</strong>가 남의 데이터를 읽거나 쓰지 못하게 철통 방어합니다! 단, 모든 권한을 가진 <code>service_role key</code>는 절대로 깃허브나 프론트엔드 코드에 넣지 마세요.
+              </p>
+            </div>
+
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5">
+              <div class="font-extrabold text-slate-900 flex items-center gap-2">
+                <span class="text-rose-600 font-black">Q4.</span> 스마트폰 모바일 브라우저에서 새로고침하거나 창을 닫으면 로그인이 풀려요!
+              </div>
+              <p class="text-slate-600 leading-relaxed">
+                <strong>원인 및 해결</strong>: Supabase JS 라이브러리는 기본적으로 브라우저의 <code>localStorage</code>에 세션 토큰을 안전하게 보관합니다. 아이폰 '개인정보 보호 브라우징' 모드이거나 시크릿 모드에서는 창을 닫을 때 저장소가 삭제되므로, 일반 사파리/크롬 탭에서 열어두시면 세션이 영구 지속됩니다.
               </p>
             </div>
           </div>
@@ -2965,40 +3001,40 @@ function doPost(e) {
           <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
             <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-purple-50/50 transition-colors">
               <input type="checkbox" class="mt-0.5 rounded text-purple-600 focus:ring-purple-500 w-4 h-4">
-              <span><strong>모바일 퍼스트 레이아웃</strong>: 데스크톱 3열 카드가 스마트폰 폭에서 자연스럽게 1열 스택으로 전환되는가?</span>
+              <span><strong>Supabase 회원 인증(Auth)</strong>: 모달에서 이메일 회원가입 및 로그인이 정상 작동하고 상단에 환영 문구가 표시되는가?</span>
             </label>
             <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-purple-50/50 transition-colors">
               <input type="checkbox" class="mt-0.5 rounded text-purple-600 focus:ring-purple-500 w-4 h-4">
-              <span><strong>엄지 터치 최적화</strong>: 버튼 높이가 48px 이상 확보되어 스마트폰에서 누르기 편한가?</span>
+              <span><strong>개인화 DB & RLS 보안</strong>: 로그인한 내 계정(user.id)으로 작성한 데이터만 조회되고 안전하게 격리 보관되는가?</span>
             </label>
             <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-purple-50/50 transition-colors">
               <input type="checkbox" class="mt-0.5 rounded text-purple-600 focus:ring-purple-500 w-4 h-4">
-              <span><strong>전화번호 자동 포맷팅</strong>: 연락처 입력 시 <code>010-XXXX-XXXX</code> 하이픈이 자동으로 생성되는가?</span>
+              <span><strong>공공데이터 기상청 날씨 API</strong>: GPS/지역 좌표를 기반으로 실시간 기온과 하늘상태 카드가 에러 없이 표시되는가?</span>
             </label>
             <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-purple-50/50 transition-colors">
               <input type="checkbox" class="mt-0.5 rounded text-purple-600 focus:ring-purple-500 w-4 h-4">
-              <span><strong>실시간 유효성 검증</strong>: 잘못된 번호 입력 시 붉은 경고창과 함께 오류 피드백이 즉각 노출되는가?</span>
+              <span><strong>Git ➔ GitHub ➔ Vercel 배포</strong>: GitHub 리포지토리에 푸시하고 Vercel에 연결하여 나만의 실제 라이브 도메인을 확보했는가?</span>
             </label>
             <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-purple-50/50 transition-colors">
               <input type="checkbox" class="mt-0.5 rounded text-purple-600 focus:ring-purple-500 w-4 h-4">
-              <span><strong>구글 시트/저장소 연동 & 갤러리 등록</strong>: 신청 완료 모달이 뜨고, 갤러리에 등록하여 모바일 뷰로 검증을 마쳤는가?</span>
+              <span><strong>갤러리 LIVE 등록 & 모바일 시연</strong>: 완성된 결과물을 갤러리에 등록하고 스마트폰 모바일 뷰로 터치 테스트를 마쳤는가?</span>
             </label>
           </div>
 
           <!-- 5회차 예고 박스 -->
-          <div class="p-5 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-2xl border border-slate-800 space-y-2">
+          <div class="p-5 bg-gradient-to-r from-slate-900 via-indigo-950 to-purple-950 text-white rounded-2xl border border-slate-800 space-y-2">
             <div class="flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
                 <span class="px-2.5 py-0.5 rounded-full bg-slate-700 text-slate-300 text-xs font-bold flex items-center gap-1">
                   차기 예고 (수업 준비 중)
                 </span>
-                <span class="text-sm font-extrabold text-amber-300">5회차 : 디자인 시스템 고도화 & 최종 웹서비스 포트폴리오 출시</span>
+                <span class="text-sm font-extrabold text-amber-300">5회차 : 대화형 AI 챗봇 에이전트 & 멀티모달 이미지·영상 생성 연동 최종 출시</span>
               </div>
               <span class="text-xs text-slate-400 font-mono">2026년 11월 11일 (수) 공개</span>
             </div>
             <p class="text-slate-300 text-xs leading-relaxed">
-              마지막 5회차에서는 AI가 만든 티를 완벽하게 벗겨내는 <strong>고급 디자인 시스템 & 마이크로 인터랙션</strong>을 적용하고, 
-              1~4회차의 모든 결과물을 집약한 <strong>나만의 완성형 웹서비스 포트폴리오</strong>를 최종 완성하여 전 세계에 출시합니다!
+              마지막 5회차에서는 웹사이트에 24시간 실시간 응답하는 <strong>대화형 AI 챗봇(Agent) 위젯</strong>을 탑재하고, 
+              텍스트 한 줄로 웹 배너와 이미지를 그려내는 <strong>AI 이미지 생성 API</strong>와 <strong>홍보 영상/비디오 쇼케이스</strong>를 결합하여 나만의 풀스택 AI 웹서비스를 완성합니다!
             </p>
           </div>
         </div>
@@ -4148,7 +4184,7 @@ function doPost(e) {
               <option value="1회차">1회차 : 아티팩트·웹인터랙션</option>
               <option value="2회차">2회차 : 프로젝트·랜딩·Git배포</option>
               <option value="3회차">3회차 : AI스킬·피트니스·로컬서버·DB</option>
-              <option value="4회차" selected>4회차 : 모바일반응형·상담폼·구글시트</option>
+              <option value="4회차" selected>4회차 : Supabase인증·개인화DB·날씨API·배포</option>
               <option value="5회차">5회차 : 수업 준비 중 (비공개)</option>
             </select>
           </div>
@@ -4237,7 +4273,7 @@ function doPost(e) {
               <option value="1회차">1회차 : 아티팩트·웹인터랙션</option>
               <option value="2회차">2회차 : 프로젝트·랜딩·Git배포</option>
               <option value="3회차">3회차 : AI스킬·피트니스·로컬서버·DB</option>
-              <option value="4회차" selected>4회차 : 모바일반응형·상담폼·구글시트</option>
+              <option value="4회차" selected>4회차 : Supabase인증·개인화DB·날씨API·배포</option>
               <option value="5회차">5회차 : 수업 준비 중 (비공개)</option>
             </select>
           </div>
