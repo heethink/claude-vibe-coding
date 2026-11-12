@@ -49,8 +49,20 @@
   
   <style>
     /* 한글 타이포그래피 및 자연스러운 줄바꿈 최적화 */
-    html {
+    html, body {
       -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+    .day-article, .day-article > div, .day-article .grid > div, .day-article .flex > div {
+      min-width: 0;
+    }
+    pre, code {
+      overflow-wrap: anywhere !important;
+      word-break: break-word !important;
+    }
+    pre {
+      max-width: 100% !important;
     }
     body {
       font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
@@ -169,8 +181,11 @@
         <button onclick="selectDay(3)" id="top-nav-3" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1.5">
           <span>3회차</span> <span class="text-[10px] text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded font-black">스킬·DB</span>
         </button>
-        <button onclick="selectDay(4)" id="top-nav-4" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1.5">
-          <span>4회차</span> <span class="text-[10px] text-purple-700 bg-purple-100 px-1.5 py-0.5 rounded font-black">반응형·폼</span>
+        <button onclick="selectDay(4)" id="top-nav-4" class="top-nav-btn px-2.5 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1">
+          <span>4회차</span> <span class="text-[10px] text-purple-700 bg-purple-100 px-1.5 py-0.5 rounded font-black">풀스택</span>
+        </button>
+        <button onclick="selectDay(5)" id="top-nav-5" class="top-nav-btn px-2.5 py-1.5 rounded-xl transition-all hover:text-slate-900 hover:bg-white flex items-center gap-1">
+          <span>5회차</span> <span class="text-[10px] text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded font-black">피날레</span>
         </button>
         <button onclick="selectDay('assignment')" id="top-nav-assignment" class="top-nav-btn px-3 py-1.5 rounded-xl transition-all hover:text-amber-900 hover:bg-white flex items-center gap-1.5 text-slate-700">
           갤러리
@@ -969,7 +984,6 @@
 - 브라우저를 띄우고 카메라 권한만 허용하면 누구나 쉽게 쓸 수 있도록 친절한 한글 안내 문구를 화면에 표시해주세요.
 - 클로드 아티팩트로 완성 코드를 제공해주세요.</pre>
             </div>
-          </div>
           </div>
         </div>
 
@@ -2339,35 +2353,47 @@
         <div class="bg-gradient-to-r from-purple-900 via-indigo-950 to-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-9 shadow-sm space-y-4">
           <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <span class="px-2.5 py-1 rounded-full bg-purple-400/20 text-purple-200 text-xs font-bold border border-purple-400/30">4회차 정규과정</span>
-            <span class="px-2.5 py-1 rounded-full bg-indigo-400/20 text-indigo-200 text-xs font-bold border border-indigo-400/30">Supabase Auth · 개인화 DB · 기상청 날씨 API · Git · GitHub · Vercel 배포</span>
+            <span class="px-2.5 py-1 rounded-full bg-indigo-400/20 text-indigo-200 text-xs font-bold border border-indigo-400/30">Supabase 인증·개인DB</span>
+            <span class="px-2.5 py-1 rounded-full bg-sky-400/20 text-sky-200 text-xs font-bold border border-sky-400/30">기상청 API</span>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-bold border border-emerald-400/30">Git · Vercel 배포</span>
             <span class="px-2.5 py-1 rounded-full bg-purple-500 text-white text-xs font-black flex items-center gap-1">
               <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
               OPEN NOW
             </span>
           </div>
 
-          <div class="space-y-2">
-            <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-snug">
-              <span class="inline-block">4회차 : Supabase 회원가입·로그인 & 개인화 데이터베이스,</span><br class="hidden sm:inline">
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-indigo-200 to-amber-200 inline-block">
-                기상청 공공 API 연동 & Git · GitHub · Vercel · Supabase 실전 배포 파이프라인
+          <div class="space-y-3">
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-snug break-keep">
+              4회차 : Supabase 인증 &amp; 개인화 데이터베이스,<br class="hidden sm:inline">
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-indigo-200 to-amber-200">
+                기상청 공공 API 연동 &amp; 실전 배포 파이프라인
               </span>
             </h2>
-            <p class="text-purple-100 text-xs sm:text-sm leading-relaxed max-w-4xl">
-              단순한 정적 페이지를 넘어 <strong>진짜 사용자가 로그인하고 나만의 데이터를 안전하게 관리하는 풀스택 웹서비스</strong>로 도약합니다!
-              글로벌 오픈소스 BaaS <strong>Supabase</strong>를 연동하여 이메일 회원가입·로그인(Auth)을 구축하고, 사용자 ID(<code>user.id</code>) 기반의 <strong>개인화 데이터베이스(Personalized DB)</strong>와 RLS 행 단위 보안을 설정합니다.
-              더불어 공공데이터포털의 <strong>기상청 단기예보 API</strong>를 연동해 실시간 날씨 카드를 만들고,
-              <strong>Git 버전 관리 ➔ GitHub 원격 저장소 푸시 ➔ Vercel 클라우드 자동 배포 ➔ Supabase 대시보드 관리</strong>로 이어지는 실무 풀사이클 파이프라인을 완성합니다!
-            </p>
+            <ul class="text-purple-100 text-xs sm:text-sm leading-relaxed space-y-1.5 max-w-4xl">
+              <li class="flex items-start gap-2">
+                <span class="text-purple-300 font-bold shrink-0">•</span>
+                <span><strong>Supabase 회원 인증(Auth) &amp; 개인화 DB</strong> : 이메일 가입·로그인과 내 데이터만 격리 보호하는 RLS 보안 설정</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-sky-300 font-bold shrink-0">•</span>
+                <span><strong>공공데이터 기상청 날씨 API 연동</strong> : GPS 좌표를 격자로 변환해 실시간 기온과 강수확률 위젯 제작</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-300 font-bold shrink-0">•</span>
+                <span><strong>풀사이클 실전 배포</strong> : Git 로컬 커밋 ➔ GitHub 푸시 ➔ Vercel 자동 배포 ➔ Supabase 대시보드 관리 완성</span>
+              </li>
+            </ul>
           </div>
 
           <!-- 4회차 퀵 실습 네비게이션 배너 -->
           <div class="pt-4 border-t border-purple-700/50 flex flex-wrap items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-              <span class="bg-purple-400 text-slate-950 font-black text-xs px-2.5 py-1 rounded-full shadow-xs">4대 실습</span>
-              <span class="text-xs sm:text-sm font-bold text-white">Supabase 로그인·개인DB &rarr; 기상청 날씨 API 연동 &rarr; Git·GitHub·Vercel 배포 파이프라인 &rarr; 갤러리 등록</span>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="bg-purple-400 text-slate-950 font-black text-xs px-2.5 py-1 rounded-full shadow-xs shrink-0">4대 실습</span>
+              <span class="text-xs sm:text-sm font-bold text-white leading-snug">
+                ① Supabase 로그인·개인DB &rarr; ② 기상청 날씨 API &rarr; ③ Git·GitHub·Vercel 배포 &rarr; ④ 갤러리 시연
+              </span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 shrink-0">
               <button onclick="selectDay('assignment')" class="inline-flex items-center gap-1.5 bg-white text-slate-900 hover:bg-purple-50 text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition">
                 갤러리 확인
               </button>
@@ -3067,36 +3093,48 @@ $ git push -u origin main
         <!-- 차시 헤더 배너 (피날레 골드 & 인디고 그라데이션) -->
         <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-amber-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-9 shadow-sm space-y-4">
           <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <span class="px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-200 text-xs font-bold border border-amber-400/30">5회차 최종 정규과정</span>
-            <span class="px-2.5 py-1 rounded-full bg-indigo-400/20 text-indigo-200 text-xs font-bold border border-indigo-400/30">클로드 AI 챗봇 · 멀티모달(이미지·영상) 생성 · 풀스택 완성 런칭</span>
+            <span class="px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-200 text-xs font-bold border border-amber-400/30">5회차 최종과정</span>
+            <span class="px-2.5 py-1 rounded-full bg-indigo-400/20 text-indigo-200 text-xs font-bold border border-indigo-400/30">클로드 AI 챗봇</span>
+            <span class="px-2.5 py-1 rounded-full bg-purple-400/20 text-purple-200 text-xs font-bold border border-purple-400/30">실시간 이미지 생성</span>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-bold border border-emerald-400/30">AI 비디오 쇼케이스</span>
             <span class="px-2.5 py-1 rounded-full bg-amber-500 text-slate-950 text-xs font-black flex items-center gap-1 shadow-xs">
               <span class="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse"></span>
               FINALE OPEN
             </span>
           </div>
 
-          <div class="space-y-2">
-            <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-snug">
-              <span class="inline-block">5회차 : 클로드(Claude) 대화형 AI 챗봇 에이전트,</span><br class="hidden sm:inline">
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-purple-200 to-indigo-200 inline-block">
-                실시간 멀티모달(이미지·영상) 생성 웹서비스 완성 및 최종 런칭
+          <div class="space-y-3">
+            <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-snug break-keep">
+              5회차 : 클로드(Claude) AI 챗봇 에이전트,<br class="hidden sm:inline">
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-purple-200 to-indigo-200">
+                멀티모달(이미지·영상) 생성 웹서비스 완성 및 최종 런칭
               </span>
             </h2>
-            <p class="text-slate-200 text-xs sm:text-sm leading-relaxed max-w-4xl">
-              1회차(아티팩트 기초)부터 2회차(Git/GitHub 배포), 3회차(AI 스킬), 4회차(Supabase 로그인·개인DB·기상청 날씨 API)까지 축적한 모든 기술의 정점을 완성합니다!
-              <strong>클로드(Claude)의 강력한 시스템 프롬프트 엔지니어링</strong>을 활용해 내 웹사이트의 모든 정보를 꿰고 있는 <strong>24시간 1:1 대화형 AI 상담 챗봇 위젯</strong>을 탑재합니다.
-              더불어 사용자가 한글로 입력한 키워드를 실시간으로 고화질 그림으로 그려내는 <strong>AI 이미지 생성 스튜디오</strong>와, 
-              내 서비스를 감각적으로 소개하는 <strong>15초 AI 홍보 비디오 쇼케이스</strong>를 결합하여 전 세계에 나만의 완성형 풀스택 AI 웹서비스를 당당히 출시합니다!
-            </p>
+            <ul class="text-slate-200 text-xs sm:text-sm leading-relaxed space-y-1.5 max-w-4xl">
+              <li class="flex items-start gap-2">
+                <span class="text-amber-300 font-bold shrink-0">•</span>
+                <span><strong>클로드 AI 상담 챗봇 위젯</strong> : 시스템 프롬프트로 내 서비스의 모든 정보를 숙지한 24시간 1:1 플로팅 챗봇 탑재</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-purple-300 font-bold shrink-0">•</span>
+                <span><strong>실시간 AI 이미지 스튜디오</strong> : 한글 키워드 입력만으로 즉석 고화질 일러스트를 생성·저장하는 멀티모달 기능</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-300 font-bold shrink-0">•</span>
+                <span><strong>AI 홍보 비디오 &amp; 최종 런칭</strong> : 15초 AI 쇼츠 비디오 플레이어 통합 후 Vercel 최종 배포 및 갤러리 수료식</span>
+              </li>
+            </ul>
           </div>
 
           <!-- 5회차 퀵 실습 네비게이션 배너 -->
           <div class="pt-4 border-t border-amber-500/30 flex flex-wrap items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-              <span class="bg-amber-400 text-slate-950 font-black text-xs px-2.5 py-1 rounded-full shadow-xs">피날레 4대 실습</span>
-              <span class="text-xs sm:text-sm font-bold text-amber-100">클로드 AI 챗봇 위젯 &rarr; 실시간 AI 이미지 생성 &rarr; 15초 AI 비디오 쇼케이스 &rarr; 최종 런칭 및 갤러리 수료식</span>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="bg-amber-400 text-slate-950 font-black text-xs px-2.5 py-1 rounded-full shadow-xs shrink-0">피날레 4대 실습</span>
+              <span class="text-xs sm:text-sm font-bold text-amber-100 leading-snug">
+                ① 클로드 챗봇 위젯 &rarr; ② 실시간 이미지 생성 &rarr; ③ AI 비디오 쇼케이스 &rarr; ④ 최종 런칭·수료식
+              </span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 shrink-0">
               <button onclick="selectDay('assignment')" class="inline-flex items-center gap-1.5 bg-white text-slate-900 hover:bg-amber-50 text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition">
                 갤러리 확인
               </button>
